@@ -2,37 +2,48 @@ import styled from "styled-components";
 import Card from "../molecules/Card";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 100%;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TitleWrapper = styled.div`
+  width: 80%;
+  margin: 30px;
+`;
+const Title = styled.div`
+  font-size: 2em;
+  text-align: left;
+  padding-left: 30px;
 `;
 
 const Parent = styled.div`
   width: 80%;
-  background-color: teal;
-`;
-const Child = styled.div`
-  font-size: 18px;
-  text-align: center;
-  height: 100px;
-  box-sizing: border-box;
-  color: white;
-  background-color: dodgerblue;
-  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 15px;
+  align-items: stretch;
 `;
 
 export default function MyNFTTemplate() {
   return (
     <Container>
+      <TitleWrapper>
+        <Title>내 헌혈증</Title>
+      </TitleWrapper>
       <Parent>
-        <Child>child 1</Child>
-        <Child>child 2</Child>
-        <Child>child 3</Child>
-        <Child>child 4</Child>
-        <Child>child 5</Child>
-        <Child>child 6</Child>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </Parent>
     </Container>
   );

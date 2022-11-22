@@ -8,7 +8,7 @@ const nftListReducer = createSlice({
   name: "nftListReducer",
   initialState,
   reducers: {
-    SET_FEED(state, action) {
+    SET_FEED: (state, action) => {
       state.BDNFTList = action.payload.BDNFTList;
     },
   },

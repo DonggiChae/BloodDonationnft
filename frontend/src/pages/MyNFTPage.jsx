@@ -3,25 +3,20 @@ import styled from "styled-components";
 import getNFT from "../components/ContractMethods/GetNFT";
 import { useSelector, useDispatch } from "react-redux";
 import * as NFTReducer from "../redux/reducers/bdNFTs";
+import MyNFTTemplate from "../components/templates/MyNFTTemplate";
 
 import dotenv from "dotenv";
 dotenv.config();
-
-const NFTContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 function MyNFTPage() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    getNFT();
+    const Feed = getNFT();
+    console.log(Feed);
   }, [user]);
 
-  return <NFTContainer></NFTContainer>;
+  return <MyNFTTemplate />;
 }
 
 export default MyNFTPage;
