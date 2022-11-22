@@ -1,0 +1,10 @@
+.info-wrapper {
+  display: flex;
+  width: 250px;
+  font-weight: 500;
+}
+
+.info-li {
+  margin: 15px;
+  line-height: 150%;
+}
