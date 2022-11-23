@@ -1,23 +1,18 @@
-import { toast } from "react-toastify";
 import BloodDonationContract from "../../klaytn/BloodDonationContract";
+import { toast } from "react-toastify";
 
 export const addAdmin = async (account) => {
-  const gasAmount = await BloodDonationContract.methods
-    .grantHospitalRole(account)
+  await BloodDonationContract.methods
+    .addAdmin(account)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .catch((e) =>
-      toast.error("권한이 없습니다.", {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    );
-  await BloodDonationContract.methods
-    .addAdmin(account)
-    .send({
-      from: window.klaytn.selectedAddress,
-      gas: gasAmount,
+    .then((gasAmount) => {
+      BloodDonationContract.methods.addAdmin(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
     })
     .then(() =>
       toast.success(`성공적으로 관리자 권한을 주었습니다.`, {
@@ -30,22 +25,17 @@ export const addAdmin = async (account) => {
 };
 
 export const renounceAdmin = async (account) => {
-  const gasAmount = await BloodDonationContract.methods
-    .grantHospitalRole(account)
+  await BloodDonationContract.methods
+    .renounceAdmin(account)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .catch((e) =>
-      toast.error("권한이 없습니다.", {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    );
-  await BloodDonationContract.methods
-    .renounceAdmin(account)
-    .send({
-      from: window.klaytn.selectedAddress,
-      gas: gasAmount,
+    .then((gasAmount) => {
+      BloodDonationContract.methods.renounceAdmin(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
     })
     .then(() =>
       toast.success(`관리자 권한을 포기하였습니다.`, {
@@ -58,22 +48,17 @@ export const renounceAdmin = async (account) => {
 };
 
 export const grantHospitalRole = async (account) => {
-  const gasAmount = await BloodDonationContract.methods
+  await BloodDonationContract.methods
     .grantHospitalRole(account)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .catch((e) =>
-      toast.error("권한이 없습니다.", {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    );
-  await BloodDonationContract.methods
-    .grantHospitalRole(account)
-    .send({
-      from: window.klaytn.selectedAddress,
-      gas: gasAmount,
+    .then((gasAmount) => {
+      BloodDonationContract.methods.grantHospitalRole(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
     })
     .then(() => {
       toast.success(`성공적으로 병원 권한을 주었습니다.`, {
@@ -86,22 +71,17 @@ export const grantHospitalRole = async (account) => {
 };
 
 export const grantRedCrossRole = async (account) => {
-  const gasAmount = await BloodDonationContract.methods
+  await BloodDonationContract.methods
     .grantRedCrossRole(account)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .catch((e) =>
-      toast.error("권한이 없습니다.", {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    );
-  await BloodDonationContract.methods
-    .grantRedCrossRole(account)
-    .send({
-      from: window.klaytn.selectedAddress,
-      gas: gasAmount,
+    .then((gasAmount) => {
+      BloodDonationContract.methods.grantRedCrossRole(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
     })
     .then(() =>
       toast.success(`성공적으로 헌혈의 집 권한을 주었습니다.`, {
@@ -113,22 +93,62 @@ export const grantRedCrossRole = async (account) => {
     );
 };
 
-export const checkRole = async (role, account) => {
-  const gasAmount = await BloodDonationContract.methods
-    .grantRedCrossRole(account)
+export const checkHospitalRole = async (account) => {
+  await BloodDonationContract.methods
+    .checkHospitalRole(account)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
+    .then((gasAmount) => {
+      BloodDonationContract.methods.checkHospitalRole(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
+    })
     .catch((e) =>
-      toast.error("권한이 없습니다.", {
+      toast.error(e.toString, {
         position: toast.POSITION.TOP_CENTER,
       })
     );
+};
+
+export const checkRedCrossRole = async (account) => {
   await BloodDonationContract.methods
-    .checkRole(BloodDonationContract.methods.HOSPITAL, account)
-    .send({
+    .checkRedCrossRole(account)
+    .estimateGas({
       from: window.klaytn.selectedAddress,
-      gas: gasAmount,
-    });
+      gas: 6000000,
+    })
+    .then((gasAmount) => {
+      BloodDonationContract.methods.checkRedCrossRole(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
+    })
+    .catch((e) =>
+      toast.error(e.toString, {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    );
+};
+
+export const checkAdminRole = async (account) => {
+  await BloodDonationContract.methods
+    .checkAdminRole(account)
+    .estimateGas({
+      from: window.klaytn.selectedAddress,
+      gas: 6000000,
+    })
+    .then((gasAmount) => {
+      BloodDonationContract.methods.checkAdminRole(account).send({
+        from: window.klaytn.selectedAddress,
+        gas: gasAmount,
+      });
+    })
+    .catch((e) =>
+      toast.error(e.toString, {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    );
 };

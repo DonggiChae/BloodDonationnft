@@ -17,7 +17,6 @@ const getNFT = async () => {
               localStorage.getItem("_user").toUpperCase() ===
               res[1][res[1].length - 1].toUpperCase()
             ) {
-              console.log("result:", res);
               feed.push(res);
             }
           });

@@ -45,36 +45,36 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         return usedPhotoURI;
     }
 
-    function setNotUsedURI(string memory _newNotUsedURI) private onlyRole(DEFAULT_ADMIN_ROLE){
+    function setNotUsedURI(string memory _newNotUsedURI) public onlyRole(DEFAULT_ADMIN_ROLE){
         notUsedPhotoURI = _newNotUsedURI;
     }
 
-    function setUsedURI(string memory _newUsedURI) private onlyRole(DEFAULT_ADMIN_ROLE){
+    function setUsedURI(string memory _newUsedURI) public onlyRole(DEFAULT_ADMIN_ROLE){
         usedPhotoURI = _newUsedURI;
     }
 
-    function use(uint256 tokenId) private onlyRole(HOSPITAL) {
+    function use(uint256 tokenId) public onlyRole(HOSPITAL) {
         require(msg.sender == _BDList[tokenId].ownerHistory[_BDList[tokenId].ownerHistory.length-1], "You have to owned a token!");
         require(_BDList[tokenId].used == false, "Already used.");
         _BDList[tokenId].used = !_BDList[tokenId].used;
     }
 
     //add a Admin account 
-    function addAdmin(address account) private  onlyRole(DEFAULT_ADMIN_ROLE){
+    function addAdmin(address account) public  onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(DEFAULT_ADMIN_ROLE, account);
     }
 
     //renounce a Admin Role
-    function renounceAdmin()private onlyRole(DEFAULT_ADMIN_ROLE){
+    function renounceAdmin()public onlyRole(DEFAULT_ADMIN_ROLE){
         renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     // Give roles so that only authorized people can use BloodDonations.
-    function grantHospitalRole(address account) private onlyRole(DEFAULT_ADMIN_ROLE){
+    function grantHospitalRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(HOSPITAL, account);
     }
 
-    function grantRedCrossRole( address account) private onlyRole(DEFAULT_ADMIN_ROLE){
+    function grantRedCrossRole( address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(REDCROSS, account);
     }
 

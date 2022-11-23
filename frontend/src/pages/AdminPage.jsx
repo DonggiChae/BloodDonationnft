@@ -5,6 +5,7 @@ import {
   renounceAdmin,
   grantHospitalRole,
   grantRedCrossRole,
+  checkRole,
 } from "../components/ContractMethods/RolesMethods";
 
 const Container = styled.div`
