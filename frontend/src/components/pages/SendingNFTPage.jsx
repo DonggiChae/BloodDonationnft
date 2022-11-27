@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-import TransferOwnership from "../components/ContractMethods/TransferOwnership";
+import transferOwnership from "../ContractMethods/TransferOwnership";
+import TransferOwnership from "../templates/TransferOwnerShipTemplate";
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ const Container = styled.div`
 function SendingNFTPage() {
   return (
     <Container>
-      <TransferOwnership />
+      <TransferOwnership method={transferOwnership} />
     </Container>
   );
 }

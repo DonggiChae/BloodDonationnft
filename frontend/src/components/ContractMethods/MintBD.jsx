@@ -8,8 +8,8 @@ const mintBD = async (title, location, description, to) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods
         .mintBD(title, location, description, to)
         .send({
           from: window.klaytn.selectedAddress,

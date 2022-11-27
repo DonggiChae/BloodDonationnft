@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MintNFTTemplate from "../components/templates/MintNFTTemplate";
-import mintBD from "../components/ContractMethods/MintBD";
+import MintNFTTemplate from "../templates/MintNFTTemplate";
+import mintBD from "../ContractMethods/MintBD";
 
 const Container = styled.div`
   width: 100%;

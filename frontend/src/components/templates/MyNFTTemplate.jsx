@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Card from "../molecules/Card";
+import Cards from "../organisms/Cards";
 
 const Container = styled.div`
   width: 100%;
@@ -20,31 +20,13 @@ const Title = styled.div`
   padding-left: 30px;
 `;
 
-const Parent = styled.div`
-  width: 80%;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 15px;
-  align-items: stretch;
-`;
-
 export default function MyNFTTemplate() {
   return (
     <Container>
       <TitleWrapper>
         <Title>내 헌혈증</Title>
       </TitleWrapper>
-      <Parent>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </Parent>
+      <Cards />
     </Container>
   );
 }

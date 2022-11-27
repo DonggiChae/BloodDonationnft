@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  BDNFTList: null,
+  BDNFTList: [],
 };
 
 const nftListReducer = createSlice({
   name: "nftListReducer",
   initialState,
   reducers: {
-    SET_FEED: (state, action) => {
-      state.BDNFTList = action.payload.BDNFTList;
+    setFeed: (state, action) => {
+      state.BDNFTList = action.payload;
     },
   },
 });
 
-export const { SET_BDNFTLIST } = nftListReducer.actions;
+export const { setFeed } = nftListReducer.actions;
 export default nftListReducer.reducer;

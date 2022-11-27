@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import RolesMethodContainer from "../components/organisms/RolesMethodContainer";
+import RolesMethodContainer from "../organisms/RolesMethodContainer";
 import {
   addAdmin,
   renounceAdmin,
   grantHospitalRole,
   grantRedCrossRole,
   checkRole,
-} from "../components/ContractMethods/RolesMethods";
+} from "../ContractMethods/RolesMethods";
 
 const Container = styled.div`
   display: flex;

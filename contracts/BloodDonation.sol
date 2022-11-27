@@ -19,7 +19,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
     event BDUploaded (uint256 indexed tokenId, string photo, string title, string location, string description, uint256 timestamp);
 
-    mapping (uint256 => BDData) private _BDList;
+    mapping (uint256 => BDData) public _BDList;
 
     struct BDData {
         uint256 tokenId;                       // Unique token id
@@ -85,15 +85,11 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
     function checkRedCrossRole( address account) public view {
         _checkRole(REDCROSS, account);
-    } 
+    }
+
     function checkAdminRole( address account) public view {
         _checkRole(DEFAULT_ADMIN_ROLE, account);
     }
-
-    
-
-
-    
 
 
 /**
@@ -135,7 +131,8 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
             //previous owner, length cannot be less than 2
             _BDList[tokenId].ownerHistory[ownerHistoryLength-2],
             //current owner
-            _BDList[tokenId].ownerHistory[ownerHistoryLength-1]);
+            _BDList[tokenId].ownerHistory[ownerHistoryLength-1]
+        );
     }
 
     function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {

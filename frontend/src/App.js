@@ -4,18 +4,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
-import MainPage from "./pages/MainPage";
-import SettingPage from "./pages/SettingPage";
-import AuthPage from "./pages/AuthPage";
-import MyNFTPage from "./pages/MyNFTPage";
-import SendingNFTPage from "./pages/SendingNFTPage";
-import LocationPage from "./pages/LocationPage";
+import MainPage from "./components/pages/MainPage";
+import SettingPage from "./components/pages/SettingPage";
+import AuthPage from "./components/pages/AuthPage";
+import MyNFTPage from "./components/pages/MyNFTPage";
+import SendingNFTPage from "./components/pages/SendingNFTPage";
+import LocationPage from "./components/pages/LocationPage";
 import Header from "./components/molecules/Header";
-import AdminPage from "./pages/AdminPage";
+import AdminPage from "./components/pages/AdminPage";
 
 import { toast } from "react-toastify";
 import * as authReducer from "./redux/reducers/auth";
-import MintNFTPage from "./pages/MintNFTPage";
+import MintNFTPage from "./components/pages/MintNFTPage";
 
 const klaytn = window.klaytn;
 

@@ -1,6 +1,5 @@
-
 import styled from "styled-components";
-import ConnectToKaikas from "../components/auth/ConnectToKaikas";
+import ConnectToKaikas from "../auth/ConnectToKaikas";
 
 const AuthContainer = styled.div`
   width: 100%;

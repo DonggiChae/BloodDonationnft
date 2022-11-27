@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SettingListButton from "../components/atoms/SettingListButton";
+import SettingListButton from "../atoms/SettingListButton";
 
 const SettingContainer = styled.div`
   width: 100%;

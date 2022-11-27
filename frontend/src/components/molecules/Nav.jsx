@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(255, 255, 255, 1);
 `;
 
 const StyledLink = styled(Link)`

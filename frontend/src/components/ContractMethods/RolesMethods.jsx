@@ -8,8 +8,8 @@ export const addAdmin = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.addAdmin(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.addAdmin(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -31,8 +31,8 @@ export const renounceAdmin = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.renounceAdmin(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.renounceAdmin(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -54,8 +54,8 @@ export const grantHospitalRole = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.grantHospitalRole(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.grantHospitalRole(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -77,8 +77,8 @@ export const grantRedCrossRole = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.grantRedCrossRole(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.grantRedCrossRole(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -100,8 +100,8 @@ export const checkHospitalRole = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.checkHospitalRole(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.checkHospitalRole(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -120,8 +120,8 @@ export const checkRedCrossRole = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.checkRedCrossRole(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.checkRedCrossRole(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });
@@ -140,8 +140,8 @@ export const checkAdminRole = async (account) => {
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
-    .then((gasAmount) => {
-      BloodDonationContract.methods.checkAdminRole(account).send({
+    .then(async (gasAmount) => {
+      await BloodDonationContract.methods.checkAdminRole(account).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });

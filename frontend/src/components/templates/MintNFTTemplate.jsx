@@ -48,7 +48,7 @@ export default function MintNFTTemplate({ method }) {
   };
   return (
     <Container>
-      <TitleWrapper>{title}</TitleWrapper>
+      <TitleWrapper>헌혈증 발행</TitleWrapper>
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
           <InputWrapper>
