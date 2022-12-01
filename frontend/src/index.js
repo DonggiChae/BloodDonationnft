@@ -8,7 +8,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <BrowserRouter>
       <Provider store={store}>
         <App />
@@ -20,5 +21,6 @@ createRoot(document.getElementById("root")).render(
       pauseOnHover={false}
       limit={1}
     />
-  </React.StrictMode>
+  </>
+  //</React.StrictMode>
 );

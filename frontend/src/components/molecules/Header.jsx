@@ -27,7 +27,7 @@ const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: grey;
+  background-color: ${({ theme }) => theme.colors.basicRed};
   width: 50px;
   height: 50px;
 `;
@@ -39,7 +39,7 @@ const TitleWrapper = styled.div`
   width: 400px;
   height: 50px;
   margin-right: 124px;
-  color: #707070;
+  color: ${({ theme }) => theme.colors.basicRed};
   font-size: 45px;
   line-height: 1.33;
 `;

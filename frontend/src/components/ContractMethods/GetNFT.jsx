@@ -1,8 +1,8 @@
 import BloodDonationContract from "../../klaytn/BloodDonationContract";
 import { toast } from "react-toastify";
 
-const getNFT = async (user, setNftList) => {
-  await BloodDonationContract.methods
+const getNFT = (user, setNftList) => {
+  BloodDonationContract.methods
     .getTotalBDCount()
     .call()
     .then((count) => {
@@ -21,6 +21,7 @@ const getNFT = async (user, setNftList) => {
             }
           });
       }
+      setNftList([...feed]);
     })
     .catch((error) =>
       toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })

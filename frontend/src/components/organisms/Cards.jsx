@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useEffect } from "react";
 import Card from "../molecules/Card";
 import { useSelector } from "react-redux";
 
@@ -17,7 +16,7 @@ export default function Cards() {
 
   return (
     <Parent>
-      {feed !== [] ? (
+      {feed.length > 0 ? (
         feed.map((contents) => <Card contents={contents} />)
       ) : (
         <>헌혈로 생명을 구해보시는건 어떤가요?</>

@@ -9,10 +9,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 function MyNFTPage() {
-  const [nftList, setNftList] = useState([]);
   const dispatch = useDispatch();
   const setFeed = (nftList) => dispatch(nftListReducer.setFeed(nftList));
-  const feed = useSelector((state) => state.bdNFTs.BDNFTList);
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {

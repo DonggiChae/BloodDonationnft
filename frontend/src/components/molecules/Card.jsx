@@ -22,10 +22,6 @@ const TitleWrapper = styled.div``;
 const ContentsWrapper = styled.div``;
 
 export default function Card({ contents }) {
-  console.log(
-    contents,
-    `https://gateway.pinata.cloud/ipfs/${contents[2].split("://")[1]}`
-  );
   return (
     <Container>
       <ImgWrapper

@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 import BloodDonationContract from "../../klaytn/BloodDonationContract";
-import { getWallet } from "../../utils/crypto";
 
 const transferOwnership = async (from, to, tokenId) => {
+  console.log(from, to, tokenId);
   await BloodDonationContract.methods
     .transferFrom(from, to, tokenId)
     .estimateGas({
@@ -13,7 +13,7 @@ const transferOwnership = async (from, to, tokenId) => {
       await BloodDonationContract.methods
         .transferFrom(from, to, tokenId)
         .send({
-          from: getWallet().address,
+          from: window.klaytn.selectedAddress,
           gas: gasAmount,
         })
         .then(() =>
@@ -23,7 +23,7 @@ const transferOwnership = async (from, to, tokenId) => {
         );
     })
     .catch((e) =>
-      toast.error("헌혈증을 소유하고 있지 않습니다.", {
+      toast.error(e.toString(), {
         position: toast.POSITION.TOP_CENTER,
       })
     );

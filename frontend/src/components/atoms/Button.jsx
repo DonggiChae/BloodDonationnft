@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const ButtonButton = styled.button`
   width: 100%;
-  background-color: black;
-  color: brown;
+  background-color: ${({ theme }) => theme.colors.secondRed};
+  color: white;
   border-radius: 5px;
   text-align: center;
   font-size: 12px;
@@ -19,14 +19,9 @@ const ButtonButton = styled.button`
 `;
 
 const Button = ({ title, onClick, icon, disabled }) => {
-  const iconStyle = {
-    paddingLeft: "18px",
-    background: `left / 12px no-repeat url('/images/${icon}')`,
-  };
-
   return (
     <ButtonButton onClick={onClick} disabled={disabled}>
-      <span style={icon && iconStyle}>{title}</span>
+      <span>{title}</span>
     </ButtonButton>
   );
 };

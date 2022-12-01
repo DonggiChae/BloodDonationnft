@@ -57,6 +57,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         require(msg.sender == _BDList[tokenId].ownerHistory[_BDList[tokenId].ownerHistory.length-1], "You have to owned a token!");
         require(_BDList[tokenId].used == false, "Already used.");
         _BDList[tokenId].used = !_BDList[tokenId].used;
+        _BDList[tokenId].photo = usedPhotoURI;
     }
 
     //add a Admin account 

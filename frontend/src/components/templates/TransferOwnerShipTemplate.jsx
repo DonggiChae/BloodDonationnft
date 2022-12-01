@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { getWallet, isValidAddress } from "../../utils/crypto";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
@@ -24,25 +25,25 @@ function TransferOwnership({ method }) {
     tokenId: null,
   });
   const toastId = React.useRef(null);
+  const user = useSelector((state) => state.auth.user);
 
   const handleInputChange = (e) => {
-    setState({
-      [e.target.name]: e.target.value,
-    });
+    setState({ ...state, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state, from: window.klaytn.selectedAddress });
     const { to, from, tokenId } = state;
     toast.dismiss();
     if (!isValidAddress(to) || !isValidAddress(from)) {
-      toastId.current = toast("* Invalid wallet address", {
+      console.log(from, to, "~~~~");
+      toastId.current = toast("Invalid wallet address", {
         position: toast.POSITION.TOP_CENTER,
       });
       return;
     }
     method(from, to, tokenId);
   };
+  useEffect(() => setState({ ...state, from: user }), [user]);
   return (
     <Container>
       <FormWrapper>
@@ -62,7 +63,6 @@ function TransferOwnership({ method }) {
             label="to"
             onChange={handleInputChange}
             placeholder="Transfer Ownership to..."
-            err={state.warningMessage}
             required
           />
           <Button type="submit" title="Transfer Ownership" />

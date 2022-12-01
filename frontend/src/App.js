@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
+import theme from "./styles/theme";
+import { ThemeProvider } from "styled-components";
+
 import MainPage from "./components/pages/MainPage";
 import SettingPage from "./components/pages/SettingPage";
 import AuthPage from "./components/pages/AuthPage";
@@ -109,20 +112,22 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <GlobalStyle />
-        <AppWrapper>
-          <Header />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/mynft" element={<MyNFTPage />} />
-            <Route path="/sendingnft" element={<SendingNFTPage />} />
-            <Route path="/location" element={<LocationPage />} />
-            <Route path="/setting" element={<SettingPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/mintnft" element={<MintNFTPage />} />
-          </Routes>
-        </AppWrapper>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <AppWrapper>
+            <Header />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/mynft" element={<MyNFTPage />} />
+              <Route path="/sendingnft" element={<SendingNFTPage />} />
+              <Route path="/location" element={<LocationPage />} />
+              <Route path="/setting" element={<SettingPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/mintnft" element={<MintNFTPage />} />
+            </Routes>
+          </AppWrapper>
+        </ThemeProvider>
       </QueryClientProvider>
     </>
   );
