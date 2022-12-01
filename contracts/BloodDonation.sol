@@ -122,24 +122,27 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
     
     // TODO payable?? 문제?? 해결해야함 지금은 사용이 안됨 => trasferFrom 사용가능 
-    function transferOwnership(uint256 tokenId, address to) public returns(uint, address, address, address) {
+    function transferOwnership(uint256 tokenId, address to) public  {
         safeTransferFrom(msg.sender, to, tokenId);
-        uint ownerHistoryLength = _BDList[tokenId].ownerHistory.length;
-        return (
-            _BDList[tokenId].tokenId,
-            //original owner
-            _BDList[tokenId].ownerHistory[0],
-            //previous owner, length cannot be less than 2
-            _BDList[tokenId].ownerHistory[ownerHistoryLength-2],
-            //current owner
-            _BDList[tokenId].ownerHistory[ownerHistoryLength-1]
-        );
+        _BDList[tokenId].ownerHistory.push(to);
+        // uint ownerHistoryLength = _BDList[tokenId].ownerHistory.length;
+        // return (
+        //     _BDList[tokenId].tokenId,
+        //     //original owner
+        //     _BDList[tokenId].ownerHistory[0],
+        //     //previous owner, length cannot be less than 2
+        //     _BDList[tokenId].ownerHistory[ownerHistoryLength-2],
+        //     //current owner
+        //     _BDList[tokenId].ownerHistory[ownerHistoryLength-1]
+        // );
     }
 
     function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
         super.transferFrom(from, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
     }
+
+
 
     function getTotalBDCount () public view returns (uint) {
         return totalSupply();
