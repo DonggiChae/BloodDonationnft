@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import transferOwnership from "../ContractMethods/TransferOwnership";
+import transferOwnership from "../../ContractMethods/TransferOwnership";
 import TransferOwnership from "../templates/TransferOwnerShipTemplate";
 
 const Container = styled.div`

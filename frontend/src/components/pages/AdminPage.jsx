@@ -5,8 +5,7 @@ import {
   renounceAdmin,
   grantHospitalRole,
   grantRedCrossRole,
-  checkRole,
-} from "../ContractMethods/RolesMethods";
+} from "../../ContractMethods/RolesMethods";
 
 const Container = styled.div`
   display: flex;

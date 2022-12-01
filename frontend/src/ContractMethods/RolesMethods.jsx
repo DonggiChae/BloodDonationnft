@@ -1,4 +1,4 @@
-import BloodDonationContract from "../../klaytn/BloodDonationContract";
+import BloodDonationContract from "../klaytn/BloodDonationContract";
 import { toast } from "react-toastify";
 
 export const addAdmin = async (account) => {

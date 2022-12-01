@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import BloodDonationContract from "../../klaytn/BloodDonationContract";
+import BloodDonationContract from "../klaytn/BloodDonationContract";
 
 const transferOwnership = async (from, to, tokenId) => {
   console.log(from, to, tokenId);

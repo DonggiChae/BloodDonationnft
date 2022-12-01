@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import getNFT from "../ContractMethods/GetNFT";
+import getNFT from "../../ContractMethods/GetNFT";
 import { useSelector, useDispatch } from "react-redux";
 import * as nftListReducer from "../../redux/reducers/bdNFTs";
 import MyNFTTemplate from "../templates/MyNFTTemplate";

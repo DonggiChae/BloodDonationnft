@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import BloodDonationContract from "../../klaytn/BloodDonationContract";
+import BloodDonationContract from "../klaytn/BloodDonationContract";
 
 export const useBloodDonationNFT = async (tokenID) => {
   await BloodDonationContract.methods
