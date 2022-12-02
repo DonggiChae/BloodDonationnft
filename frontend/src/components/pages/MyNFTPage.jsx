@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import getNFT from "../../ContractMethods/GetNFT";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ import MyNFTTemplate from "../templates/MyNFTTemplate";
 
 import dotenv from "dotenv";
 dotenv.config();
+
+const MyNFTContainer = styled.div``;
 
 function MyNFTPage() {
   const dispatch = useDispatch();
@@ -19,7 +21,11 @@ function MyNFTPage() {
     }
   }, [user]);
 
-  return <MyNFTTemplate />;
+  return (
+    <MyNFTContainer>
+      <MyNFTTemplate />;
+    </MyNFTContainer>
+  );
 }
 
 export default MyNFTPage;

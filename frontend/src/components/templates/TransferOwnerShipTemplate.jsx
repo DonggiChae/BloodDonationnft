@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
-import { getWallet, isValidAddress } from "../../utils/crypto";
+import { isValidAddress } from "../../utils/crypto";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`

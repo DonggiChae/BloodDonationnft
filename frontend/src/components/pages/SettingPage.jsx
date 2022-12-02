@@ -23,13 +23,11 @@ function SettingPage() {
   return (
     <SettingContainer>
       <SettingListContainer>
-        <SettingListButton name="admin" link="/admin" />
+        <SettingListButton name="관리자 페이지" link="/admin" />
         <SettingListButton name="헐혈증 발행" link="/mintnft" />
-        <SettingListButton name="개인 정보 수집 및 약관" />
+        <SettingListButton name="권한 확인" />
         <SettingListButton name="보안" />
-        <SettingListButton name="위치 설정" />
         <SettingListButton name="도움 " />
-        <SettingListButton name="야간 모드" />
       </SettingListContainer>
     </SettingContainer>
   );

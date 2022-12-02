@@ -13,7 +13,7 @@ import AuthPage from "./components/pages/AuthPage";
 import MyNFTPage from "./components/pages/MyNFTPage";
 import SendingNFTPage from "./components/pages/SendingNFTPage";
 import LocationPage from "./components/pages/LocationPage";
-import Header from "./components/molecules/Header";
+import Header from "./components/organisms/Header";
 import AdminPage from "./components/pages/AdminPage";
 
 import { toast } from "react-toastify";

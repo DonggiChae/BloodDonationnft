@@ -21,15 +21,18 @@ const MainContents = styled.div`
 const MainTextWrapper = styled.div`
   width: 100%;
   padding: 30px;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-size: 3.5em;
   font-weight: 700;
 `;
 
-const MainTextRed = styled.text`
+const MainTextRed = styled.div`
   color: ${({ theme }) => theme.colors.basicRed};
 `;
-const MainText = styled.text``;
+const MainText = styled.div``;
 
 const SubTextWrapper = styled.div`
   display: flex;
@@ -40,7 +43,7 @@ const SubTextWrapper = styled.div`
   font-weight: 600;
 `;
 
-const SubText = styled.text`
+const SubText = styled.div`
   padding: 20px;
 `;
 

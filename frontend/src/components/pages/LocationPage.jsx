@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import "./LocationPage.css";
-import useGeolocation from "../../hooks/useGeolocation";
 
 const Container = styled.div`
   width: 100vw;
@@ -17,35 +16,29 @@ const MapWrapper = styled.div`
 const { kakao } = window;
 
 export default function LocationPage() {
-  // const [location, setLocation] = useState();
   const mapRef = useRef();
-  const location = useGeolocation();
+
+  // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+  function makeOverListener(map, marker, infowindow) {
+    return function () {
+      infowindow.open(map, marker);
+    };
+  }
+
+  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+  function makeOutListener(infowindow) {
+    return function () {
+      infowindow.close();
+    };
+  }
 
   useEffect(() => {
     const container = mapRef.current;
     const options = {
-      center: location.loaded
-        ? new kakao.maps.LatLng(
-            location.coordinates.lat,
-            location.coordinates.lng
-          )
-        : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
-      level: location.loaded ? 7 : 12, // 지도의 확대 레벨
+      center: new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
+      level: 12, // 지도의 확대 레벨
     };
 
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-    function makeOverListener(map, marker, infowindow) {
-      return function () {
-        infowindow.open(map, marker);
-      };
-    }
-
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-    function makeOutListener(infowindow) {
-      return function () {
-        infowindow.close();
-      };
-    }
     const map = new kakao.maps.Map(container, options);
 
     const geocoder = new kakao.maps.services.Geocoder();
@@ -96,7 +89,7 @@ export default function LocationPage() {
         });
       })
       .catch((err) => console.log(err));
-  }, [location]);
+  }, []);
   return (
     <Container>
       <MapWrapper ref={mapRef} />

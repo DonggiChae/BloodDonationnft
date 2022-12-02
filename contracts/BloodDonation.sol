@@ -32,8 +32,8 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         bool used;                             // Check if used
     }
     
-    string notUsedPhotoURI = "ipfs://QmTAm3AmZ7v5Dqauvm7T6o6L5aN737zUozc5SPxDWfKu9T";
-    string usedPhotoURI = "ipfs://QmTAm3AmZ7v5Dqauvm7T6o6L5aN737zUozc5SPxDWfKu9T";
+    string notUsedPhotoURI = "ipfs://Qmaxf9tkEZUT18k3jRhYdbFCsybrAsz4t96PkCZZtgBToF";
+    string usedPhotoURI = "ipfs://QmSh32dKugoo3e9XXvqKZS6nDYb2EMEBZLLv5TebgZ6XdE";
     bool public used = false;
 
 

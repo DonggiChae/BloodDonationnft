@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import AuthModal from "./../auth/AuthModal";
+import AuthModal from "../auth/AuthModal";
 
 import bell from "../../assets/bell.png";
-import Nav from "./Nav";
+import Nav from "../molecules/Nav";
 
 import ConnectToKaikas from "../auth/ConnectToKaikas";
+import heartLogo from "../../assets/icons/iconmonstr-medical-7-240.png";
 
 const Container = styled.div`
   width: 95%;
@@ -27,9 +28,12 @@ const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.basicRed};
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
+`;
+const Logo = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const TitleWrapper = styled.div`
@@ -73,7 +77,9 @@ function Header() {
       <Container>
         {accountModal && <AuthModal />}
         <LogoWrapper>
-          <StyledLink to="/">B</StyledLink>
+          <StyledLink to="/">
+            <Logo src={heartLogo} />
+          </StyledLink>
         </LogoWrapper>
         <TitleWrapper>
           <StyledLink to="/">BloodDonation</StyledLink>
