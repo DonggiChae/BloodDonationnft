@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { toast } from "react-toastify";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 
@@ -14,38 +13,34 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const Form = styled.form``;
 const TitleWrapper = styled.div`
   font-size: 1.3em;
   font-weight: 600;
   margin: 10px;
 `;
-const Form = styled.form``;
 
-export default function RolesMethodContainer({ title, method }) {
-  const [state, setState] = useState({
-    account: "",
-  });
-
-  const handleInputChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.dismiss();
-    method(state.account).then(() => e.target.reset());
-  };
+export default function TransferMethodContainer({
+  handleSubmit,
+  handleInputChange,
+}) {
   return (
     <Container>
-      <TitleWrapper>{title}</TitleWrapper>
+      <TitleWrapper>헌혈증 보내기</TitleWrapper>
       <Form onSubmit={handleSubmit}>
         <Input
-          name="account"
+          name="tokenId"
           onChange={handleInputChange}
-          placeholder="설정할 지갑주소"
+          placeholder="헌혈증 ID"
           required
         />
-        <Button type="submit" title="확인" />
+        <Input
+          name="to"
+          onChange={handleInputChange}
+          placeholder="받는 사람 지갑"
+          required
+        />
+        <Button type="submit" title="보내기" />
       </Form>
     </Container>
   );

@@ -3,13 +3,17 @@ import styled from "styled-components";
 
 const InputContainer = styled.div`
   position: relative;
+  margin: 10px;
 `;
 const InputInput = styled.input`
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid black;
-  padding: 22px 24px;
+  display: block;
+  width: 90%;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  border: 1.5px solid rgba(0, 0, 0, 1);
   border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: 600;
 `;
 
 const Input = ({

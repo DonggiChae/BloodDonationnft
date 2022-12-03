@@ -15,11 +15,12 @@ const colors = {
   basicRed: "#dc2f02",
   secondRed: "#d00000",
   buttonOrange: "#e85d04",
+  cardBorder: "#f48c06",
 };
 
 const defaultTheme = {
   background: "rgba(255,255,255,0)",
-  nav: "rgba(255,255,255,0)",
+  header: "rgba(255,255,255,0.9)",
   fontBasicColor: "#03071e",
 };
 

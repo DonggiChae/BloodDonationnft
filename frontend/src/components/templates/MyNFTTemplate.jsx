@@ -3,7 +3,7 @@ import Cards from "../organisms/Cards";
 
 const Container = styled.div`
   width: 100%;
-  padding-top: 80px;
+  padding-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,16 +15,17 @@ const TitleWrapper = styled.div`
   margin: 30px;
 `;
 const Title = styled.div`
-  font-size: 2em;
+  font-size: 2.5em;
   text-align: left;
-  padding-left: 30px;
+  padding-left: 100px;
+  font-weight: 600;
 `;
 
 export default function MyNFTTemplate() {
   return (
     <Container>
       <TitleWrapper>
-        <Title>내 헌혈증</Title>
+        <Title>나의 헌혈증</Title>
       </TitleWrapper>
       <Cards />
     </Container>

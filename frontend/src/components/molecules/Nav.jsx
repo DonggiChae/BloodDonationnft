@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 25%;
+  width: 28%;
   height: 100%;
   padding: 0px 10px;
   display: flex;
@@ -18,19 +18,28 @@ const StyledLink = styled(Link)`
 
 const NavIconWrapper = styled.div``;
 
-const NameWrapper = styled.div``;
+const NameWrapper = styled.div`
+  font-size: 1.2em;
+  font-weight: 600;
+`;
 
 function Nav() {
   return (
     <Container>
       <NavIconWrapper>
-        <StyledLink to="/mynft">나의NFT</StyledLink>
+        <StyledLink to="/mynft">
+          <NameWrapper>나의NFT</NameWrapper>
+        </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
-        <StyledLink to="/sendingnft">헌혈증 보내기</StyledLink>
+        <StyledLink to="/sendingnft">
+          <NameWrapper>헌혈증 보내기</NameWrapper>
+        </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
-        <StyledLink to="/location">위치검색</StyledLink>
+        <StyledLink to="/location">
+          <NameWrapper>위치검색</NameWrapper>
+        </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
         <StyledLink to="/setting">

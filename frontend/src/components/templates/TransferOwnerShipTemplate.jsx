@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
-import Input from "../atoms/Input";
-import Button from "../atoms/Button";
 import { isValidAddress } from "../../utils/crypto";
 import { useSelector } from "react-redux";
+
+import TransferMethodContainer from "../organisms/TransferMethodContainer";
 
 const Container = styled.div`
   width: 100%;
@@ -14,9 +14,6 @@ const Container = styled.div`
   align-items: center;
   padding-top: 150px;
 `;
-const FormWrapper = styled.div``;
-const TitleWrapper = styled.div``;
-const Title = styled.div``;
 
 function TransferOwnership({ method }) {
   const [state, setState] = useState({
@@ -46,28 +43,10 @@ function TransferOwnership({ method }) {
   useEffect(() => setState({ ...state, from: user }), [user]);
   return (
     <Container>
-      <FormWrapper>
-        <TitleWrapper>
-          <Title>헌혈증 보내기</Title>
-        </TitleWrapper>
-        <form onSubmit={handleSubmit}>
-          <Input
-            name="tokenId"
-            label="TokenId"
-            onChange={handleInputChange}
-            placeholder="Token ID"
-            required
-          />
-          <Input
-            name="to"
-            label="to"
-            onChange={handleInputChange}
-            placeholder="Transfer Ownership to..."
-            required
-          />
-          <Button type="submit" title="Transfer Ownership" />
-        </form>
-      </FormWrapper>
+      <TransferMethodContainer
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+      />
     </Container>
   );
 }

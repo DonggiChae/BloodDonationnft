@@ -18,16 +18,17 @@ const Container = styled.div`
 export default function AdminPage() {
   return (
     <Container>
-      <RolesMethodContainer title={"addAdmin"} method={addAdmin} />
-      <RolesMethodContainer title={"renounceAdmin"} method={renounceAdmin} />
       <RolesMethodContainer
-        title={"grantHospitalRole"}
-        method={grantHospitalRole}
-      />
-      <RolesMethodContainer
-        title={"grantRedCrossRole"}
+        title={"적십자 추가하기"}
         method={grantRedCrossRole}
       />
+      <RolesMethodContainer
+        title={"병원 추가하기"}
+        method={grantHospitalRole}
+      />
+
+      <RolesMethodContainer title={"관리자 추가하기"} method={addAdmin} />
+      <RolesMethodContainer title={"관리자 포기하기"} method={renounceAdmin} />
     </Container>
   );
 }

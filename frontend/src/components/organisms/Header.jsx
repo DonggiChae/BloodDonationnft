@@ -21,7 +21,7 @@ const Container = styled.div`
   position: fixed;
   top: 0px;
   z-index: 998;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: ${({ theme }) => theme.defaultTheme.header};
 `;
 
 const LogoWrapper = styled.div`
