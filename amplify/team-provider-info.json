@@ -1,0 +1,23 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifybc2e5d682b5c4-staging-70952-authRole",
+      "UnauthRoleArn": "arn:aws:iam::690709320006:role/amplify-amplifybc2e5d682b5c4-staging-70952-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::690709320006:role/amplify-amplifybc2e5d682b5c4-staging-70952-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-amplifybc2e5d682b5c4-staging-70952-deployment",
+      "UnauthRoleName": "amplify-amplifybc2e5d682b5c4-staging-70952-unauthRole",
+      "StackName": "amplify-amplifybc2e5d682b5c4-staging-70952",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:690709320006:stack/amplify-amplifybc2e5d682b5c4-staging-70952/a6315320-73a2-11ed-bbf9-06598a4bceaa",
+      "AmplifyAppId": "d14mozb1t0nd0r"
+    },
+    "categories": {
+      "auth": {
+        "BloodDonationnftcontract": {}
+      },
+      "storage": {
+        "s3blooddonationnftcontractstoragecfc3428b": {}
+      }
+    }
+  }
+}
