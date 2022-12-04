@@ -13,8 +13,8 @@ import heartLogo from "../../assets/icons/iconmonstr-medical-7-240.png";
 
 const Container = styled.div`
   width: 95%;
-  height: 50px;
-  padding: 20px 50px 10px 70px;
+  height: 60px;
+  padding: 20px 0px 20px 80px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -47,20 +47,7 @@ const TitleWrapper = styled.div`
   font-size: 45px;
   line-height: 1.33;
 `;
-const AlertWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
-  cursor: pointer;
-`;
 
-const AlertImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
 const EmptyBox = styled.div`
   flex-grow: 1;
 `;
@@ -86,9 +73,6 @@ function Header() {
         </TitleWrapper>
         <EmptyBox />
         <Nav />
-        <AlertWrapper>
-          <AlertImage src={bell} />
-        </AlertWrapper>
         <ConnectToKaikas />
       </Container>
     </>

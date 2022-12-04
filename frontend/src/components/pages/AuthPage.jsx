@@ -1,16 +1,21 @@
+import { useState } from "react";
 import styled from "styled-components";
-import ConnectToKaikas from "../auth/ConnectToKaikas";
+
+import SignIn from "../auth/SignIn";
 
 const AuthContainer = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 function AuthPage() {
+  const [loginState, setLoginState] = useState(true);
   return (
     <AuthContainer>
-      <ConnectToKaikas />
+      <SignIn />
     </AuthContainer>
   );
 }

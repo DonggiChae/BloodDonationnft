@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 28%;
+  width: 35%;
   height: 100%;
   padding: 0px 10px;
   display: flex;
@@ -44,6 +44,11 @@ function Nav() {
       <NavIconWrapper>
         <StyledLink to="/setting">
           <NameWrapper>설정</NameWrapper>
+        </StyledLink>
+      </NavIconWrapper>
+      <NavIconWrapper>
+        <StyledLink to="/auth">
+          <NameWrapper>로그인</NameWrapper>
         </StyledLink>
       </NavIconWrapper>
     </Container>
