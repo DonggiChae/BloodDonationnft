@@ -8,7 +8,8 @@ const InputContainer = styled.div`
 const InputInput = styled.input`
   display: block;
   width: 90%;
-  padding: 0.375rem 0.75rem;
+  padding: 0.7rem 1rem;
+  margin: 1rem 0;
   line-height: 1.5;
   border: 1.5px solid rgba(0, 0, 0, 1);
   border-radius: 5px;

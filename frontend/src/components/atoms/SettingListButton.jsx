@@ -9,7 +9,7 @@ const Container = styled.div`
   padding: 0 24px 4px 27px;
   border-radius: 20px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  border: solid 3px ${({ theme }) => theme.colors.buttonOrange};
+  border: solid 3px ${({ theme }) => theme.colors.secondRed};
   background-color: #fff;
   display: flex;
   justify-content: flex-start;
