@@ -13,7 +13,7 @@ import heartLogo from "../../assets/icons/iconmonstr-medical-7-240.png";
 
 const Container = styled.div`
   width: 95%;
-  height: 60px;
+  height: 70px;
   padding: 20px 0px 20px 80px;
   display: flex;
   align-items: center;

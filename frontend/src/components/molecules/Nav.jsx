@@ -28,7 +28,7 @@ function Nav() {
     <Container>
       <NavIconWrapper>
         <StyledLink to="/mynft">
-          <NameWrapper>나의NFT</NameWrapper>
+          <NameWrapper>나의헌혈증</NameWrapper>
         </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
