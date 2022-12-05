@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "../node_modules/@openzeppelin/contracts/access/AccessControl.sol";
 
 contract BloodDonation is ERC721Enumerable,AccessControl{
     bytes32 public constant HOSPITAL = keccak256("HOSPITAL");
@@ -121,7 +121,6 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     }
 
     
-    // TODO payable?? 문제?? 해결해야함 지금은 사용이 안됨 => trasferFrom 사용가능 
     function transferOwnership(uint256 tokenId, address to) public  {
         safeTransferFrom(msg.sender, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
@@ -137,7 +136,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         // );
     }
 
-    function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
+    function transferFrom(address from, address to, uint256 tokenId) public override(ERC721) {
         super.transferFrom(from, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
     }
