@@ -19,7 +19,7 @@ function saveFrontendFiles(lock: any) {
   const contractsDir = path.join(
     __dirname,
     "..",
-    "frontend",
+    "..",
     "src",
     "contracts"
   );
