@@ -8,9 +8,9 @@ import {
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
-import awsExports from "../../aws-exports";
+// import awsExports from "../../aws-exports";
 
-Amplify.configure(awsExports);
+// Amplify.configure(awsExports);
 
 export default function SignIn() {
   const { tokens } = defaultTheme;
