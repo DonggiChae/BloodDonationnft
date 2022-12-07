@@ -21,10 +21,12 @@ export default function AdminPage() {
       <RolesMethodContainer
         title={"적십자 추가하기"}
         method={grantRedCrossRole}
+        placeholedr={"설정할 지갑주소"}
       />
       <RolesMethodContainer
         title={"병원 추가하기"}
         method={grantHospitalRole}
+        placeholedr={"설정할 지갑주소"}
       />
 
       <RolesMethodContainer title={"관리자 추가하기"} method={addAdmin} />

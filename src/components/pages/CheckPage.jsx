@@ -20,10 +20,12 @@ export default function CheckPage() {
       <RolesMethodContainer
         title={"병원 확인하기"}
         method={checkHospitalRole}
+        placeholedr={"확인할 지갑주소"}
       />
       <RolesMethodContainer
         title={"적십자 확인하기"}
         method={checkRedCrossRole}
+        placeholedr={"확인할 지갑주소"}
       />
       <RolesMethodContainer title={"관리자 확인하기"} method={checkAdminRole} />
     </Container>

@@ -21,7 +21,7 @@ const TitleWrapper = styled.div`
 `;
 const Form = styled.form``;
 
-export default function RolesMethodContainer({ title, method }) {
+export default function RolesMethodContainer({ title, method, placeholder }) {
   const [state, setState] = useState({
     account: "",
   });
