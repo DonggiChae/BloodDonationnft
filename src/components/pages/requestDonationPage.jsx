@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Amplify, API, graphqlOperation } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import { DataStore } from "@aws-amplify/datastore";
 import { RequestDonation } from "../../models";
 import awsconfig from "../../aws-exports";
