@@ -42,7 +42,7 @@ export default function RolesMethodContainer({ title, method, placeholder }) {
         <Input
           name="account"
           onChange={handleInputChange}
-          placeholder="설정할 지갑주소"
+          placeholder={placeholder}
           required
         />
         <Button type="submit" title="확인" />
