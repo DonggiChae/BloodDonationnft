@@ -6,6 +6,7 @@ import SignIn from "../auth/SignIn";
 const AuthContainer = styled.div`
   width: 100%;
   height: 100vh;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

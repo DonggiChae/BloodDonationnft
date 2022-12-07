@@ -24,21 +24,33 @@ export default function RequestDonationCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    text: undefined,
+    title: undefined,
+    contents: undefined,
+    status: undefined,
+    createdAt: undefined,
     walletAddress: undefined,
   };
-  const [text, setText] = React.useState(initialValues.text);
+  const [title, setTitle] = React.useState(initialValues.title);
+  const [contents, setContents] = React.useState(initialValues.contents);
+  const [status, setStatus] = React.useState(initialValues.status);
+  const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
   const [walletAddress, setWalletAddress] = React.useState(
     initialValues.walletAddress
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setText(initialValues.text);
+    setTitle(initialValues.title);
+    setContents(initialValues.contents);
+    setStatus(initialValues.status);
+    setCreatedAt(initialValues.createdAt);
     setWalletAddress(initialValues.walletAddress);
     setErrors({});
   };
   const validations = {
-    text: [],
+    title: [],
+    contents: [],
+    status: [],
+    createdAt: [],
     walletAddress: [],
   };
   const runValidationTasks = async (fieldName, value) => {
@@ -59,7 +71,10 @@ export default function RequestDonationCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          text,
+          title,
+          contents,
+          status,
+          createdAt,
           walletAddress,
         };
         const validationResponses = await Promise.all(
@@ -102,28 +117,113 @@ export default function RequestDonationCreateForm(props) {
       {...getOverrideProps(overrides, "RequestDonationCreateForm")}
     >
       <TextField
-        label="Text"
+        label="Title"
         isRequired={false}
         isReadOnly={false}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              text: value,
+              title: value,
+              contents,
+              status,
+              createdAt,
               walletAddress,
             };
             const result = onChange(modelFields);
-            value = result?.text ?? value;
+            value = result?.title ?? value;
           }
-          if (errors.text?.hasError) {
-            runValidationTasks("text", value);
+          if (errors.title?.hasError) {
+            runValidationTasks("title", value);
           }
-          setText(value);
+          setTitle(value);
         }}
-        onBlur={() => runValidationTasks("text", text)}
-        errorMessage={errors.text?.errorMessage}
-        hasError={errors.text?.hasError}
-        {...getOverrideProps(overrides, "text")}
+        onBlur={() => runValidationTasks("title", title)}
+        errorMessage={errors.title?.errorMessage}
+        hasError={errors.title?.hasError}
+        {...getOverrideProps(overrides, "title")}
+      ></TextField>
+      <TextField
+        label="Contents"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              contents: value,
+              status,
+              createdAt,
+              walletAddress,
+            };
+            const result = onChange(modelFields);
+            value = result?.contents ?? value;
+          }
+          if (errors.contents?.hasError) {
+            runValidationTasks("contents", value);
+          }
+          setContents(value);
+        }}
+        onBlur={() => runValidationTasks("contents", contents)}
+        errorMessage={errors.contents?.errorMessage}
+        hasError={errors.contents?.hasError}
+        {...getOverrideProps(overrides, "contents")}
+      ></TextField>
+      <TextField
+        label="Status"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              contents,
+              status: value,
+              createdAt,
+              walletAddress,
+            };
+            const result = onChange(modelFields);
+            value = result?.status ?? value;
+          }
+          if (errors.status?.hasError) {
+            runValidationTasks("status", value);
+          }
+          setStatus(value);
+        }}
+        onBlur={() => runValidationTasks("status", status)}
+        errorMessage={errors.status?.errorMessage}
+        hasError={errors.status?.hasError}
+        {...getOverrideProps(overrides, "status")}
+      ></TextField>
+      <TextField
+        label="Created at"
+        isRequired={false}
+        isReadOnly={false}
+        type="datetime-local"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              contents,
+              status,
+              createdAt: value,
+              walletAddress,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdAt ?? value;
+          }
+          if (errors.createdAt?.hasError) {
+            runValidationTasks("createdAt", value);
+          }
+          setCreatedAt(new Date(value).toISOString());
+        }}
+        onBlur={() => runValidationTasks("createdAt", createdAt)}
+        errorMessage={errors.createdAt?.errorMessage}
+        hasError={errors.createdAt?.hasError}
+        {...getOverrideProps(overrides, "createdAt")}
       ></TextField>
       <TextField
         label="Wallet address"
@@ -133,7 +233,10 @@ export default function RequestDonationCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              text,
+              title,
+              contents,
+              status,
+              createdAt,
               walletAddress: value,
             };
             const result = onChange(modelFields);

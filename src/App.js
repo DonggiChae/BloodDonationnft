@@ -19,6 +19,8 @@ import AdminPage from "./components/pages/AdminPage";
 import { toast } from "react-toastify";
 import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
+import RequestDonationPage from "./components/pages/RequestDonationPage";
+import CheckPage from "./components/pages/CheckPage";
 
 const klaytn = window.klaytn;
 
@@ -125,6 +127,11 @@ function App() {
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/mintnft" element={<MintNFTPage />} />
+              <Route
+                path="/requestdonation"
+                element={<RequestDonationPage />}
+              />
+              <Route path="/checkrole" element={<CheckPage />} />
             </Routes>
           </AppWrapper>
         </ThemeProvider>

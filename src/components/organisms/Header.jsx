@@ -12,7 +12,7 @@ import ConnectToKaikas from "../auth/ConnectToKaikas";
 import heartLogo from "../../assets/icons/iconmonstr-medical-7-240.png";
 
 const Container = styled.div`
-  width: 95%;
+  width: 100%;
   height: 70px;
   padding: 20px 0px 20px 80px;
   display: flex;

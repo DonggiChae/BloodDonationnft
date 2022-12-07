@@ -14,17 +14,26 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RequestDonationUpdateFormInputValues = {
-    text?: string;
+    title?: string;
+    contents?: string;
+    status?: string;
+    createdAt?: string;
     walletAddress?: string;
 };
 export declare type RequestDonationUpdateFormValidationValues = {
-    text?: ValidationFunction<string>;
+    title?: ValidationFunction<string>;
+    contents?: ValidationFunction<string>;
+    status?: ValidationFunction<string>;
+    createdAt?: ValidationFunction<string>;
     walletAddress?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RequestDonationUpdateFormOverridesProps = {
     RequestDonationUpdateFormGrid?: FormProps<GridProps>;
-    text?: FormProps<TextFieldProps>;
+    title?: FormProps<TextFieldProps>;
+    contents?: FormProps<TextFieldProps>;
+    status?: FormProps<TextFieldProps>;
+    createdAt?: FormProps<TextFieldProps>;
     walletAddress?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RequestDonationUpdateFormProps = React.PropsWithChildren<{

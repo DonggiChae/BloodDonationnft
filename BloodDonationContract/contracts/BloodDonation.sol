@@ -75,7 +75,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         grantRole(HOSPITAL, account);
     }
 
-    function grantRedCrossRole( address account) public onlyRole(DEFAULT_ADMIN_ROLE){
+    function grantRedCrossRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(REDCROSS, account);
     }
 
@@ -84,11 +84,11 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         _checkRole(HOSPITAL, account);
     }
 
-    function checkRedCrossRole( address account) public view {
+    function checkRedCrossRole(address account) public view {
         _checkRole(REDCROSS, account);
     }
 
-    function checkAdminRole( address account) public view {
+    function checkAdminRole(address account) public view {
         _checkRole(DEFAULT_ADMIN_ROLE, account);
     }
 
@@ -96,7 +96,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 /**
    * @notice _mint() is from ERC721.sol
    */
-    function mintBD( string memory title, string memory location, string memory description , address to) public onlyRole(REDCROSS){
+    function mintBD(string memory title, string memory location, string memory description , address to) public onlyRole(REDCROSS){
         uint256 tokenId = totalSupply() + 1;
 
         _mint(to, tokenId);

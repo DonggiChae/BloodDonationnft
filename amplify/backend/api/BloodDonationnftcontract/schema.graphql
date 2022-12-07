@@ -1,5 +1,9 @@
 type RequestDonation @model @auth(rules: [{allow: public}, {allow: owner}]) {
   id: ID!
-  text: String
+  title: String
+  contents: String
+  status: String
+  createdAt: AWSDateTime
   walletAddress: String
-} 
+}
+ 

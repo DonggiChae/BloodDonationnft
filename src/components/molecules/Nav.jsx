@@ -37,6 +37,11 @@ function Nav() {
         </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
+        <StyledLink to="/requestdonation">
+          <NameWrapper>헌혈증 요청하기</NameWrapper>
+        </StyledLink>
+      </NavIconWrapper>
+      <NavIconWrapper>
         <StyledLink to="/location">
           <NameWrapper>위치검색</NameWrapper>
         </StyledLink>

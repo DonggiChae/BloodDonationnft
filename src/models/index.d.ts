@@ -9,24 +9,28 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 type EagerRequestDonation = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<RequestDonation, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
+    readOnlyFields: 'updatedAt';
   };
   readonly id: string;
-  readonly text?: string | null;
-  readonly walletAddress?: string | null;
+  readonly title?: string | null;
+  readonly contents?: string | null;
+  readonly status?: string | null;
   readonly createdAt?: string | null;
+  readonly walletAddress?: string | null;
   readonly updatedAt?: string | null;
 }
 
 type LazyRequestDonation = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<RequestDonation, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
+    readOnlyFields: 'updatedAt';
   };
   readonly id: string;
-  readonly text?: string | null;
-  readonly walletAddress?: string | null;
+  readonly title?: string | null;
+  readonly contents?: string | null;
+  readonly status?: string | null;
   readonly createdAt?: string | null;
+  readonly walletAddress?: string | null;
   readonly updatedAt?: string | null;
 }
 
