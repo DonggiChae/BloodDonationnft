@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { DataStore } from "@aws-amplify/datastore";
 import { RequestDonation } from "../../models";
-// import awsconfig from "../../aws-exports";
-// Amplify.configure(awsconfig);
+import awsconfig from "../../aws-exports";
+Amplify.configure(awsconfig);
 
 const Container = styled.div`
   display: flex;
@@ -39,17 +39,17 @@ const TableHeader = styled.div`
 const TableContent = styled.div``;
 
 export default function RequestDonationPage() {
-  // const createRequest = async () => {
-  //   await DataStore.save(
-  //     new RequestDonation({
-  //       title: "Lorem ipsum dolor sit amet",
-  //       contents: "Lorem ipsum dolor sit amet",
-  //       status: "Lorem ipsum dolor sit amet",
-  //       createdAt: "1970-01-01T12:30:23.999Z",
-  //       walletAddress: "Lorem ipsum dolor sit amet",
-  //     })
-  //   );
-  // };
+  const createRequest = async () => {
+    await DataStore.save(
+      new RequestDonation({
+        title: "Lorem ipsum dolor sit amet",
+        contents: "Lorem ipsum dolor sit amet",
+        status: "Lorem ipsum dolor sit amet",
+        createdAt: "1970-01-01T12:30:23.999Z",
+        walletAddress: "Lorem ipsum dolor sit amet",
+      })
+    );
+  };
 
   //   const updateRequest = async () => {
   //     /* Models in DataStore are immutable. To update a record you must use the copyOf function
@@ -61,15 +61,15 @@ export default function RequestDonationPage() {
   //     );
   //   };
 
-  // const deleteRequest = async () => {
-  //   const modelToDelete = await DataStore.query(RequestDonation, 123456789);
-  //   DataStore.delete(modelToDelete);
-  // };
+  const deleteRequest = async () => {
+    const modelToDelete = await DataStore.query(RequestDonation, 123456789);
+    DataStore.delete(modelToDelete);
+  };
 
-  // const queryRequest = async () => {
-  //   const models = await DataStore.query(RequestDonation);
-  //   console.log(models);
-  // };
+  const queryRequest = async () => {
+    const models = await DataStore.query(RequestDonation);
+    console.log(models);
+  };
   return (
     <Container>
       <Board>
