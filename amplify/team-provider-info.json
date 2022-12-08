@@ -1,23 +1,15 @@
 {
-  "staging": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-amplifybc2e5d682b5c4-staging-70952-authRole",
-      "UnauthRoleArn": "arn:aws:iam::690709320006:role/amplify-amplifybc2e5d682b5c4-staging-70952-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::690709320006:role/amplify-amplifybc2e5d682b5c4-staging-70952-authRole",
+      "AuthRoleName": "amplify-blooddonationnftcont-dev-232502-authRole",
+      "UnauthRoleArn": "arn:aws:iam::690709320006:role/amplify-blooddonationnftcont-dev-232502-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::690709320006:role/amplify-blooddonationnftcont-dev-232502-authRole",
       "Region": "ap-northeast-2",
-      "DeploymentBucketName": "amplify-amplifybc2e5d682b5c4-staging-70952-deployment",
-      "UnauthRoleName": "amplify-amplifybc2e5d682b5c4-staging-70952-unauthRole",
-      "StackName": "amplify-amplifybc2e5d682b5c4-staging-70952",
-      "StackId": "arn:aws:cloudformation:ap-northeast-2:690709320006:stack/amplify-amplifybc2e5d682b5c4-staging-70952/a6315320-73a2-11ed-bbf9-06598a4bceaa",
-      "AmplifyAppId": "d14mozb1t0nd0r"
-    },
-    "categories": {
-      "auth": {
-        "BloodDonationnftcontract": {}
-      },
-      "storage": {
-        "s3blooddonationnftcontractstoragecfc3428b": {}
-      }
+      "DeploymentBucketName": "amplify-blooddonationnftcont-dev-232502-deployment",
+      "UnauthRoleName": "amplify-blooddonationnftcont-dev-232502-unauthRole",
+      "StackName": "amplify-blooddonationnftcont-dev-232502",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:690709320006:stack/amplify-blooddonationnftcont-dev-232502/1b2a6090-7704-11ed-af15-0a4988c1e7da",
+      "AmplifyAppId": "d29kifx9a7ixf6"
     }
   }
 }
