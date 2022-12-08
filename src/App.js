@@ -19,8 +19,14 @@ import AdminPage from "./components/pages/AdminPage";
 import { toast } from "react-toastify";
 import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
-import RequestDonationPage from "./components/pages/RequestDonationPage";
+import RequestPage from "./components/pages/RequestPage";
 import CheckPage from "./components/pages/CheckPage";
+
+import { Amplify } from "aws-amplify";
+import { Authenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
 
 const klaytn = window.klaytn;
 
@@ -36,7 +42,7 @@ const AppWrapper = styled.div`
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const userKaikas = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     //kaikas 지갑 없을시 이 effect무효!
@@ -57,7 +63,7 @@ function App() {
       dispatch(authReducer.setUser(account));
       localStorage.setItem("_user", account);
     }
-  }, [dispatch, user]);
+  }, [dispatch, userKaikas]);
 
   useEffect(() => {
     if (!klaytn) {
@@ -65,13 +71,13 @@ function App() {
     }
 
     const handleChangeAccounts = () => {
-      if (!user) {
+      if (!userKaikas) {
         return;
       }
 
       const changedAccount = klaytn?.selectedAddress;
 
-      if (user !== changedAccount) {
+      if (userKaikas !== changedAccount) {
         toast.success(
           `${changedAccount.slice(0, 5)}..계정이 바뀌셨군요 ㅎㅎ!!`
         );
@@ -84,7 +90,7 @@ function App() {
     return () => {
       klaytn.off("accountsChanged", handleChangeAccounts);
     };
-  }, [user, dispatch]);
+  }, [userKaikas, dispatch]);
 
   useEffect(() => {
     if (!klaytn) {
@@ -113,29 +119,28 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <AppWrapper>
-            <Header />
-            <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/mynft" element={<MyNFTPage />} />
-              <Route path="/sendingnft" element={<SendingNFTPage />} />
-              <Route path="/location" element={<LocationPage />} />
-              <Route path="/setting" element={<SettingPage />} />
-              <Route path="/admin" element={<AdminPage />} />
-              <Route path="/auth" element={<AuthPage />} />
-              <Route path="/mintnft" element={<MintNFTPage />} />
-              <Route
-                path="/requestdonation"
-                element={<RequestDonationPage />}
-              />
-              <Route path="/checkrole" element={<CheckPage />} />
-            </Routes>
-          </AppWrapper>
-        </ThemeProvider>
-      </QueryClientProvider>
+      <Authenticator.Provider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <AppWrapper>
+              <Header />
+              <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/mynft" element={<MyNFTPage />} />
+                <Route path="/sendingnft" element={<SendingNFTPage />} />
+                <Route path="/location" element={<LocationPage />} />
+                <Route path="/setting" element={<SettingPage />} />
+                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="/mintnft" element={<MintNFTPage />} />
+                <Route path="/requestdonation" element={<RequestPage />} />
+                <Route path="/checkrole" element={<CheckPage />} />
+              </Routes>
+            </AppWrapper>
+          </ThemeProvider>
+        </QueryClientProvider>
+      </Authenticator.Provider>
     </>
   );
 }

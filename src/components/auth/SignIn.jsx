@@ -5,6 +5,7 @@ import {
   Authenticator,
   ThemeProvider,
   defaultTheme,
+  useAuthenticator,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
@@ -54,15 +55,25 @@ export default function SignIn() {
       },
     },
   };
+
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
   return (
     <ThemeProvider theme={theme}>
-      <Authenticator loginMechanisms={["email"]} socialProviders={["google"]}>
-        {({ signOut, user }) => (
-          <main>
-            <h1>Hello {user.username}</h1>
-            <button onClick={signOut}>Sign out</button>
-          </main>
-        )}
+      <Authenticator
+        loginMechanisms={["email"]}
+        socialProviders={["google"]}
+        signUpAttributes={[]}
+      >
+        {({ signOut, user }) => {
+          console.log(user);
+          console.log(signOut);
+          return (
+            <main>
+              <h1>Hello {user.username}</h1>
+              <button onClick={signOut}>Sign out</button>
+            </main>
+          );
+        }}
       </Authenticator>
     </ThemeProvider>
   );

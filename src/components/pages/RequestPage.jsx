@@ -38,7 +38,7 @@ const TableHeader = styled.div`
 `;
 const TableContent = styled.div``;
 
-export default function RequestDonationPage() {
+export default function RequestPage() {
   const createRequest = async () => {
     await DataStore.save(
       new RequestDonation({
@@ -70,6 +70,8 @@ export default function RequestDonationPage() {
     const models = await DataStore.query(RequestDonation);
     console.log(models);
   };
+
+  queryRequest();
   return (
     <Container>
       <Board>
@@ -79,7 +81,7 @@ export default function RequestDonationPage() {
             <TableContent>NO.</TableContent>
             <TableContent>제목</TableContent>
             <TableContent>상태</TableContent>
-            <TableContent>날짜</TableContent>
+            <TableContent>날짜</TableContent>s
           </TableHeader>
           <TableContent></TableContent>
         </Table>
