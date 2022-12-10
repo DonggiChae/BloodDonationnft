@@ -14,16 +14,22 @@ import heartLogo from "../../assets/icons/iconmonstr-medical-7-240.png";
 const Container = styled.div`
   width: 100%;
   height: 70px;
-  padding: 20px 0px 20px 80px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   position: fixed;
   top: 0px;
   z-index: 998;
   background-color: ${({ theme }) => theme.defaultTheme.header};
 `;
-
+const HeaderWrapper = styled.div`
+  width: 1500px;
+  height: 70px;
+  padding: 20px 0px 20px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -59,9 +65,10 @@ const StyledLink = styled(Link)`
 
 function Header() {
   const accountModal = useSelector((state) => state.ui.accountModal);
+
   return (
-    <>
-      <Container>
+    <Container>
+      <HeaderWrapper>
         {accountModal && <AuthModal />}
         <LogoWrapper>
           <StyledLink to="/">
@@ -74,8 +81,8 @@ function Header() {
         <EmptyBox />
         <Nav />
         <ConnectToKaikas />
-      </Container>
-    </>
+      </HeaderWrapper>
+    </Container>
   );
 }
 

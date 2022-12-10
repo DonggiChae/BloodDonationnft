@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Amplify } from "aws-amplify";
 
 import {
@@ -8,10 +8,6 @@ import {
   useAuthenticator,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-
-import awsExports from "../../aws-exports";
-
-Amplify.configure(awsExports);
 
 export default function SignIn() {
   const { tokens } = defaultTheme;
@@ -65,8 +61,6 @@ export default function SignIn() {
         signUpAttributes={[]}
       >
         {({ signOut, user }) => {
-          console.log(user);
-          console.log(signOut);
           return (
             <main>
               <h1>Hello {user.username}</h1>

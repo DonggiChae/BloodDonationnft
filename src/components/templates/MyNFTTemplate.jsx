@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  width: 80%;
+  width: 1200px;
   margin: 30px;
 `;
 const Title = styled.div`

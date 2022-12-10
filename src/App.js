@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
 import RequestPage from "./components/pages/RequestPage";
+import CreateRequest from "./components/organisms/CreateRequest";
 import CheckPage from "./components/pages/CheckPage";
 
 import { Amplify } from "aws-amplify";
@@ -134,7 +135,9 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/mintnft" element={<MintNFTPage />} />
-                <Route path="/requestdonation" element={<RequestPage />} />
+                <Route path="/requestdonation/*" element={<RequestPage />}>
+                  <Route path="createRequest" element={<CreateRequest />} />
+                </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
               </Routes>
             </AppWrapper>

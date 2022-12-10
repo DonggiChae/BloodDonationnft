@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 const Container = styled.div`
-  width: 35%;
-  height: 100%;
+  width: 550px;
+  height: 70px;
   padding: 0px 10px;
   display: flex;
   align-items: center;
@@ -19,11 +20,13 @@ const StyledLink = styled(Link)`
 const NavIconWrapper = styled.div``;
 
 const NameWrapper = styled.div`
-  font-size: 1.2em;
+  font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 function Nav() {
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
   return (
     <Container>
       <NavIconWrapper>
@@ -52,9 +55,13 @@ function Nav() {
         </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
-        <StyledLink to="/auth">
-          <NameWrapper>로그인</NameWrapper>
-        </StyledLink>
+        {user ? (
+          <NameWrapper onClick={signOut}>로그아웃</NameWrapper>
+        ) : (
+          <StyledLink to="/auth">
+            <NameWrapper>로그인</NameWrapper>
+          </StyledLink>
+        )}
       </NavIconWrapper>
     </Container>
   );

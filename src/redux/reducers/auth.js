@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
+  userAws: null,
 };
 
 const authReducer = createSlice({
@@ -11,8 +12,11 @@ const authReducer = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    setUserAws: (state, action) => {
+      state.userAws = action.payload;
+    },
   },
 });
 
-export const { setUser } = authReducer.actions;
+export const { setUser, setUserAws } = authReducer.actions;
 export default authReducer.reducer;

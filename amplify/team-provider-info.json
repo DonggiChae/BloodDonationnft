@@ -10,6 +10,11 @@
       "StackName": "amplify-blooddonationnftcont-dev-232502",
       "StackId": "arn:aws:cloudformation:ap-northeast-2:690709320006:stack/amplify-blooddonationnftcont-dev-232502/1b2a6090-7704-11ed-af15-0a4988c1e7da",
       "AmplifyAppId": "d29kifx9a7ixf6"
+    },
+    "categories": {
+      "auth": {
+        "BloodDonationnftcont": {}
+      }
     }
   }
 }

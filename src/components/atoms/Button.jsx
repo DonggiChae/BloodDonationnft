@@ -16,7 +16,7 @@ const ButtonButton = styled.button`
   }
 `;
 
-const Button = ({ title, onClick, icon, disabled }) => {
+const Button = ({ title, onClick, disabled }) => {
   return (
     <ButtonButton onClick={onClick} disabled={disabled}>
       <span>{title}</span>
