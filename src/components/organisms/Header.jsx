@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 import AuthModal from "../auth/AuthModal";
 
-import bell from "../../assets/bell.png";
+// import bell from "../../assets/bell.png";
 import Nav from "../molecules/Nav";
 
 import ConnectToKaikas from "../auth/ConnectToKaikas";

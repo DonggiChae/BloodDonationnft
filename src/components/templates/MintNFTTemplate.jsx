@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import MintMethodsContainer from "../organisms/MintMethodsContainer";
+import mintBD from "../../ContractMethods/MintBD";
 
 const Container = styled.div`
   margin-top: 150px;
@@ -48,41 +50,7 @@ export default function MintNFTTemplate({ method }) {
   };
   return (
     <Container>
-      <TitleWrapper>헌혈증 발행</TitleWrapper>
-      <FormWrapper>
-        <Form onSubmit={handleSubmit}>
-          <InputWrapper>
-            <Input
-              name="to"
-              label="to"
-              onChange={handleInputChange}
-              placeholder="to"
-              required
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <Input
-              name="description"
-              label="description"
-              onChange={handleInputChange}
-              placeholder="설명"
-              required
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <Input
-              name="location"
-              label="location"
-              onChange={handleInputChange}
-              placeholder="헌혈장소"
-              required
-            />
-          </InputWrapper>
-          <SubmitButton type="submit" title="확인하기">
-            확인하기
-          </SubmitButton>
-        </Form>
-      </FormWrapper>
+      <MintMethodsContainer title="헌혈증 발행" method={mintBD} />
     </Container>
   );
 }

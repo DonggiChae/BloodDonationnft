@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 import SignIn from "../auth/SignIn";
@@ -13,7 +12,6 @@ const AuthContainer = styled.div`
   justify-content: center;
 `;
 function AuthPage() {
-  const [loginState, setLoginState] = useState(true);
   return (
     <AuthContainer>
       <SignIn />

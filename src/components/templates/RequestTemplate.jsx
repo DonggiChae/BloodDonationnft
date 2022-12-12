@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Outlet, useMatch, Link } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import Button from "../atoms/Button";
+import Pagination from "../atoms/Pagination";
 
 const Container = styled.div`
   display: flex;
@@ -55,7 +56,7 @@ const Content = styled.div`
 const TableBottom = styled.div`
   display: grid;
   padding: 10px 10px 10px 20px;
-  grid-template-columns: 1fr 5fr 2fr 1fr;
+  grid-template-columns: 5fr 1fr;
 `;
 
 const StyledLink = styled(Link)`
@@ -63,9 +64,20 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
-export default function RequestTemplate() {
+export default function RequestTemplate({ contentInfo }) {
   const { user } = useAuthenticator((context) => [context.user]);
   const match = useMatch("/requestdonation/createRequest");
+
+  const [page, setPage] = useState(1); //페이지
+  const limit = 10; // posts가 보일 최대한의 갯수
+  const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
+
+  const postsData = (posts) => {
+    if (posts) {
+      let result = posts.slice(offset, offset + limit);
+      return result;
+    }
+  };
 
   return (
     <Container>
@@ -144,12 +156,17 @@ export default function RequestTemplate() {
               </ContentWrapper>
             </TableContent>
             <TableBottom>
-              <TableHeaderContent>NO.</TableHeaderContent>
-              <TableHeaderContent>제목</TableHeaderContent>
-              <TableHeaderContent>상태</TableHeaderContent>
+              <TableHeaderContent>
+                <Pagination
+                  limit={limit}
+                  page={page}
+                  totalPosts={contentInfo}
+                  setPage={setPage}
+                />
+              </TableHeaderContent>
               {user ? (
                 <StyledLink to="/requestdonation/createRequest">
-                  <Button title={"요청 생성하기"} />
+                  <Button title={"요청하기"} />
                 </StyledLink>
               ) : (
                 <></>

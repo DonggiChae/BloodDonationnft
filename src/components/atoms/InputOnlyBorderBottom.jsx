@@ -31,6 +31,8 @@ const InputOnlyBorderBottom = ({
   placeholder,
   err,
   readOnly,
+  maxLength,
+  minLength,
 }) => (
   <InputContainer>
     {label && (
@@ -47,6 +49,8 @@ const InputOnlyBorderBottom = ({
       placeholder={placeholder}
       readOnly={readOnly}
       autoComplete="off"
+      maxLength={maxLength}
+      minLength={minLength}
     />
     {err && <p className="Input__err">{err}</p>}
   </InputContainer>

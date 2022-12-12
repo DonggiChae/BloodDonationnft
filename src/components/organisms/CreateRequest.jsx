@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { API } from "aws-amplify";
 import { createRequestPage } from "../../graphql/mutations";
@@ -35,25 +36,25 @@ const StyledTextarea = styled.textarea`
 const TableBottom = styled.div`
   display: grid;
   padding: 10px 10px 10px 20px;
-  grid-template-columns: 2fr 5fr 2fr 1fr;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
+  grid-template-columns: 6fr 1fr;
 `;
 
 export default function CreateRequest() {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     title: "",
     description: "",
     state: "",
     walletAddr: "",
-    at: "",
   });
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const handleTitleChange = (e) => {
+    const { value, maxLength } = e.target;
+    setState({ ...state, title: value.slice(0, maxLength) });
   };
 
   const handleNewRequest = () => {
@@ -63,38 +64,49 @@ export default function CreateRequest() {
         input: {
           title: state.title,
           description: state.description,
-          at: Date.now().toISOString(),
+          at: new Date().toISOString(),
           state: "요청중",
           walletAddr: state.walletAddr,
         },
       },
-    }).then(() => {
-      Navigate("/requestdonation");
-    });
+    })
+      .then(() => {
+        Navigate("/requestdonation");
+      })
+      .catch((error) => {
+        toast.error(error.errors[0].message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
   };
   return (
     <Table>
       <InputOnlyBorderBottom
+        type="text"
         name="title"
         placeholder="제목"
-        onChange={handleChange}
+        value={state.title}
+        onChange={handleTitleChange}
+        minlength="4"
+        maxLength={30}
+        required
       />
       <InputOnlyBorderBottom
         name="walletAddr"
         placeholder="나의 지갑주소"
         onChange={handleChange}
+        required
       />
-
       <StyledTextarea
         name="description"
         placeholder="요청 내용"
+        maxLength={500}
         onChange={handleChange}
+        required
       />
-
       <TableBottom>
-        <StyledLink to="/requestdonation/createRequest">
-          <Button title={"요청하기"} onClick={handleNewRequest} />
-        </StyledLink>
+        <Button title={"요청하기"} onClick={handleNewRequest} />
+        <Button title={"취소"} onClick={() => navigate(-1)} />
       </TableBottom>
     </Table>
   );

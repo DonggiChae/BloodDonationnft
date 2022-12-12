@@ -19,11 +19,11 @@ const Container = styled.div`
   color: ${({ theme }) => theme.defaultTheme.fontBasicColor};
 `;
 
-const Icon = styled.div`
-  width: 60px;
-  flex-grow: 0;
-  margin-right: 50px;
-`;
+// const Icon = styled.div`
+//   width: 60px;
+//   flex-grow: 0;
+//   margin-right: 50px;
+// `;
 
 const ArrowWrapper = styled.div`
   width: 60px;

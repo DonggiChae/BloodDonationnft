@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { Amplify } from "aws-amplify";
+import React from "react";
 
 import {
   Authenticator,
   ThemeProvider,
   defaultTheme,
-  useAuthenticator,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
@@ -52,7 +50,6 @@ export default function SignIn() {
     },
   };
 
-  const { user, signOut } = useAuthenticator((context) => [context.user]);
   return (
     <ThemeProvider theme={theme}>
       <Authenticator
