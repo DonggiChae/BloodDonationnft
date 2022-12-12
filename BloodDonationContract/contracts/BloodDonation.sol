@@ -136,7 +136,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         // );
     }
 
-    function transferFrom(address from, address to, uint256 tokenId) public override(ERC721) {
+    function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
         super.transferFrom(from, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
     }
