@@ -13,6 +13,7 @@ export const createRequestPage = /* GraphQL */ `
       at
       state
       walletAddr
+      user
       createdAt
       updatedAt
     }
@@ -29,6 +30,7 @@ export const updateRequestPage = /* GraphQL */ `
       description
       at
       state
+      user
       walletAddr
       createdAt
       updatedAt
@@ -46,6 +48,7 @@ export const deleteRequestPage = /* GraphQL */ `
       description
       at
       state
+      user
       walletAddr
       createdAt
       updatedAt

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as nftListReducer from "../../redux/reducers/bdNFTs";
 
 import { API, useAuthenticator } from "aws-amplify";
-import { createRequestPage } from "../../graphql/mutations";
+import { updateRequestPage } from "../../graphql/mutations";
 
 import Button from "../atoms/Button";
 import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
@@ -42,7 +42,7 @@ const TableBottom = styled.div`
   grid-template-columns: 6fr 1fr;
 `;
 
-export default function CreateRequest() {
+export default function RequestUpdate() {
   const dispatch = useDispatch();
   const setRequestListLength = (length) =>
     dispatch(nftListReducer.setRequestListLength(length));
@@ -66,16 +66,16 @@ export default function CreateRequest() {
   };
 
   const handleNewRequest = () => {
-    var d = new Date();
+    // var d = new Date();
     API.graphql({
-      query: createRequestPage,
+      query: updateRequestPage,
       variables: {
         input: {
           title: state.title,
           description: state.description,
-          at: new Date(
-            d.getTime() - d.getTimezoneOffset() * 60000
-          ).toISOString(),
+          // at: new Date(
+          //   d.getTime() - d.getTimezoneOffset() * 60000
+          // ).toISOString(),
           state: "요청중",
           walletAddr: state.walletAddr,
           user: user,

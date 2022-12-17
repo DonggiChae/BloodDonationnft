@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Outlet, useMatch, Link } from "react-router-dom";
+import { Outlet, useMatch, Link, useNavigate } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import Button from "../atoms/Button";
@@ -67,6 +67,7 @@ const StyledLink = styled(Link)`
 export default function RequestTemplate({ contentInfo }) {
   const { user } = useAuthenticator((context) => [context.user]);
   const match = useMatch("/requestdonation/createRequest");
+  const navigate = useNavigate();
 
   const [page, setPage] = useState(1); //페이지
   const limit = 10; // posts가 보일 최대한의 갯수
@@ -94,73 +95,26 @@ export default function RequestTemplate({ contentInfo }) {
               <TableHeaderContent>날짜</TableHeaderContent>
             </TableHeader>
             <TableContent>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
-              <ContentWrapper>
-                <Content>1</Content>
-                <Content>도와주세요</Content>
-                <Content>진행중</Content>
-                <Content>오늘!</Content>
-              </ContentWrapper>
+              {contentInfo &&
+                postsData(contentInfo).map((content, index) => (
+                  <StyledLink to={content.Id}>
+                    <ContentWrapper key={content.Id}>
+                      <Content>{content.title}</Content>
+                      <Content>{content.state}</Content>
+                      <Content>
+                        {/* {content.at.slice(0, 16).replace("T", " ")} */}
+                        {content.at}
+                      </Content>
+                    </ContentWrapper>
+                  </StyledLink>
+                ))}
             </TableContent>
             <TableBottom>
               <TableHeaderContent>
                 <Pagination
                   limit={limit}
                   page={page}
-                  totalPosts={contentInfo}
+                  totalPosts={contentInfo.length}
                   setPage={setPage}
                 />
               </TableHeaderContent>

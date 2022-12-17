@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   BDNFTList: [],
+  RequestListLength: 0,
 };
 
 const nftListReducer = createSlice({
@@ -10,6 +11,9 @@ const nftListReducer = createSlice({
   reducers: {
     setFeed: (state, action) => {
       state.BDNFTList = action.payload;
+    },
+    setRequestListLength: (state, action) => {
+      state.RequestListLength = action.payload;
     },
   },
 });

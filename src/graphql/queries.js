@@ -9,6 +9,7 @@ export const getRequestPage = /* GraphQL */ `
       description
       at
       state
+      user
       walletAddr
       createdAt
       updatedAt
@@ -25,14 +26,33 @@ export const listRequestPages = /* GraphQL */ `
       items {
         id
         title
-        description
         at
         state
-        walletAddr
-        createdAt
-        updatedAt
+        user
       }
       nextToken
     }
   }
 `;
+
+// export const listRequestPages = /* GraphQL */ `
+//   query ListRequestPages(
+//     $filter: ModelRequestPageFilterInput
+//     $limit: Int
+//     $nextToken: String
+//   ) {
+//     listRequestPages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+//       items {
+//         id
+//         title
+//         description
+//         at
+//         state
+//         walletAddr
+//         createdAt
+//         updatedAt
+//       }
+//       nextToken
+//     }
+//   }
+// `;

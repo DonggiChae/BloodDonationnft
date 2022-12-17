@@ -1,9 +1,10 @@
 type RequestPage @model @auth(rules: [{allow: public}, {allow: owner, operations: [create, update, delete]}]) {
   id: ID!
   title: String!
-  description: String
+  description: String!
   at: AWSDateTime
   state: String
-  walletAddr: String
+  walletAddr: String!
+  user: String!
 }
  

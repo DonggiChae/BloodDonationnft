@@ -27,6 +27,7 @@ import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import awsExports from "./aws-exports";
+import RequestDetail from "./components/organisms/RequestDetail";
 Amplify.configure(awsExports);
 
 const klaytn = window.klaytn;
@@ -135,8 +136,9 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/mintnft" element={<MintNFTPage />} />
-                <Route path="/requestdonation/*" element={<RequestPage />}>
+                <Route path="/requestdonation" element={<RequestPage />}>
                   <Route path="createRequest" element={<CreateRequest />} />
+                  <Route path=":requestId" element={<RequestDetail />} />
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
               </Routes>
