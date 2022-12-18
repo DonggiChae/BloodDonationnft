@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { useSelector, useDispatch } from "react-redux";
-import * as nftListReducer from "../../redux/reducers/bdNFTs";
-
-import { API, useAuthenticator } from "aws-amplify";
+import { API } from "aws-amplify";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 import { createRequestPage } from "../../graphql/mutations";
 
 import Button from "../atoms/Button";
@@ -43,10 +41,6 @@ const TableBottom = styled.div`
 `;
 
 export default function CreateRequest() {
-  const dispatch = useDispatch();
-  const setRequestListLength = (length) =>
-    dispatch(nftListReducer.setRequestListLength(length));
-  const listLength = useSelector((state) => state.bdNFTs.requestListLength);
   const { user } = useAuthenticator((context) => [context.user]);
   const navigate = useNavigate();
   const [state, setState] = useState({
@@ -78,12 +72,11 @@ export default function CreateRequest() {
           ).toISOString(),
           state: "요청중",
           walletAddr: state.walletAddr,
-          user: user,
+          user: user.username,
         },
       },
     })
       .then(() => {
-        setRequestListLength(listLength + 1);
         navigate("/requestdonation");
       })
       .catch((error) => {

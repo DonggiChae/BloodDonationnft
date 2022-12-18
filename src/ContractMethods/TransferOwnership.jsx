@@ -1,17 +1,16 @@
 import { toast } from "react-toastify";
 import BloodDonationContract from "../klaytn/BloodDonationContract";
 
-const transferOwnership = async (from, to, tokenId) => {
-  console.log(from, to, tokenId);
+const transferOwnership = async (to, tokenId) => {
   await BloodDonationContract.methods
-    .transferFrom(from, to, tokenId)
+    .transferOwnership(to, tokenId)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
     .then(async (gasAmount) => {
       await BloodDonationContract.methods
-        .transferFrom(from, to, tokenId)
+        .transferOwnership(to, tokenId)
         .send({
           from: window.klaytn.selectedAddress,
           gas: gasAmount,

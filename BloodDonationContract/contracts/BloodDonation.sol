@@ -136,10 +136,19 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         // );
     }
 
-    function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
-        super.transferFrom(from, to, tokenId);
-        _BDList[tokenId].ownerHistory.push(to);
+
+    function batchTransferOwnership(uint256[] memory tokenIds, address to) public  {
+        for (uint256 i = 0; i < tokenIds.length; ++i) {
+            uint256 tokenId = tokenIds[i];
+            safeTransferFrom(msg.sender, to, tokenId);
+            _BDList[tokenId].ownerHistory.push(to);
+        }
     }
+
+    // function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
+    //     transferFrom(from, to, tokenId);
+    //     _BDList[tokenId].ownerHistory.push(to);
+    // }
 
 
 

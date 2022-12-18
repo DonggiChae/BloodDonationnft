@@ -138,7 +138,7 @@ function App() {
                 <Route path="/mintnft" element={<MintNFTPage />} />
                 <Route path="/requestdonation" element={<RequestPage />}>
                   <Route path="createRequest" element={<CreateRequest />} />
-                  <Route path=":requestId" element={<RequestDetail />} />
+                  <Route path=":contentId" element={<RequestDetail />} />
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
               </Routes>

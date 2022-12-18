@@ -3,18 +3,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { useSelector, useDispatch } from "react-redux";
-import * as nftListReducer from "../../redux/reducers/bdNFTs";
-
-import { API, useAuthenticator } from "aws-amplify";
+import { API } from "aws-amplify";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 import { updateRequestPage } from "../../graphql/mutations";
 
 import Button from "../atoms/Button";
 import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
-
-const Table = styled.div`
-  height: 100%;
-`;
+import SelectionInput from "../atoms/SelectionInput";
 
 const StyledTextarea = styled.textarea`
   width: 98%;
@@ -42,11 +37,7 @@ const TableBottom = styled.div`
   grid-template-columns: 6fr 1fr;
 `;
 
-export default function RequestUpdate() {
-  const dispatch = useDispatch();
-  const setRequestListLength = (length) =>
-    dispatch(nftListReducer.setRequestListLength(length));
-  const listLength = useSelector((state) => state.bdNFTs.requestListLength);
+export default function RequestUpdate({ setUpdateState }) {
   const { user } = useAuthenticator((context) => [context.user]);
   const navigate = useNavigate();
   const [state, setState] = useState({
@@ -65,7 +56,14 @@ export default function RequestUpdate() {
     setState({ ...state, title: value.slice(0, maxLength) });
   };
 
-  const handleNewRequest = () => {
+  const selectList = ["요청중", "완료"];
+  const [selected, setSelected] = useState("요청중");
+
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+  };
+
+  const handleUpdateRequest = () => {
     // var d = new Date();
     API.graphql({
       query: updateRequestPage,
@@ -76,14 +74,13 @@ export default function RequestUpdate() {
           // at: new Date(
           //   d.getTime() - d.getTimezoneOffset() * 60000
           // ).toISOString(),
-          state: "요청중",
+          state: selected,
           walletAddr: state.walletAddr,
-          user: user,
+          user: user.username,
         },
       },
     })
       .then(() => {
-        setRequestListLength(listLength + 1);
         navigate("/requestdonation");
       })
       .catch((error) => {
@@ -93,7 +90,7 @@ export default function RequestUpdate() {
       });
   };
   return (
-    <Table>
+    <>
       <InputOnlyBorderBottom
         type="text"
         name="title"
@@ -102,6 +99,12 @@ export default function RequestUpdate() {
         onChange={handleTitleChange}
         minlength="4"
         maxLength={30}
+        required
+      />
+      <SelectionInput
+        selectList={selectList}
+        onChange={handleSelect}
+        maxLength={10}
         required
       />
       <InputOnlyBorderBottom
@@ -118,9 +121,9 @@ export default function RequestUpdate() {
         required
       />
       <TableBottom>
-        <Button title={"요청하기"} onClick={handleNewRequest} />
-        <Button title={"취소"} onClick={() => navigate(-1)} />
+        <Button title={"수정하기"} onClick={handleUpdateRequest} />
+        <Button title={"취소"} onClick={() => setUpdateState(false)} />
       </TableBottom>
-    </Table>
+    </>
   );
 }

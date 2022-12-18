@@ -20,7 +20,7 @@ export const addAdmin = async (account) => {
       })
     )
     .catch((error) =>
-      toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
     );
 };
 
@@ -43,7 +43,7 @@ export const renounceAdmin = async (account) => {
       })
     )
     .catch((error) =>
-      toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
     );
 };
 
@@ -66,7 +66,7 @@ export const grantHospitalRole = async (account) => {
       });
     })
     .catch((error) =>
-      toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
     );
 };
 
@@ -89,7 +89,7 @@ export const grantRedCrossRole = async (account) => {
       })
     )
     .catch((error) =>
-      toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
     );
 };
 

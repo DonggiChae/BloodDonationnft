@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as nftListReducer from "../../redux/reducers/bdNFTs";
-import { Amplify, API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import { listRequestPages } from "../../graphql/queries";
 
 import RequestTemplate from "../templates/RequestTemplate";

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Card from "../molecules/Card";
 import { useSelector } from "react-redux";
+
+import Card from "../molecules/Card";
+import Pagination from "../atoms/Pagination";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -40,6 +42,8 @@ const Contents = styled.div`
 
 export default function Cards() {
   const feed = useSelector((state) => state.bdNFTs.BDNFTList);
+  const [page, setPage] = useState(1);
+  const limit = 20;
 
   return (
     <Container>
@@ -48,6 +52,12 @@ export default function Cards() {
           {feed.map((contents) => (
             <Card contents={contents} />
           ))}
+          <Pagination
+            page={page}
+            totalPosts={feed.length}
+            limit={limit}
+            setPage={setPage}
+          />
         </CardsWapper>
       ) : (
         <ContentsWrapper>

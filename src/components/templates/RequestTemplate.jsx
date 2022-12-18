@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Outlet, useMatch, Link, useNavigate } from "react-router-dom";
+import { Outlet, useMatch, Link } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import Button from "../atoms/Button";
@@ -66,8 +66,7 @@ const StyledLink = styled(Link)`
 
 export default function RequestTemplate({ contentInfo }) {
   const { user } = useAuthenticator((context) => [context.user]);
-  const match = useMatch("/requestdonation/createRequest");
-  const navigate = useNavigate();
+  const match = useMatch("/requestdonation");
 
   const [page, setPage] = useState(1); //페이지
   const limit = 10; // posts가 보일 최대한의 갯수
@@ -84,7 +83,7 @@ export default function RequestTemplate({ contentInfo }) {
     <Container>
       <Board>
         <ContainerHeader>헌혈증 요청하기</ContainerHeader>
-        {match ? (
+        {!match ? (
           <Outlet />
         ) : (
           <Table>
@@ -97,13 +96,16 @@ export default function RequestTemplate({ contentInfo }) {
             <TableContent>
               {contentInfo &&
                 postsData(contentInfo).map((content, index) => (
-                  <StyledLink to={content.Id}>
-                    <ContentWrapper key={content.Id}>
+                  <StyledLink
+                    key={content.id}
+                    to={`/requestdonation/${content.id}`}
+                  >
+                    <ContentWrapper>
+                      <Content>{index + 1}</Content>
                       <Content>{content.title}</Content>
                       <Content>{content.state}</Content>
                       <Content>
-                        {/* {content.at.slice(0, 16).replace("T", " ")} */}
-                        {content.at}
+                        {content.at.slice(0, 16).replace("T", " ")}
                       </Content>
                     </ContentWrapper>
                   </StyledLink>
