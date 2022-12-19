@@ -106,8 +106,13 @@ export const checkHospitalRole = async (account) => {
         gas: gasAmount,
       });
     })
+    .then(() =>
+      toast.success("병원 권한이 있습니다.", {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    )
     .catch((e) =>
-      toast.error(e.toString, {
+      toast.error("병원 권한이 없습니다.", {
         position: toast.POSITION.TOP_CENTER,
       })
     );
@@ -126,8 +131,13 @@ export const checkRedCrossRole = async (account) => {
         gas: gasAmount,
       });
     })
+    .then(() =>
+      toast.success("적십자 권한이 있습니다.", {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    )
     .catch((e) =>
-      toast.error(e.toString, {
+      toast.error("적십자 권한이 없습니다.", {
         position: toast.POSITION.TOP_CENTER,
       })
     );
@@ -146,8 +156,13 @@ export const checkAdminRole = async (account) => {
         gas: gasAmount,
       });
     })
+    .then(() =>
+      toast.success("관리자 권한이 있습니다.", {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    )
     .catch((e) =>
-      toast.error(e.toString, {
+      toast.error("관리자 권한이 없습니다.", {
         position: toast.POSITION.TOP_CENTER,
       })
     );
