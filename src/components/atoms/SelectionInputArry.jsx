@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   margin: 10px;
 `;
 
-const Label = styled.div``;
 const SelectWrapper = styled.div``;
 const Select = styled.select`
   display: block;
@@ -20,12 +19,13 @@ const Select = styled.select`
   font-weight: 600;
 `;
 
-export default function SelectionInput({
-  name,
-  firstOption,
+export default function SelectionInputArry({
   selectList,
   onChange,
   selected,
+  num,
+  name,
+  firstOption,
 }) {
   return (
     <Wrapper>
@@ -33,8 +33,11 @@ export default function SelectionInput({
         <Select name={name} onChange={onChange}>
           <option>{firstOption}:</option>
           {selectList.map((item) => (
-            <option value={item} key={item}>
-              {item}
+            <option
+              value={item[Object.keys(item)[num]]}
+              key={item[Object.keys(item)[num]]}
+            >
+              {item[Object.keys(item)[num]]}
             </option>
           ))}
         </Select>

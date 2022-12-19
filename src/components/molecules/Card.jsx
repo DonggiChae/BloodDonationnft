@@ -14,25 +14,43 @@ const Container = styled.div`
 `;
 
 const ImgWrapper = styled.img`
-  padding: 15px;
+  padding-bottom: 10px;
   height: 60%;
+  width: 100%;
+`;
+const ContentsWrapper = styled.div`
   width: 90%;
 `;
-const TitleWrapper = styled.div``;
-const ContentsWrapper = styled.div``;
+const ContentsTitleWrapper = styled.div`
+  font-weight: 600;
+  padding-right: 5px;
+  padding-bottom: 5px;
+`;
 
+const Contents = styled.div`
+  display: flex;
+`;
 export default function Card({ contents }) {
   return (
     <Container>
       <ImgWrapper
         src={`https://gateway.pinata.cloud/ipfs/${contents[2].split("://")[1]}`}
       />
-      <TitleWrapper>{contents[3]}</TitleWrapper>
-      <ContentsWrapper>ID: {contents[0]}</ContentsWrapper>
-      <ContentsWrapper>설명:{contents[5]}</ContentsWrapper>
-      <ContentsWrapper>장소: {contents[4]}</ContentsWrapper>
       <ContentsWrapper>
-        발급일자:{new Intl.DateTimeFormat("ko-KR").format(contents[6] * 1000)}
+        <Contents>
+          <ContentsTitleWrapper>ID:</ContentsTitleWrapper> {contents[0]}
+        </Contents>
+        <Contents>
+          <ContentsTitleWrapper>헌혈 종류:</ContentsTitleWrapper>
+          {contents[5]}
+        </Contents>
+        <Contents>
+          <ContentsTitleWrapper>장소:</ContentsTitleWrapper> {contents[4]}
+        </Contents>
+        <Contents>
+          <ContentsTitleWrapper>발행일:</ContentsTitleWrapper>
+          {new Intl.DateTimeFormat("ko-KR").format(contents[6] * 1000)}
+        </Contents>
       </ContentsWrapper>
       {/* <ContentsWrapper>NFT:{contents[1][0]}</ContentsWrapper> */}
     </Container>

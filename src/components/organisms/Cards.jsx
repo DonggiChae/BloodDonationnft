@@ -9,16 +9,26 @@ const Container = styled.div`
   margin-top: 20px;
 `;
 
-const CardsWapper = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 3px solid ${({ theme }) => theme.colors.secondRed};
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  width: 100%;
+  width: 1500px;
+  border-radius: 20px;
+`;
+
+const CardsWapper = styled.div`
   padding: 30px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
   align-items: stretch;
   min-height: 300px;
+`;
+
+const PaginationWrapper = styled.div`
+  padding: 20px;
 `;
 
 const ContentsWrapper = styled.div`
@@ -48,17 +58,21 @@ export default function Cards() {
   return (
     <Container>
       {feed.length > 0 ? (
-        <CardsWapper>
-          {feed.map((contents) => (
-            <Card contents={contents} />
-          ))}
-          <Pagination
-            page={page}
-            totalPosts={feed.length}
-            limit={limit}
-            setPage={setPage}
-          />
-        </CardsWapper>
+        <Wrapper>
+          <CardsWapper>
+            {feed.map((contents) => (
+              <Card contents={contents} />
+            ))}
+          </CardsWapper>
+          <PaginationWrapper>
+            <Pagination
+              page={page}
+              totalPosts={feed.length}
+              limit={limit}
+              setPage={setPage}
+            />
+          </PaginationWrapper>
+        </Wrapper>
       ) : (
         <ContentsWrapper>
           <Contents>조회가능한 헌혈증이 없습니다.</Contents>

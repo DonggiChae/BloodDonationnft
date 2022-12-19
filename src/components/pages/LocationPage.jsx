@@ -48,6 +48,7 @@ export default function LocationPage() {
         "https://api.odcloud.kr/api/15050729/v1/uddi:e747bbad-2d92-40eb-912d-b9824ca52dbd?page=1&perPage=146&serviceKey=dRQVAAyZguxZAIpnSFLolfv8ru1CB1Mo2SkML%2BFwJ278AmIud%2F7YPv0P2Jr%2FEkGenUhynq2TnM4btYYH1tkRkQ%3D%3D"
       )
       .then((res) => {
+        console.log(res);
         const markers = res.data.data.map((data) => {
           geocoder.addressSearch(
             data[Object.keys(data)[1]],
