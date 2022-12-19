@@ -23,6 +23,9 @@ const Form = styled.form``;
 
 export default function MintMethodsContainer({ title, method }) {
   const [state, setState] = useState({
+    title: "헌혈증",
+    location: "",
+    description: "",
     account: "",
   });
 
@@ -33,7 +36,9 @@ export default function MintMethodsContainer({ title, method }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.dismiss();
-    method(state.account).then(() => e.target.reset());
+    method(state.title, state.location, state.description, state.account).then(
+      () => e.target.reset()
+    );
   };
   return (
     <Container>
