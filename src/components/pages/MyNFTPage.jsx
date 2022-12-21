@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import getNFT from "../../ContractMethods/GetNFT";
-import { useSelector, useDispatch } from "react-redux";
-import * as nftListReducer from "../../redux/reducers/bdNFTs";
+import { useSelector } from "react-redux";
+
 import MyNFTTemplate from "../templates/MyNFTTemplate";
 
 import dotenv from "dotenv";
@@ -11,19 +11,18 @@ dotenv.config();
 const MyNFTContainer = styled.div``;
 
 function MyNFTPage() {
-  const dispatch = useDispatch();
-  const setFeed = (nftList) => dispatch(nftListReducer.setFeed(nftList));
+  const [feedState, setFeedState] = useState([]);
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     if (user) {
-      getNFT(user, setFeed);
+      getNFT(user, setFeedState);
     }
   }, [user]);
 
   return (
     <MyNFTContainer>
-      <MyNFTTemplate />;
+      <MyNFTTemplate feed={feedState} />
     </MyNFTContainer>
   );
 }

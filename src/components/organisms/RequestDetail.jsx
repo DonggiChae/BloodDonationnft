@@ -67,7 +67,6 @@ export default function RequestDetail() {
         variables: { id: contentId },
       });
       setRequestState(res.data.getRequestPage);
-      console.log(res);
     };
     getRequest();
   }, [contentId]);

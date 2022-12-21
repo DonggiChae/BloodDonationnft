@@ -1,13 +1,13 @@
 import BloodDonationContract from "../klaytn/BloodDonationContract";
 import { toast } from "react-toastify";
 
-const getNFT = (user, setNftList) => {
+const getNFT = (user, setFeedState) => {
   BloodDonationContract.methods
     .getTotalBDCount()
     .call()
     .then((count) => {
       const feed = [];
-      if (!count) return setNftList([]);
+      if (!count) return setFeedState([]);
       for (let i = count; i > 0; i--) {
         BloodDonationContract.methods
           .getBD(i)
@@ -17,11 +17,11 @@ const getNFT = (user, setNftList) => {
               user.toUpperCase() === res[1][res[1].length - 1].toUpperCase()
             ) {
               feed.push(res);
-              setNftList([...feed]);
+              setFeedState([...feed]);
             }
           });
       }
-      setNftList([...feed]);
+      setFeedState([...feed]);
     })
     .catch((error) =>
       toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER })

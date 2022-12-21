@@ -16,19 +16,20 @@ const Container = styled.div`
 const ImgWrapper = styled.img`
   padding-bottom: 10px;
   height: 60%;
-  width: 100%;
+  width: 90%;
 `;
 const ContentsWrapper = styled.div`
   width: 90%;
 `;
 const ContentsTitleWrapper = styled.div`
-  font-weight: 600;
+  font-weight: 700;
   padding-right: 5px;
   padding-bottom: 5px;
 `;
 
 const Contents = styled.div`
   display: flex;
+  font-weight: 600;
 `;
 export default function Card({ contents }) {
   return (

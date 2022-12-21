@@ -28,6 +28,7 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import awsExports from "./aws-exports";
 import RequestDetail from "./components/organisms/RequestDetail";
+import UseBloodDonation from "./components/pages/UseBloodDonation";
 Amplify.configure(awsExports);
 
 const klaytn = window.klaytn;
@@ -80,9 +81,7 @@ function App() {
       const changedAccount = klaytn?.selectedAddress;
 
       if (userKaikas !== changedAccount) {
-        toast.success(
-          `${changedAccount.slice(0, 5)}..계정이 바뀌셨군요 ㅎㅎ!!`
-        );
+        toast.success(`${changedAccount.slice(0, 5)}..계정이 바뀌셨습니다.`);
         dispatch(authReducer.setUser(changedAccount));
         localStorage.setItem("_user", changedAccount);
       }
@@ -110,7 +109,7 @@ function App() {
       toast.warn(
         `네트워크가 ${
           networkObj[klaytn.networkVersion]
-        }으로 바뀌었군요! 다시 로그인 해주세요~`
+        }으로 바뀌었습니다. 다시 로그인 해주세요.`
       );
     };
 
@@ -136,6 +135,10 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/mintnft" element={<MintNFTPage />} />
+                <Route
+                  path="/useblooddonation"
+                  element={<UseBloodDonation />}
+                />
                 <Route path="/requestdonation" element={<RequestPage />}>
                   <Route path="createRequest" element={<CreateRequest />} />
                   <Route path=":contentId" element={<RequestDetail />} />

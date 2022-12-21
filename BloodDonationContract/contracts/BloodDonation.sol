@@ -138,6 +138,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
 
     function batchTransferOwnership(uint256[] memory tokenIds, address to) public  {
+        require(tokenIds.length > 0);
         for (uint256 i = 0; i < tokenIds.length; ++i) {
             uint256 tokenId = tokenIds[i];
             safeTransferFrom(msg.sender, to, tokenId);
