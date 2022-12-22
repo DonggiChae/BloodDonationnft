@@ -70,6 +70,7 @@ export default function Pagination({ page, totalPosts, limit, setPage }) {
                     setPage(firstNum + 1 + i);
                   }}
                   aria-current={page === firstNum + 1 + i ? "page" : null}
+                  disabled={page * limit >= totalPosts}
                 >
                   {firstNum + 1 + i}
                 </Button>
@@ -81,6 +82,7 @@ export default function Pagination({ page, totalPosts, limit, setPage }) {
                   key={i + 1}
                   onClick={() => setPage(lastNum)}
                   aria-current={page === lastNum ? "page" : null}
+                  disabled={page * limit >= totalPosts}
                 >
                   {lastNum}
                 </Button>

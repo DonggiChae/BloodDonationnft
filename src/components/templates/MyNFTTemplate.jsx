@@ -16,12 +16,16 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   margin-top: 20px;
+  min-height: 490px;
   display: flex;
   flex-direction: column;
   border: 3px solid ${({ theme }) => theme.colors.secondRed};
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   width: 1500px;
   border-radius: 20px;
+`;
+const CardWrapper = styled.div`
+  min-height: 410px;
 `;
 
 const TitleWrapper = styled.div`
@@ -71,9 +75,17 @@ const ButtonWrapper = styled.div`
 export default function MyNFTTemplate({ feed }) {
   const [page, setPage] = useState(1);
   const limit = 20;
-  const [sendingModalState, setSendingModalState] = useState(false);
 
+  const [sendingModalState, setSendingModalState] = useState(false);
   const handleModal = () => setSendingModalState(!sendingModalState);
+  const [checkedList, setCheckedList] = useState([]);
+  const onCheckedElement = (checked, item) => {
+    if (checked) {
+      setCheckedList([...checkedList, item]);
+    } else if (!checked) {
+      setCheckedList(checkedList.filter((el) => el !== item));
+    }
+  };
 
   return (
     <Container>
@@ -87,7 +99,18 @@ export default function MyNFTTemplate({ feed }) {
         </ContentsWrapper>
       ) : (
         <Wrapper>
-          <Cards feed={feed} limit={limit} page={page} setPage={setPage} />
+          <CardWrapper>
+            <Cards
+              feed={feed}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+              sendingModalState={sendingModalState}
+              onCheckedElement={onCheckedElement}
+              checkedList={checkedList}
+            />
+          </CardWrapper>
+
           <BottomWrapper>
             <PaginationWrapper>
               <Pagination

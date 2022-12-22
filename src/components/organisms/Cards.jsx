@@ -13,14 +13,40 @@ const CardsWapper = styled.div`
   align-items: stretch;
   min-height: 300px;
 `;
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const CheckBox = styled.input``;
 
-export default function Cards({ feed, limit, page }) {
+export default function Cards({
+  feed,
+  limit,
+  page,
+  sendingModalState,
+  onCheckedElement,
+  checkedList,
+}) {
   return (
     <Container>
       <CardsWapper>
-        {feed.slice(page - 1, page + limit).map((contents, index) => (
-          <Card contents={contents} key={index} />
-        ))}
+        {feed
+          .slice((page - 1) * limit, (page - 1) * limit + limit)
+          .map((contents, index) => (
+            <CardWrapper key={index}>
+              <Card contents={contents} />
+              {sendingModalState && (
+                <CheckBox
+                  type="checkbox"
+                  value={contents[0]}
+                  onChange={(e) => {
+                    onCheckedElement(e.target.checked, e.target.value);
+                  }}
+                  checked={checkedList.includes(contents[0]) ? true : false}
+                ></CheckBox>
+              )}
+            </CardWrapper>
+          ))}
       </CardsWapper>
     </Container>
   );

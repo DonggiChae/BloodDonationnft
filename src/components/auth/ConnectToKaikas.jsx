@@ -63,9 +63,9 @@ function ConnectToKaikas() {
       );
       dispatch(authReducer.setUser(accounts[0]));
       localStorage.setItem("_user", accounts[0]);
-      toast.success(`${accounts[0].slice(0, 13)}...님 환영합니다~^^`);
+      toast.success(`${accounts[0].slice(0, 13)}...님 환영합니다.`);
     } catch {
-      toast.error("로그인 실패 다시 시도 ㄱㄱ");
+      toast.error("로그인 실패하셨습니다.");
     }
   }
 
@@ -80,7 +80,7 @@ function ConnectToKaikas() {
       return;
     }
 
-    toast.warn("다시 로그인 해주세요 ^^!");
+    toast.warn("다시 로그인 해주세요.");
     dispatch(authReducer.setUser(""));
     localStorage.removeItem("_user");
   }
@@ -92,7 +92,7 @@ function ConnectToKaikas() {
       }}
       user={user}
     >
-      <WalletImg src={user ? kaikasBlue : kaikasWhite} />
+      {user ? <WalletImg src={kaikasBlue} /> : <WalletImg src={kaikasWhite} />}
     </WalletBox>
   );
 }
