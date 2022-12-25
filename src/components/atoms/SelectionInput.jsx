@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   margin: 10px;
 `;
 
-const Label = styled.div``;
 const SelectWrapper = styled.div``;
 const Select = styled.select`
   display: block;

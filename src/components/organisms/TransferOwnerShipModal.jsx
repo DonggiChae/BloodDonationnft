@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { isValidAddress } from "../../utils/crypto";
 import { useSelector } from "react-redux";
 
-import TransferMethodContainer from "../organisms/TransferMethodContainer";
+import TransferMethodModalContainer from "./TransferMethodModalContainer";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 150px;
 `;
 
-function TransferOwnership({ method }) {
+function TransferOwnership({ method, handleModal, sendingModalState }) {
   const [toState, setToState] = useState(null);
 
   const [NFTIdsState, setNFTIdsState] = useState([]);
@@ -41,12 +41,15 @@ function TransferOwnership({ method }) {
     }
     method(tokenIds, toState);
   };
+
   return (
     <Container>
-      <TransferMethodContainer
+      <TransferMethodModalContainer
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
+        handleModal={handleModal}
         handleIds={handleIds}
+        sendingModalState={sendingModalState}
       />
     </Container>
   );

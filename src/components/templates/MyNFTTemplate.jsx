@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Cards from "../organisms/Cards";
 import Pagination from "../atoms/Pagination";
 import Button from "../atoms/Button";
+import TransferOwnerShipModal from "../organisms/TransferOwnerShipModal";
 
 const Container = styled.div`
   width: 100%;
@@ -72,12 +73,18 @@ const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;
 
+const ModalWrapper = styled.div`
+  position: absolute;
+`;
+
 export default function MyNFTTemplate({ feed }) {
   const [page, setPage] = useState(1);
   const limit = 20;
 
   const [sendingModalState, setSendingModalState] = useState(false);
-  const handleModal = () => setSendingModalState(!sendingModalState);
+  const handleModal = (state) => setSendingModalState(state);
+  const [sendingNFTState, setSendingNFTState] = useState(false);
+  const handleSendingNFT = (state) => setSendingNFTState(state);
   const [checkedList, setCheckedList] = useState([]);
   const onCheckedElement = (checked, item) => {
     if (checked) {
@@ -92,6 +99,15 @@ export default function MyNFTTemplate({ feed }) {
       <TitleWrapper>
         <Title>나의 헌혈증</Title>
       </TitleWrapper>
+      {sendingModalState && (
+        <ModalWrapper>
+          <TransferOwnerShipModal
+            checkedList={checkedList}
+            handleModal={handleModal}
+            sendingModalState={sendingModalState}
+          />
+        </ModalWrapper>
+      )}
       {feed.length === 0 ? (
         <ContentsWrapper>
           <Contents>조회가능한 헌혈증이 없습니다.</Contents>
@@ -105,12 +121,11 @@ export default function MyNFTTemplate({ feed }) {
               limit={limit}
               page={page}
               setPage={setPage}
-              sendingModalState={sendingModalState}
+              sendingModalState={sendingNFTState}
               onCheckedElement={onCheckedElement}
               checkedList={checkedList}
             />
           </CardWrapper>
-
           <BottomWrapper>
             <PaginationWrapper>
               <Pagination
@@ -121,8 +136,39 @@ export default function MyNFTTemplate({ feed }) {
               />
             </PaginationWrapper>
             <ButtonWrapper>
-              <Button title={"헌혈증 보내기"} onClick={() => handleModal()} />
+              <Button
+                title={"헌혈증 보내기"}
+                onClick={() => {
+                  handleModal(true);
+                }}
+              />
             </ButtonWrapper>
+            {/* {sendingNFTState ? (
+              <ButtonWrapper>
+                <Button
+                  title={"헌혈증 보내기"}
+                  onClick={() => {
+                    handleModal(true);
+                  }}
+                />
+                <Button
+                  title={"취소하기"}
+                  onClick={() => {
+                    handleSendingNFT(false);
+                    handleModal(false);
+                  }}
+                />
+              </ButtonWrapper>
+            ) : (
+              <ButtonWrapper>
+                <Button
+                  title={"헌혈증 보내기"}
+                  onClick={() => {
+                    handleSendingNFT(true);
+                  }}
+                />
+              </ButtonWrapper>
+            )} */}
           </BottomWrapper>
         </Wrapper>
       )}

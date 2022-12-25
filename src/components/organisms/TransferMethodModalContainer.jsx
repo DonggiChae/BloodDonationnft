@@ -12,6 +12,7 @@ const Container = styled.div`
   width: 600px;
   display: flex;
   flex-direction: column;
+  background-color: white;
 `;
 const Form = styled.form``;
 const TitleWrapper = styled.div`
@@ -24,6 +25,7 @@ export default function TransferMethodContainer({
   handleSubmit,
   handleInputChange,
   handleIds,
+  handleModal,
 }) {
   return (
     <Container>
@@ -42,6 +44,7 @@ export default function TransferMethodContainer({
           required
         />
         <Button type="submit" title="보내기" />
+        <Button title="취소하기" onClick={() => handleModal()} />
       </Form>
     </Container>
   );
