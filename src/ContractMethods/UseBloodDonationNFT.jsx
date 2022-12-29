@@ -3,13 +3,13 @@ import BloodDonationContract from "../klaytn/BloodDonationContract";
 
 export const useBloodDonationNFT = async (tokenID) => {
   await BloodDonationContract.methods
-    .use(tokenID)
+    .useBatch(tokenID)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
     .then(async (gasAmount) => {
-      await BloodDonationContract.methods.use(tokenID).send({
+      await BloodDonationContract.methods.useBatch(tokenID).send({
         from: window.klaytn.selectedAddress,
         gas: gasAmount,
       });

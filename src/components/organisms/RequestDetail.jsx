@@ -74,7 +74,10 @@ export default function RequestDetail() {
   return (
     <Table>
       {updateState ? (
-        <RequestUpdate setUpdateState={setUpdateState} />
+        <RequestUpdate
+          setUpdateState={setUpdateState}
+          requestState={requestState}
+        />
       ) : (
         <>
           <TextWrapper>

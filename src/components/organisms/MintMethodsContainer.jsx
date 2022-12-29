@@ -24,6 +24,9 @@ const TitleWrapper = styled.div`
   margin: 10px;
 `;
 const Form = styled.form``;
+const SelectionInputWrapper = styled.div`
+  margin: 10px;
+`;
 
 export default function MintMethodsContainer({ title, method }) {
   const [state, setState] = useState({
@@ -66,33 +69,23 @@ export default function MintMethodsContainer({ title, method }) {
           placeholder={"받는 사람 지갑 주소"}
           required
         />
-        {/* <Input
-          name="description"
-          onChange={handleInputChange}
-          placeholder={"설명"}
-          required
-        /> */}
-        {/* <Input
-          name="location"
-          onChange={handleInputChange}
-          placeholder={"헐혈장소"}
-          required
-        /> */}
-        <SelectionInput
-          name="description"
-          firstOption={"헌혈 종류"}
-          selectList={description}
-          onChange={handleInputChange}
-        />
-
-        <SelectionInputArry
-          name="location"
-          firstOption={"헌혈 장소"}
-          selectList={locationState}
-          onChange={handleInputChange}
-          num={2}
-        />
-
+        <SelectionInputWrapper>
+          <SelectionInput
+            name="description"
+            firstOption={"헌혈 종류"}
+            selectList={description}
+            onChange={handleInputChange}
+          />
+        </SelectionInputWrapper>
+        <SelectionInputWrapper>
+          <SelectionInputArry
+            name="location"
+            firstOption={"헌혈 장소"}
+            selectList={locationState}
+            onChange={handleInputChange}
+            num={2}
+          />
+        </SelectionInputWrapper>
         <Button type="submit" title="확인" />
       </Form>
     </Container>

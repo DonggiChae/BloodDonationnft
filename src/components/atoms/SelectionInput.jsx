@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 10px;
 `;
 
 const SelectWrapper = styled.div``;
