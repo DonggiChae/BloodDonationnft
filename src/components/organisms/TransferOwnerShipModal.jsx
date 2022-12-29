@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { isValidAddress } from "../../utils/crypto";
-import { useSelector } from "react-redux";
 
 import TransferMethodModalContainer from "./TransferMethodModalContainer";
 
@@ -15,23 +14,23 @@ const Container = styled.div`
   padding-top: 150px;
 `;
 
-function TransferOwnership({ method, handleModal, sendingModalState }) {
+function TransferOwnershipModal({
+  handleModal,
+  sendingModalState,
+  checkedList,
+  handleSendingNFT,
+  method,
+}) {
   const [toState, setToState] = useState(null);
-
-  const [NFTIdsState, setNFTIdsState] = useState([]);
   const toastId = React.useRef(null);
 
   const handleInputChange = (e) => {
     setToState(e.target.value);
   };
 
-  const handleIds = (e) => {
-    setNFTIdsState([e.target.value.split(",").map(Number)]);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tokenIds = NFTIdsState[0];
+    const tokenIds = checkedList;
     toast.dismiss();
     if (!isValidAddress(toState)) {
       toastId.current = toast("Invalid wallet address", {
@@ -39,7 +38,12 @@ function TransferOwnership({ method, handleModal, sendingModalState }) {
       });
       return;
     }
-    method(tokenIds, toState);
+    method(tokenIds, toState)
+      .then(() => {
+        handleSendingNFT(false);
+        handleModal(false);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -48,11 +52,11 @@ function TransferOwnership({ method, handleModal, sendingModalState }) {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
         handleModal={handleModal}
-        handleIds={handleIds}
+        checkedList={checkedList}
         sendingModalState={sendingModalState}
       />
     </Container>
   );
 }
 
-export default TransferOwnership;
+export default TransferOwnershipModal;

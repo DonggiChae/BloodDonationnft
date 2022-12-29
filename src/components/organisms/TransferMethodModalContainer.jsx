@@ -21,22 +21,29 @@ const TitleWrapper = styled.div`
   margin: 10px;
 `;
 
+const SendingTokens = styled.div`
+  border: none;
+  resize: none;
+  width: 87%;
+  margin-left: 10px;
+  padding: 0.7rem 1rem;
+  line-height: 1.5;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.25);
+`;
+
 export default function TransferMethodContainer({
   handleSubmit,
   handleInputChange,
-  handleIds,
   handleModal,
+  checkedList,
 }) {
   return (
     <Container>
       <TitleWrapper>헌혈증 보내기</TitleWrapper>
       <Form onSubmit={handleSubmit}>
-        <Input
-          name="tokenId"
-          onChange={handleIds}
-          placeholder="헌혈증 ID"
-          required
-        />
+        <SendingTokens>{checkedList.toString()}</SendingTokens>
         <Input
           name="to"
           onChange={handleInputChange}

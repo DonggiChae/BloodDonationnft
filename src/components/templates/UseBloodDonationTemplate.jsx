@@ -6,7 +6,7 @@ import Pagination from "../atoms/Pagination";
 import Button from "../atoms/Button";
 import TransferOwnerShipModal from "../organisms/TransferOwnerShipModal";
 
-import transferOwnership from "../../ContractMethods/TransferOwnership";
+import useBloodDonationNFT from "../../ContractMethods/UseBloodDonationNFT ";
 
 const Container = styled.div`
   width: 100%;
@@ -103,7 +103,7 @@ export default function MyNFTTemplate({ feed }) {
   return (
     <Container>
       <TitleWrapper>
-        <Title>나의 헌혈증</Title>
+        <Title>헌혈증 사용하기</Title>
       </TitleWrapper>
       {sendingModalState && (
         <ModalWrapper>
@@ -112,14 +112,14 @@ export default function MyNFTTemplate({ feed }) {
             handleModal={handleModal}
             sendingModalState={sendingModalState}
             handleSendingNFT={handleSendingNFT}
-            method={transferOwnership}
+            method={useBloodDonationNFT}
           />
         </ModalWrapper>
       )}
       {feed.length === 0 ? (
         <ContentsWrapper>
           <Contents>조회가능한 헌혈증이 없습니다.</Contents>
-          <Contents>헌혈로 생명을 구해보시는건 어떤가요?</Contents>
+          <Contents></Contents>
         </ContentsWrapper>
       ) : (
         <Wrapper>
@@ -146,7 +146,7 @@ export default function MyNFTTemplate({ feed }) {
             {sendingNFTState ? (
               <ButtonWrapper>
                 <Button
-                  title={"헌혈증 보내기"}
+                  title={"헌혈증 사용하기"}
                   onClick={() => {
                     handleModal(true);
                   }}
@@ -162,7 +162,7 @@ export default function MyNFTTemplate({ feed }) {
             ) : (
               <ButtonWrapper>
                 <Button
-                  title={"헌혈증 보내기"}
+                  title={"헌혈증 사용하기"}
                   onClick={() => {
                     handleSendingNFT(true);
                   }}

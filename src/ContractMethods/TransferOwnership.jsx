@@ -10,7 +10,7 @@ const transferOwnership = async (tokenIds, to) => {
     })
     .then(async (gasAmount) => {
       await BloodDonationContract.methods
-        .transferOwnership(tokenIds, to)
+        .batchTransferOwnership(tokenIds, to)
         .send({
           from: window.klaytn.selectedAddress,
           gas: gasAmount,

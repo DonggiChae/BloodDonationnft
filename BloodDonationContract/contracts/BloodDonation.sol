@@ -60,6 +60,13 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         _BDList[tokenId].photo = usedPhotoURI;
     }
 
+    function useBatch(uint256[] memory tokenIds) public onlyRole(HOSPITAL) {
+        require(tokenIds.length > 0, "Nothing entered.");
+        for (uint256 i = 0; i < tokenIds.length; i++) {
+            use(tokenIds[i]);
+        }
+    }
+
     //add a Admin account 
     function addAdmin(address account) public  onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(DEFAULT_ADMIN_ROLE, account);
@@ -134,12 +141,6 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
             _BDList[tokenIds[i]].ownerHistory.push(to);
         }
     }
-
-    // function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
-    //     transferFrom(from, to, tokenId);
-    //     _BDList[tokenId].ownerHistory.push(to);
-    // }
-
 
 
     function getTotalBDCount () public view returns (uint) {
