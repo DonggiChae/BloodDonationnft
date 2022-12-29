@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# 헌혈증 NFT 프로젝트
+##  프로젝트 소개
+기존 종이 헌혈증을 NFT로 발행한 프로젝트입니다.
+> 기존 헌혈증은 종이로 발급됩니다.   
+종이로 보관함으로써 분실위험이 생기고 헌혈증을 양도하거나 기부하는 과정에서 불편함이 있었습니다.   
+그뿐만 아니라 기부된 헌혈증의 사용을 추적하기 어려웠습니다. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이런 문제를 해결하기 위해 프로젝트를 시작하였습니다. 
 
-## Available Scripts
+헌혈증을 NFT로 발급함으로써 얻을 수 있는 이점으로는 
+- 헌혈증을 개인 지갑에 소유하여 분실 확율을 낮춤.
+- 소유하고 있는 헌혈증을 다른사람에게 쉽게 전송할 수 있음.
+- 헌혈증을 발행 받은 사람부터 거쳐가는 소유자들의 지갑을 기록하기 때문에 투명하게 관리 가능.
 
-In the project directory, you can run:
 
-### `npm start`
+## NFT 사용 시나리오
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://user-images.githubusercontent.com/69336797/209934451-9bf40823-3ab7-472b-9f8b-6971c7e0e30f.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. 컨트랙트를 발행한 지갑이 관리자가 됩니다.
+2. 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+###
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
