@@ -14,10 +14,17 @@ const CardsWapper = styled.div`
   min-height: 300px;
 `;
 const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  height:380px;
 `;
-const CheckBox = styled.input``;
+
+const CheckBox = styled.input`
+  width: 20px;
+	height: 20px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+  margin-left: 110px;
+  margin-top: 5px;
+`;
 
 export default function Cards({
   feed,

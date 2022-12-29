@@ -3,10 +3,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 10px;
 `;
 
-const Label = styled.div``;
 const SelectWrapper = styled.div``;
 const Select = styled.select`
   display: block;

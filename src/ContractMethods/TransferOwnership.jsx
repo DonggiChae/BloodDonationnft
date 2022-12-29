@@ -1,16 +1,16 @@
 import { toast } from "react-toastify";
 import BloodDonationContract from "../klaytn/BloodDonationContract";
 
-const transferOwnership = async (to, tokenId) => {
+const transferOwnership = async (tokenIds, to) => {
   await BloodDonationContract.methods
-    .transferOwnership(to, tokenId)
+    .batchTransferOwnership(tokenIds, to)
     .estimateGas({
       from: window.klaytn.selectedAddress,
       gas: 6000000,
     })
     .then(async (gasAmount) => {
       await BloodDonationContract.methods
-        .transferOwnership(to, tokenId)
+        .batchTransferOwnership(tokenIds, to)
         .send({
           from: window.klaytn.selectedAddress,
           gas: gasAmount,
@@ -21,11 +21,11 @@ const transferOwnership = async (to, tokenId) => {
           })
         );
     })
-    .catch((e) =>
-      toast.error(e.toString(), {
+    .catch((e) => {
+      toast.error(e.message, {
         position: toast.POSITION.TOP_CENTER,
-      })
-    );
+      });
+    });
 };
 
 export default transferOwnership;

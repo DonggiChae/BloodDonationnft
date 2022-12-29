@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
+import GlobalFonts from "./fonts/fonts";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
+import { toast } from "react-toastify";
 
 import MainPage from "./components/pages/MainPage";
 import SettingPage from "./components/pages/SettingPage";
@@ -15,20 +17,19 @@ import SendingNFTPage from "./components/pages/SendingNFTPage";
 import LocationPage from "./components/pages/LocationPage";
 import Header from "./components/organisms/Header";
 import AdminPage from "./components/pages/AdminPage";
-
-import { toast } from "react-toastify";
 import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
 import RequestPage from "./components/pages/RequestPage";
 import CreateRequest from "./components/organisms/CreateRequest";
 import CheckPage from "./components/pages/CheckPage";
+import UseBloodDonation from "./components/pages/UseBloodDonation";
+import RequestDetail from "./components/organisms/RequestDetail";
 
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import awsExports from "./aws-exports";
-import RequestDetail from "./components/organisms/RequestDetail";
-import UseBloodDonation from "./components/pages/UseBloodDonation";
+
 Amplify.configure(awsExports);
 
 const klaytn = window.klaytn;
@@ -41,6 +42,7 @@ const AppWrapper = styled.div`
   height: 1px;
   min-height: 100%;
   padding-bottom: 104px;
+  font-family: "LINESeedKR-Bd";
 `;
 
 function App() {
@@ -124,6 +126,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
             <GlobalStyle />
+            <GlobalFonts />
             <AppWrapper>
               <Header />
               <Routes>

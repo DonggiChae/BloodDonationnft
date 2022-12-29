@@ -60,6 +60,13 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         _BDList[tokenId].photo = usedPhotoURI;
     }
 
+    function useBatch(uint256[] memory tokenIds) public onlyRole(HOSPITAL) {
+        require(tokenIds.length > 0, "Nothing entered.");
+        for (uint256 i = 0; i < tokenIds.length; i++) {
+            use(tokenIds[i]);
+        }
+    }
+
     //add a Admin account 
     function addAdmin(address account) public  onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(DEFAULT_ADMIN_ROLE, account);
@@ -124,33 +131,16 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     function transferOwnership(uint256 tokenId, address to) public  {
         safeTransferFrom(msg.sender, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
-        // uint ownerHistoryLength = _BDList[tokenId].ownerHistory.length;
-        // return (
-        //     _BDList[tokenId].tokenId,
-        //     //original owner
-        //     _BDList[tokenId].ownerHistory[0],
-        //     //previous owner, length cannot be less than 2
-        //     _BDList[tokenId].ownerHistory[ownerHistoryLength-2],
-        //     //current owner
-        //     _BDList[tokenId].ownerHistory[ownerHistoryLength-1]
-        // );
     }
 
 
     function batchTransferOwnership(uint256[] memory tokenIds, address to) public  {
-        require(tokenIds.length > 0);
-        for (uint256 i = 0; i < tokenIds.length; ++i) {
-            uint256 tokenId = tokenIds[i];
-            safeTransferFrom(msg.sender, to, tokenId);
-            _BDList[tokenId].ownerHistory.push(to);
+        require(tokenIds.length > 0, "Nothing entered.");
+        for (uint256 i = 0; i < tokenIds.length; i++) {
+            safeTransferFrom(msg.sender, to, tokenIds[i]);
+            _BDList[tokenIds[i]].ownerHistory.push(to);
         }
     }
-
-    // function transferFrom(address from, address to, uint256 tokenId) public override(ERC721, IERC721) {
-    //     transferFrom(from, to, tokenId);
-    //     _BDList[tokenId].ownerHistory.push(to);
-    // }
-
 
 
     function getTotalBDCount () public view returns (uint) {

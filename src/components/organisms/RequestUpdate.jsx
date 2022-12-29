@@ -10,10 +10,14 @@ import { updateRequestPage } from "../../graphql/mutations";
 import Button from "../atoms/Button";
 import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
 import SelectionInput from "../atoms/SelectionInput";
+import { useEffect } from "react";
 
+const Table = styled.div`
+  height: 100%;
+`;
 const StyledTextarea = styled.textarea`
   width: 98%;
-  height: 45%;
+  height: 40%;
   margin-left: 8px;
   line-height: 1.5;
   padding: 0.7rem 1rem;
@@ -31,13 +35,29 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+`;
+
+const InputOnlyBorderBottomWrapper = styled.div`
+  width: 500px;
+`;
+
+const SelectionInputWrapper = styled.div`
+  width: 150px;
+`;
+
 const TableBottom = styled.div`
   display: grid;
   padding: 10px 10px 10px 20px;
   grid-template-columns: 6fr 1fr;
 `;
 
-export default function RequestUpdate({ setUpdateState }) {
+export default function RequestUpdate({ setUpdateState, requestState }) {
   const { user } = useAuthenticator((context) => [context.user]);
   const navigate = useNavigate();
   const [state, setState] = useState({
@@ -89,33 +109,47 @@ export default function RequestUpdate({ setUpdateState }) {
         });
       });
   };
+
+  useEffect(() => {
+    setState(requestState);
+  }, [requestState]);
   return (
-    <>
-      <InputOnlyBorderBottom
-        type="text"
-        name="title"
-        placeholder="제목"
-        value={state.title}
-        onChange={handleTitleChange}
-        minlength="4"
-        maxLength={30}
-        required
-      />
-      <SelectionInput
-        selectList={selectList}
-        onChange={handleSelect}
-        maxLength={10}
-        required
-      />
+    <Table>
+      <TitleWrapper>
+        <InputOnlyBorderBottomWrapper>
+          <InputOnlyBorderBottom
+            type="text"
+            name="title"
+            placeholder="제목"
+            value={state.title}
+            onChange={handleTitleChange}
+            minlength="4"
+            maxLength={30}
+            required
+          />
+        </InputOnlyBorderBottomWrapper>
+        <SelectionInputWrapper>
+          <SelectionInput
+            firstOption={"진행상태"}
+            selectList={selectList}
+            onChange={handleSelect}
+            maxLength={10}
+            required
+          />
+        </SelectionInputWrapper>
+      </TitleWrapper>
+
       <InputOnlyBorderBottom
         name="walletAddr"
         placeholder="나의 지갑주소"
+        value={state.walletAddr}
         onChange={handleChange}
         required
       />
       <StyledTextarea
         name="description"
         placeholder="요청 내용"
+        value={state.description}
         maxLength={500}
         onChange={handleChange}
         required
@@ -124,6 +158,6 @@ export default function RequestUpdate({ setUpdateState }) {
         <Button title={"수정하기"} onClick={handleUpdateRequest} />
         <Button title={"취소"} onClick={() => setUpdateState(false)} />
       </TableBottom>
-    </>
+    </Table>
   );
 }
