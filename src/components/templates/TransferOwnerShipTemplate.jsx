@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { isValidAddress } from "../../utils/crypto";
-import { useSelector } from "react-redux";
 
 import TransferMethodContainer from "../organisms/TransferMethodContainer";
 

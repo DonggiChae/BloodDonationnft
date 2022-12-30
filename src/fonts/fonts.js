@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import LINESeedKRBd from "./LINESeedKR-Bd.woff";
+import LINESeedKRBd from "./LINESeedKR-Bd.woff2";
 
 export default createGlobalStyle`
     @font-face {
