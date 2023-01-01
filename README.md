@@ -27,4 +27,38 @@
 ## 환경
 
 -  node v16.19.0
-### `npm run build`
+
+## 실행전 설정
+
+###Contract 배포
+
+BloodDonationContract 폴더에서 
+<img width="983" alt="image" src="https://user-images.githubusercontent.com/69336797/210166696-9169bf3c-0b86-47a1-b018-d2454a46e369.png">
+사진에 보이는 것과 같이  klaytn url과 private key를 .env 파일을 만들어 넣어 줍니다.
+
+private key의 지갑에는 충분한 klaytn이 있어야합니다.
+지갑의 첫번째 주소가 admin으로 설정됩니다.
+
+
+```shell
+npx hardhat run scripts/deploy.ts --network klaytn
+npx hardhat run scripts/deploy.ts --network klaytn_cypress
+```
+
+contract를 baobab에 배포하려면 위의 커맨드를 입력하고, cypress에 배포하려면 아래의 명령어를 실행하면 됩니다.
+
+### aws 
+
+<img width="472" alt="image" src="https://user-images.githubusercontent.com/69336797/210167271-46519ff9-aa84-4d78-a9e1-fd146547f050.png">
+
+aws에서 Graphql을 사용해서 사진과 같은 구조로 만들어 줍니다.
+
+aws에서 authentication을 설정해줍니다.
+
+설정후에 deploy해줍니다.
+
+
+
+
+
+
