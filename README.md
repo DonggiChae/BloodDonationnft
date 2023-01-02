@@ -85,4 +85,34 @@ aws에서 authentication을 설정해줍니다.
 
 지갑에 보유하고 있는 헌혈증을 조회할 수 있습니다.
 
-### 헌혈증
+### 헌혈증 요청하기
+
+<img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241093-039ca8ec-8ba5-481e-980d-be26c03cac5b.png">
+
+로그인을 한 후에 도움을 요청할 수 있습니다.
+kaikas 지갑 로그인은 하지 않아도 요청할 수 있습니다.
+수정도 가능합니다.
+
+### 헌혈의집 위치
+
+![image](https://user-images.githubusercontent.com/69336797/210241392-fb08e38f-f5ac-41a3-8fba-4bb4d9509e9d.png)
+전국에 헌혈의 집 위치를 볼 수 있습니다.
+
+
+### 설정
+
+<img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241581-5ddc5e42-dfe1-4fd4-a966-9536066f7e97.png">
+
+유저들이 사용하는 않는 기능들이 있습니다.
+
+<img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241723-4256d09f-8949-4a6d-84a0-55ced19b7fa0.png">
+관리자 페이지에서 다른 지갑에 역할을 부여할 수 있습니다.
+
+![image](https://user-images.githubusercontent.com/69336797/210241840-6a0767ff-4a1f-4acd-960d-8fa0689b4cfe.png)
+헌혈자의 지갑 주소를 입력하고 헌혈 종류, 헌혈한 지점을 선택하면 헌혈증을 발행할 수 있습니다.
+
+<img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210242018-963ef681-caaf-4fd4-87ad-fde986f7f7fc.png">
+주소의 역할을 확인할 수 있습니다.
+
+
+
