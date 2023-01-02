@@ -1,4 +1,6 @@
 # 헌혈증 NFT 프로젝트
+![image](https://user-images.githubusercontent.com/69336797/210229025-a5ba6dd0-a049-40cf-9b0e-4eb29a1843e8.png)
+
 ##  프로젝트 소개
 기존 종이 헌혈증을 NFT로 발행한 프로젝트입니다.
 > 기존 헌혈증은 종이로 발급됩니다.   
@@ -23,6 +25,16 @@
 4. 병원 권한을 가진 지갑은 헌혈증을 받아 사용할 수 있습니다.
 5. 헌혈자는 헌혈증NFT로 발급할 수 있고, 필요로 하는 단체나 사람의 지갑주소만 알면 쉽게 양도하거나 기부할 수 있습니다.
 6. 병원에서는 수혈받은 환자가 헌혈증 사용시 무상으로 혈액을 제공할 수 있습니다.
+
+
+## 헌혈증 NFT
+![image](https://user-images.githubusercontent.com/69336797/210229670-f8e70076-e1d4-42cd-8bc6-3a8d779e4791.png)
+
+![image](https://user-images.githubusercontent.com/69336797/210229675-7dccf618-ba5f-457c-8395-e2f607921133.png)
+
+헌혈증 NFT 디자인은 사용전과 사용후의 디자인이 있습니다.
+
+이미지의 크기는 1080 x 1080 입니다.
 
 ## 환경
 
@@ -58,6 +70,18 @@ aws에서 authentication을 설정해줍니다.
 설정후에 deploy해줍니다.
 
 
+## 헌혈증 웹
+
+### 메인
+![image](https://user-images.githubusercontent.com/69336797/210231449-a8a5d364-53bd-432d-aaad-0ece9e866ff4.png)
+
+### 헌혈증 조회
+![image](https://user-images.githubusercontent.com/69336797/210232049-b474aa51-d47c-4259-9abe-917db5c0a577.png)
+![image](https://user-images.githubusercontent.com/69336797/210232065-05b21efd-8882-4ebf-a3f5-a9bad4631b2a.png)
+
+지갑에 보유하고 있는 헌혈증을 조회할 수 있습니다.
+
+### 헌혈증 
 
 
 
