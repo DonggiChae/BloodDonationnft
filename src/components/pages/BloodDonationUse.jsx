@@ -3,14 +3,14 @@ import styled from "styled-components";
 import getNFT from "../../ContractMethods/GetNFT";
 import { useSelector } from "react-redux";
 
-import MyNFTTemplate from "../templates/MyNFTTemplate";
+import BloodDonationNFTUseTemplate from "../templates/BloodDonationNFTUseTemplate";
 
 import dotenv from "dotenv";
 dotenv.config();
 
 const MyNFTContainer = styled.div``;
 
-export default function UseBloodDonation() {
+export default function BloodDonationNFTUse() {
   const [feedState, setFeedState] = useState([]);
   const user = useSelector((state) => state.auth.user);
 
@@ -22,7 +22,7 @@ export default function UseBloodDonation() {
 
   return (
     <MyNFTContainer>
-      <MyNFTTemplate feed={feedState} />
+      <BloodDonationNFTUseTemplate feed={feedState} />
     </MyNFTContainer>
   );
 }

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import BloodDonationContract from "../klaytn/BloodDonationContract";
 
-export const useBloodDonationNFT = async (tokenID) => {
+export const BloodDonationNFTUse = async (tokenID) => {
   await BloodDonationContract.methods
     .useBatch(tokenID)
     .estimateGas({

@@ -22,7 +22,7 @@ import MintNFTPage from "./components/pages/MintNFTPage";
 import RequestPage from "./components/pages/RequestPage";
 import CreateRequest from "./components/organisms/CreateRequest";
 import CheckPage from "./components/pages/CheckPage";
-import UseBloodDonation from "./components/pages/UseBloodDonation";
+import BloodDonationUse from "./components/pages/BloodDonationUse";
 import RequestDetail from "./components/organisms/RequestDetail";
 
 import { Amplify } from "aws-amplify";
@@ -139,8 +139,8 @@ function App() {
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/mintnft" element={<MintNFTPage />} />
                 <Route
-                  path="/useblooddonation"
-                  element={<UseBloodDonation />}
+                  path="/blooddonationuse"
+                  element={<BloodDonationUse />}
                 />
                 <Route path="/requestdonation" element={<RequestPage />}>
                   <Route path="createRequest" element={<CreateRequest />} />
