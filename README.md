@@ -1,8 +1,11 @@
 # 헌혈증 NFT 프로젝트
 
+![image](https://user-images.githubusercontent.com/69336797/210229025-a5ba6dd0-a049-40cf-9b0e-4eb29a1843e8.png)
+
 ## 프로젝트 소개
 
-기존 종이 헌혈증을 NFT로 발행한 프로젝트입니다.
+> > > > > > > c004c6bf2eea4dc2fab6ab97e522814462efdb9c
+> > > > > > > 기존 종이 헌혈증을 NFT로 발행한 프로젝트입니다.
 
 > 기존 헌혈증은 종이로 발급됩니다.  
 > 종이로 보관함으로써 분실위험이 생기고 헌혈증을 양도하거나 기부하는 과정에서 불편함이 있었습니다.  
@@ -27,8 +30,59 @@
 5. 헌혈자는 헌혈증NFT로 발급할 수 있고, 필요로 하는 단체나 사람의 지갑주소만 알면 쉽게 양도하거나 기부할 수 있습니다.
 6. 병원에서는 수혈받은 환자가 헌혈증 사용시 무상으로 혈액을 제공할 수 있습니다.
 
+## 헌혈증 NFT
+
+![image](https://user-images.githubusercontent.com/69336797/210229670-f8e70076-e1d4-42cd-8bc6-3a8d779e4791.png)
+
+![image](https://user-images.githubusercontent.com/69336797/210229675-7dccf618-ba5f-457c-8395-e2f607921133.png)
+
+헌혈증 NFT 디자인은 사용전과 사용후의 디자인이 있습니다.
+
+이미지의 크기는 1080 x 1080 입니다.
+
 ## 환경
 
 - node v16.19.0
 
-### `npm run build`
+## 실행전 설정
+
+###Contract 배포
+
+BloodDonationContract 폴더에서
+<img width="983" alt="image" src="https://user-images.githubusercontent.com/69336797/210166696-9169bf3c-0b86-47a1-b018-d2454a46e369.png">
+사진에 보이는 것과 같이 klaytn url과 private key를 .env 파일을 만들어 넣어 줍니다.
+
+private key의 지갑에는 충분한 klaytn이 있어야합니다.
+지갑의 첫번째 주소가 admin으로 설정됩니다.
+
+```shell
+npx hardhat run scripts/deploy.ts --network klaytn
+npx hardhat run scripts/deploy.ts --network klaytn_cypress
+```
+
+contract를 baobab에 배포하려면 위의 커맨드를 입력하고, cypress에 배포하려면 아래의 명령어를 실행하면 됩니다.
+
+### aws
+
+<img width="472" alt="image" src="https://user-images.githubusercontent.com/69336797/210167271-46519ff9-aa84-4d78-a9e1-fd146547f050.png">
+
+aws에서 Graphql을 사용해서 사진과 같은 구조로 만들어 줍니다.
+
+aws에서 authentication을 설정해줍니다.
+
+설정후에 deploy해줍니다.
+
+## 헌혈증 웹
+
+### 메인
+
+![image](https://user-images.githubusercontent.com/69336797/210231449-a8a5d364-53bd-432d-aaad-0ece9e866ff4.png)
+
+### 헌혈증 조회
+
+![image](https://user-images.githubusercontent.com/69336797/210232049-b474aa51-d47c-4259-9abe-917db5c0a577.png)
+![image](https://user-images.githubusercontent.com/69336797/210232065-05b21efd-8882-4ebf-a3f5-a9bad4631b2a.png)
+
+지갑에 보유하고 있는 헌혈증을 조회할 수 있습니다.
+
+### 헌혈증
