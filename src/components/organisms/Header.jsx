@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-import AuthModal from "../auth/AuthModal";
-
-// import bell from "../../assets/bell.png";
 import Nav from "../molecules/Nav";
 
 import ConnectToKaikas from "../auth/ConnectToKaikas";
@@ -64,15 +60,12 @@ const StyledLink = styled(Link)`
 `;
 
 function Header() {
-  const accountModal = useSelector((state) => state.ui.accountModal);
-
   return (
     <Container>
       <HeaderWrapper>
-        {accountModal && <AuthModal />}
         <LogoWrapper>
           <StyledLink to="/">
-            <Logo src={heartLogo} />
+            <Logo src={heartLogo} alt="Logo" />
           </StyledLink>
         </LogoWrapper>
         <TitleWrapper>

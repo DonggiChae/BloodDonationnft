@@ -92,7 +92,11 @@ function ConnectToKaikas() {
       }}
       user={user}
     >
-      {user ? <WalletImg src={kaikasBlue} /> : <WalletImg src={kaikasWhite} />}
+      {user ? (
+        <WalletImg src={kaikasBlue} alt="kaikas" />
+      ) : (
+        <WalletImg src={kaikasWhite} alt="kaikas" />
+      )}
     </WalletBox>
   );
 }
