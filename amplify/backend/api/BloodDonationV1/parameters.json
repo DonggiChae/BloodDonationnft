@@ -1,12 +1,12 @@
 {
-  "AppSyncApiName": "blooddonationnftcont",
+  "AppSyncApiName": "BloodDonationV1",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-12-08T16:32:03.814Z",
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authBloodDonationnftcont",
+      "authBloodDonationV1",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "AuthModeLastUpdated": "2023-01-03T14:55:20.467Z"
 }

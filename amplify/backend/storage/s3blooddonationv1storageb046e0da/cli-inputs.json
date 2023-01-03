@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3blooddonationv1storageb046e0da",
+  "bucketName": "blooddonationv1-storage-b046e0da",
+  "policyUUID": "6153fa5b",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

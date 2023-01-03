@@ -13,6 +13,7 @@ const Table = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const Wrapper = styled.form``;
 
 const TextWrapper = styled.div`
   display: flex;
@@ -79,7 +80,7 @@ export default function RequestDetail() {
           requestState={requestState}
         />
       ) : (
-        <>
+        <Wrapper>
           <TextWrapper>
             <Title>제목:</Title>
             <Text name="title">{requestState.title}</Text>
@@ -98,7 +99,7 @@ export default function RequestDetail() {
               <Button title={"수정하기"} onClick={() => setUpdateState(true)} />
             )}
           </TableBottom>
-        </>
+        </Wrapper>
       )}
     </Table>
   );

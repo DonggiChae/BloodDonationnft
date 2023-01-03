@@ -1,13 +1,13 @@
 {
   "api": {
-    "blooddonationnftcont": {
+    "BloodDonationV1": {
       "dependsOn": [
         {
           "attributes": [
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "BloodDonationnftcont"
+          "resourceName": "BloodDonationV1"
         }
       ],
       "output": {
@@ -17,18 +17,18 @@
               "authenticationType": "AWS_IAM"
             },
             {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authBloodDonationnftcont"
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 30,
+                "description": "api key description"
               }
             }
           ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authBloodDonationV1"
+            }
           }
         }
       },
@@ -37,7 +37,7 @@
     }
   },
   "auth": {
-    "BloodDonationnftcont": {
+    "BloodDonationV1": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -55,9 +55,7 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [],
-        "socialProviders": [
-          "GOOGLE"
-        ],
+        "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
         ],
@@ -67,6 +65,13 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "storage": {
+    "s3blooddonationv1storageb046e0da": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

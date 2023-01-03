@@ -54,7 +54,7 @@ export default function SignIn() {
     <ThemeProvider theme={theme}>
       <Authenticator
         loginMechanisms={["email"]}
-        socialProviders={["google"]}
+        // socialProviders={["google"]}
         signUpAttributes={[]}
       >
         {({ signOut, user }) => {

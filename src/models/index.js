@@ -4,8 +4,8 @@ import { schema } from './schema';
 
 
 
-const { RequestDonation } = initSchema(schema);
+const { RequestPage } = initSchema(schema);
 
 export {
-  RequestDonation
+  RequestPage
 };

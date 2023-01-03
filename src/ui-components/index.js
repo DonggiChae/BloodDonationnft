@@ -5,5 +5,5 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
-export { default as RequestDonationCreateForm } from "./RequestDonationCreateForm";
-export { default as RequestDonationUpdateForm } from "./RequestDonationUpdateForm";
+export { default as RequestPageCreateForm } from "./RequestPageCreateForm";
+export { default as RequestPageUpdateForm } from "./RequestPageUpdateForm";

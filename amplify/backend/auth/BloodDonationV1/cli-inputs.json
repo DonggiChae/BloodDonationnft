@@ -3,8 +3,8 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "bloodd8e4c8852",
-    "userPoolName": "BloodDonationnftcont",
+    "resourceNameTruncated": "bloodd04f9f79b",
+    "userPoolName": "BloodDonationV1",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -30,10 +30,10 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "BloodD8e4c8852_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "BloodD04f9f79b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "8e4c8852",
-    "resourceName": "BloodDonationnftcont",
+    "sharedId": "04f9f79b",
+    "resourceName": "BloodDonationV1",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "usernameAttributes": [
@@ -45,28 +45,7 @@
     "adminQueries": false,
     "thirdPartyAuth": false,
     "authProviders": [],
-    "hostedUI": true,
-    "hostedUIDomainName": "6lno2onpdy2f",
-    "authProvidersUserPool": [
-      "Google"
-    ],
-    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile\",\"AttributeMapping\":{\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000\",\"https://main.d29kifx9a7ixf6.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000\",\"https://main.d29kifx9a7ixf6.amplifyapp.com/\"]}",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": []
+    "useEnabledMfas": true
   }
 }

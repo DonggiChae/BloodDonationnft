@@ -6,36 +6,40 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
-type EagerRequestDonation = {
+type EagerRequestPage = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<RequestDonation, 'id'>;
-    readOnlyFields: 'updatedAt';
+    identifier: ManagedIdentifier<RequestPage, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly title?: string | null;
-  readonly contents?: string | null;
-  readonly status?: string | null;
+  readonly title: string;
+  readonly description: string;
+  readonly at: string;
+  readonly state: string;
+  readonly walletAddr: string;
+  readonly user: string;
   readonly createdAt?: string | null;
-  readonly walletAddress?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyRequestDonation = {
+type LazyRequestPage = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<RequestDonation, 'id'>;
-    readOnlyFields: 'updatedAt';
+    identifier: ManagedIdentifier<RequestPage, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly title?: string | null;
-  readonly contents?: string | null;
-  readonly status?: string | null;
+  readonly title: string;
+  readonly description: string;
+  readonly at: string;
+  readonly state: string;
+  readonly walletAddr: string;
+  readonly user: string;
   readonly createdAt?: string | null;
-  readonly walletAddress?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type RequestDonation = LazyLoading extends LazyLoadingDisabled ? EagerRequestDonation : LazyRequestDonation
+export declare type RequestPage = LazyLoading extends LazyLoadingDisabled ? EagerRequestPage : LazyRequestPage
 
-export declare const RequestDonation: (new (init: ModelInit<RequestDonation>) => RequestDonation) & {
-  copyOf(source: RequestDonation, mutator: (draft: MutableModel<RequestDonation>) => MutableModel<RequestDonation> | void): RequestDonation;
+export declare const RequestPage: (new (init: ModelInit<RequestPage>) => RequestPage) & {
+  copyOf(source: RequestPage, mutator: (draft: MutableModel<RequestPage>) => MutableModel<RequestPage> | void): RequestPage;
 }

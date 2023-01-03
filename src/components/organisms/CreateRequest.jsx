@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { API } from "aws-amplify";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import { createRequestPage } from "../../graphql/mutations";
+import { DataStore } from "@aws-amplify/datastore";
+import { RequestPage } from "../../models";
 
 import Button from "../atoms/Button";
 import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
@@ -13,6 +15,8 @@ import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
 const Table = styled.div`
   height: 100%;
 `;
+
+const Wrapper = styled.form``;
 
 const StyledTextarea = styled.textarea`
   width: 98%;
@@ -87,33 +91,35 @@ export default function CreateRequest() {
   };
   return (
     <Table>
-      <InputOnlyBorderBottom
-        type="text"
-        name="title"
-        placeholder="제목"
-        value={state.title}
-        onChange={handleTitleChange}
-        minlength="4"
-        maxLength={30}
-        required
-      />
-      <InputOnlyBorderBottom
-        name="walletAddr"
-        placeholder="나의 지갑주소"
-        onChange={handleChange}
-        required
-      />
-      <StyledTextarea
-        name="description"
-        placeholder="요청 내용"
-        maxLength={500}
-        onChange={handleChange}
-        required
-      />
-      <TableBottom>
-        <Button title={"요청하기"} onClick={handleNewRequest} />
-        <Button title={"취소"} onClick={() => navigate(-1)} />
-      </TableBottom>
+      <Wrapper>
+        <InputOnlyBorderBottom
+          type="text"
+          name="title"
+          placeholder="제목"
+          value={state.title}
+          onChange={handleTitleChange}
+          minlength="4"
+          maxLength={30}
+          required
+        />
+        <InputOnlyBorderBottom
+          name="walletAddr"
+          placeholder="나의 지갑주소"
+          onChange={handleChange}
+          required
+        />
+        <StyledTextarea
+          name="description"
+          placeholder="요청 내용"
+          maxLength={500}
+          onChange={handleChange}
+          required
+        />
+        <TableBottom>
+          <Button title={"요청하기"} onClick={handleNewRequest} />
+          <Button title={"취소"} onClick={() => navigate(-1)} />
+        </TableBottom>
+      </Wrapper>
     </Table>
   );
 }
