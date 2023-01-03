@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -13,6 +14,8 @@ import InputOnlyBorderBottom from "../atoms/InputOnlyBorderBottom";
 const Table = styled.div`
   height: 100%;
 `;
+
+const Form = styled.form``;
 
 const StyledTextarea = styled.textarea`
   width: 98%;
@@ -41,6 +44,7 @@ const TableBottom = styled.div`
 `;
 
 export default function CreateRequest() {
+  const { register, handleSubmit } = useForm();
   const { user } = useAuthenticator((context) => [context.user]);
   const navigate = useNavigate();
   const [state, setState] = useState({
@@ -87,33 +91,43 @@ export default function CreateRequest() {
   };
   return (
     <Table>
-      <InputOnlyBorderBottom
-        type="text"
-        name="title"
-        placeholder="제목"
-        value={state.title}
-        onChange={handleTitleChange}
-        minlength="4"
-        maxLength={30}
-        required
-      />
-      <InputOnlyBorderBottom
-        name="walletAddr"
-        placeholder="나의 지갑주소"
-        onChange={handleChange}
-        required
-      />
-      <StyledTextarea
-        name="description"
-        placeholder="요청 내용"
-        maxLength={500}
-        onChange={handleChange}
-        required
-      />
-      <TableBottom>
-        <Button title={"요청하기"} onClick={handleNewRequest} />
-        <Button title={"취소"} onClick={() => navigate(-1)} />
-      </TableBottom>
+      <Form onSubmit={handleSubmit((data) => console.log(data))}>
+        <InputOnlyBorderBottom
+          id="title"
+          type="text"
+          name="title"
+          placeholder="제목"
+          {...register("title", {
+            required: true,
+            minLength: 4,
+            maxLength: 30,
+          })}
+        />
+        <InputOnlyBorderBottom
+          id="walletAddr"
+          name="walletAddr"
+          placeholder="나의 지갑주소"
+          {...register("walletAddr", {
+            required: true,
+            minLength: 42,
+            maxLength: 42,
+          })}
+        />
+        <StyledTextarea
+          id="description"
+          name="description"
+          placeholder="요청 내용"
+          {...register("walletAddr", {
+            required: true,
+            minLength: 10,
+            maxLength: 500,
+          })}
+        />
+        <TableBottom>
+          <Button title={"요청하기"} onClick={handleNewRequest} />
+          <Button title={"취소"} onClick={() => navigate(-1)} />
+        </TableBottom>
+      </Form>
     </Table>
   );
 }
