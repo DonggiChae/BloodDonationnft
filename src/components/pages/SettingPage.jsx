@@ -24,7 +24,7 @@ function SettingPage() {
     <SettingContainer>
       <SettingListContainer>
         <SettingListButton name="관리자 페이지" link="/admin" />
-        <SettingListButton name="헐혈증 발행" link="/mintnft" />
+        <SettingListButton name="헌혈증 발행" link="/mintnft" />
         <SettingListButton name="권한 확인" link="/checkrole" />
         <SettingListButton name="헌혈증 사용하기" link="/blooddonationuse" />
       </SettingListContainer>
