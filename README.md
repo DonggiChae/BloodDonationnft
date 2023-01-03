@@ -106,13 +106,19 @@ kaikas 지갑 로그인은 하지 않아도 요청할 수 있습니다.
 유저들이 사용하는 않는 기능들이 있습니다.
 
 <img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241723-4256d09f-8949-4a6d-84a0-55ced19b7fa0.png">
-관리자 페이지에서 다른 지갑에 역할을 부여할 수 있습니다.
+관리자 페이지에서  관리자의 권한을 가진 주소로 다른 주소에 역할을 부여할 수 있습니다.
 
 ![image](https://user-images.githubusercontent.com/69336797/210241840-6a0767ff-4a1f-4acd-960d-8fa0689b4cfe.png)
 헌혈자의 지갑 주소를 입력하고 헌혈 종류, 헌혈한 지점을 선택하면 헌혈증을 발행할 수 있습니다.
 
 <img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210242018-963ef681-caaf-4fd4-87ad-fde986f7f7fc.png">
-주소의 역할을 확인할 수 있습니다.
+ 지갑 주소의 역할을 확인할 수 있습니다.
+ 
+ 
+ ![image](https://user-images.githubusercontent.com/69336797/210254936-6af26211-9f87-4c59-86e1-6859bb2d9f35.png)
+병원의 권한을 가진 주소로 헌혈증을 사용할 수 있습니다. 
+ 
 
+## 지갑 로그인과 헌혈증 웹 로그인
 
 
