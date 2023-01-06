@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "BloodDonationV1",
+  "AppSyncApiName": "BloodDonationnftcontractV1",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
@@ -8,5 +8,5 @@
       "Outputs.UserPoolId"
     ]
   },
-  "AuthModeLastUpdated": "2023-01-03T14:55:20.467Z"
+  "AuthModeLastUpdated": "2023-01-05T12:12:10.589Z"
 }

@@ -25,6 +25,7 @@ export default function RequestPageUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
+    type: undefined,
     title: undefined,
     description: undefined,
     at: undefined,
@@ -32,6 +33,7 @@ export default function RequestPageUpdateForm(props) {
     walletAddr: undefined,
     user: undefined,
   };
+  const [type, setType] = React.useState(initialValues.type);
   const [title, setTitle] = React.useState(initialValues.title);
   const [description, setDescription] = React.useState(
     initialValues.description
@@ -43,6 +45,7 @@ export default function RequestPageUpdateForm(props) {
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...requestPageRecord };
+    setType(cleanValues.type);
     setTitle(cleanValues.title);
     setDescription(cleanValues.description);
     setAt(cleanValues.at);
@@ -61,9 +64,10 @@ export default function RequestPageUpdateForm(props) {
   }, [id, requestPage]);
   React.useEffect(resetStateValues, [requestPageRecord]);
   const validations = {
+    type: [{ type: "Required" }],
     title: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    at: [{ type: "Required" }],
+    at: [],
     state: [{ type: "Required" }],
     walletAddr: [{ type: "Required" }],
     user: [{ type: "Required" }],
@@ -103,6 +107,7 @@ export default function RequestPageUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
+          type,
           title,
           description,
           at,
@@ -151,6 +156,36 @@ export default function RequestPageUpdateForm(props) {
       {...getOverrideProps(overrides, "RequestPageUpdateForm")}
     >
       <TextField
+        label="Type"
+        isRequired={true}
+        isReadOnly={false}
+        defaultValue={type}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              type: value,
+              title,
+              description,
+              at,
+              state,
+              walletAddr,
+              user,
+            };
+            const result = onChange(modelFields);
+            value = result?.type ?? value;
+          }
+          if (errors.type?.hasError) {
+            runValidationTasks("type", value);
+          }
+          setType(value);
+        }}
+        onBlur={() => runValidationTasks("type", type)}
+        errorMessage={errors.type?.errorMessage}
+        hasError={errors.type?.hasError}
+        {...getOverrideProps(overrides, "type")}
+      ></TextField>
+      <TextField
         label="Title"
         isRequired={true}
         isReadOnly={false}
@@ -159,6 +194,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title: value,
               description,
               at,
@@ -188,6 +224,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title,
               description: value,
               at,
@@ -210,7 +247,7 @@ export default function RequestPageUpdateForm(props) {
       ></TextField>
       <TextField
         label="At"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         type="datetime-local"
         defaultValue={at && convertToLocal(new Date(at))}
@@ -218,6 +255,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title,
               description,
               at: value,
@@ -247,6 +285,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title,
               description,
               at,
@@ -276,6 +315,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title,
               description,
               at,
@@ -305,6 +345,7 @@ export default function RequestPageUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              type,
               title,
               description,
               at,

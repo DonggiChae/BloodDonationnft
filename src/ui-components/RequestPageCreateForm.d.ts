@@ -13,6 +13,7 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RequestPageCreateFormInputValues = {
+    type?: string;
     title?: string;
     description?: string;
     at?: string;
@@ -21,6 +22,7 @@ export declare type RequestPageCreateFormInputValues = {
     user?: string;
 };
 export declare type RequestPageCreateFormValidationValues = {
+    type?: ValidationFunction<string>;
     title?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
     at?: ValidationFunction<string>;
@@ -31,6 +33,7 @@ export declare type RequestPageCreateFormValidationValues = {
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RequestPageCreateFormOverridesProps = {
     RequestPageCreateFormGrid?: FormProps<GridProps>;
+    type?: FormProps<TextFieldProps>;
     title?: FormProps<TextFieldProps>;
     description?: FormProps<TextFieldProps>;
     at?: FormProps<TextFieldProps>;

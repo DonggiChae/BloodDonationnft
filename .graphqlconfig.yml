@@ -1,6 +1,6 @@
 projects:
-  blooddonationnftcont:
-    schemaPath: src/graphql/schema.json
+  BloodDonationnftcontractV1:
+    schemaPath: amplify/backend/api/BloodDonationnftcontractV1/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -10,6 +10,9 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
+        region: ap-northeast-2
+        apiId: null
+        maxDepth: 2
 extensions:
   amplify:
     version: 3

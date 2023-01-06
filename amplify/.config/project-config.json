@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "BloodDonationV1",
+  "projectName": "BloodDonationnftcont",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {

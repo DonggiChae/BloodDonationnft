@@ -73,7 +73,7 @@ export default function RequestTemplate({ contentInfo }) {
   const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
 
   const postsData = (posts) => {
-    if (posts) {
+    if (posts.length > 0) {
       let result = posts.slice(offset, offset + limit);
       return result;
     }
@@ -94,22 +94,24 @@ export default function RequestTemplate({ contentInfo }) {
               <TableHeaderContent>날짜</TableHeaderContent>
             </TableHeader>
             <TableContent>
-              {contentInfo &&
-                postsData(contentInfo).map((content, index) => (
-                  <StyledLink
-                    key={content.id}
-                    to={`/requestdonation/${content.id}`}
-                  >
-                    <ContentWrapper>
-                      <Content>{index + 1}</Content>
-                      <Content>{content.title}</Content>
-                      <Content>{content.state}</Content>
-                      <Content>
-                        {content.at.slice(0, 16).replace("T", " ")}
-                      </Content>
-                    </ContentWrapper>
-                  </StyledLink>
-                ))}
+              {contentInfo.length > 0 &&
+                postsData(contentInfo)
+                  .filter((content) => content._deleted !== true)
+                  .map((content, index) => (
+                    <StyledLink
+                      key={content.id}
+                      to={`/requestdonation/${content.id}`}
+                    >
+                      <ContentWrapper>
+                        <Content>{index + 1}</Content>
+                        <Content>{content.title}</Content>
+                        <Content>{content.state}</Content>
+                        <Content>
+                          {content.at.slice(0, 16).replace("T", " ")}
+                        </Content>
+                      </ContentWrapper>
+                    </StyledLink>
+                  ))}
             </TableContent>
             <TableBottom>
               <TableHeaderContent>

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "BloodDonationV1",
+    "apiName": "BloodDonationnftcontractV1",
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
@@ -13,8 +13,9 @@
       },
       {
         "mode": "API_KEY",
-        "expirationTime": 30,
-        "keyDescription": "api key description"
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2023-01-12T12:05:00.013Z",
+        "keyDescription": ""
       }
     ],
     "conflictResolution": {

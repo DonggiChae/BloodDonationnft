@@ -37,7 +37,7 @@ const EmptyBox = styled.div``;
 
 const StyledTextarea = styled.div`
   width: 100%;
-  height: 45%;
+  height: 280px;
   margin-left: 8px;
   line-height: 1.5;
   padding: 0.7rem 1rem;
@@ -60,15 +60,18 @@ export default function RequestDetail() {
   const [requestState, setRequestState] = useState([]);
   const [updateState, setUpdateState] = useState(false);
   const { user } = useAuthenticator((context) => [context.user]);
-
-  useEffect(() => {
-    const getRequest = async () => {
+  const getRequest = async () => {
+    try {
       const res = await API.graphql({
         query: getRequestPage,
         variables: { id: contentId },
       });
       setRequestState(res.data.getRequestPage);
-    };
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
     getRequest();
   }, [contentId]);
 
@@ -93,7 +96,10 @@ export default function RequestDetail() {
             {requestState.description}{" "}
           </StyledTextarea>
           <TableBottom>
-            <Button title={"뒤로가기"} onClick={() => navigate(-1)} />
+            <Button
+              title={"뒤로가기"}
+              onClick={() => navigate("/requestdonation")}
+            />
             <EmptyBox></EmptyBox>
             {user && user.username === requestState.user && (
               <Button title={"수정하기"} onClick={() => setUpdateState(true)} />

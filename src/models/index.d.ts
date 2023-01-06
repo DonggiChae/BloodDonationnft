@@ -12,9 +12,10 @@ type EagerRequestPage = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly type: string;
   readonly title: string;
   readonly description: string;
-  readonly at: string;
+  readonly at?: string | null;
   readonly state: string;
   readonly walletAddr: string;
   readonly user: string;
@@ -28,9 +29,10 @@ type LazyRequestPage = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly type: string;
   readonly title: string;
   readonly description: string;
-  readonly at: string;
+  readonly at?: string | null;
   readonly state: string;
   readonly walletAddr: string;
   readonly user: string;
