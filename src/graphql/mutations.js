@@ -8,6 +8,7 @@ export const createRequestPage = /* GraphQL */ `
   ) {
     createRequestPage(input: $input, condition: $condition) {
       id
+      type
       title
       description
       at
@@ -16,6 +17,10 @@ export const createRequestPage = /* GraphQL */ `
       user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
@@ -26,14 +31,19 @@ export const updateRequestPage = /* GraphQL */ `
   ) {
     updateRequestPage(input: $input, condition: $condition) {
       id
+      type
       title
       description
       at
       state
-      user
       walletAddr
+      user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
@@ -44,14 +54,19 @@ export const deleteRequestPage = /* GraphQL */ `
   ) {
     deleteRequestPage(input: $input, condition: $condition) {
       id
+      type
       title
       description
       at
       state
-      user
       walletAddr
+      user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;

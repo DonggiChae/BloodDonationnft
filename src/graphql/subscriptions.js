@@ -7,13 +7,19 @@ export const onCreateRequestPage = /* GraphQL */ `
   ) {
     onCreateRequestPage(filter: $filter) {
       id
+      type
       title
       description
       at
       state
       walletAddr
+      user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
@@ -23,13 +29,19 @@ export const onUpdateRequestPage = /* GraphQL */ `
   ) {
     onUpdateRequestPage(filter: $filter) {
       id
+      type
       title
       description
       at
       state
       walletAddr
+      user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
@@ -39,13 +51,19 @@ export const onDeleteRequestPage = /* GraphQL */ `
   ) {
     onDeleteRequestPage(filter: $filter) {
       id
+      type
       title
       description
       at
       state
       walletAddr
+      user
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;

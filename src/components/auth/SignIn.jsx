@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Authenticator,
@@ -6,8 +7,12 @@ import {
   defaultTheme,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { useAuthenticator } from "@aws-amplify/ui-react";
+import { useEffect } from "react";
 
 export default function SignIn() {
+  const { user } = useAuthenticator((context) => [context.user]);
+  const navigate = useNavigate();
   const { tokens } = defaultTheme;
   const theme = {
     name: "pretty-princess",
@@ -50,11 +55,17 @@ export default function SignIn() {
     },
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
     <ThemeProvider theme={theme}>
       <Authenticator
         loginMechanisms={["email"]}
-        socialProviders={["google"]}
+        // socialProviders={["google"]}
         signUpAttributes={[]}
       >
         {({ signOut, user }) => {

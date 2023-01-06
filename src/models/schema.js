@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "RequestDonation": {
-            "name": "RequestDonation",
+        "RequestPage": {
+            "name": "RequestPage",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,25 +10,53 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "title": {
                     "name": "title",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "at": {
+                    "name": "at",
+                    "isArray": false,
+                    "type": "AWSDateTime",
                     "isRequired": false,
                     "attributes": []
                 },
-                "contents": {
-                    "name": "contents",
+                "state": {
+                    "name": "state",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
-                "status": {
-                    "name": "status",
+                "walletAddr": {
+                    "name": "walletAddr",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "user": {
+                    "name": "user",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -36,14 +64,8 @@ export const schema = {
                     "isArray": false,
                     "type": "AWSDateTime",
                     "isRequired": false,
-                    "attributes": []
-                },
-                "walletAddress": {
-                    "name": "walletAddress",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": true
                 },
                 "updatedAt": {
                     "name": "updatedAt",
@@ -55,11 +77,22 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "RequestDonations",
+            "pluralName": "RequestPages",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byAt",
+                        "queryField": "sortByAt",
+                        "fields": [
+                            "type",
+                            "at"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -67,6 +100,12 @@ export const schema = {
                         "rules": [
                             {
                                 "allow": "public",
+                                "operations": [
+                                    "read"
+                                ]
+                            },
+                            {
+                                "allow": "private",
                                 "operations": [
                                     "create",
                                     "update",
@@ -78,13 +117,12 @@ export const schema = {
                                 "provider": "userPools",
                                 "ownerField": "owner",
                                 "allow": "owner",
-                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
-                                    "delete",
-                                    "read"
-                                ]
+                                    "delete"
+                                ],
+                                "identityClaim": "cognito:username"
                             }
                         ]
                     }
@@ -94,6 +132,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "codegenVersion": "3.3.2",
-    "version": "1258c7d764568b8f7e7545d54063d184"
+    "codegenVersion": "3.3.4",
+    "version": "e56ea6ede8e98583c3a39def161f8a72"
 };
