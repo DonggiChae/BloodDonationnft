@@ -7,7 +7,7 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "BloodDonationnftcont"
+          "resourceName": "BloodDonationnftcontactV1"
         }
       ],
       "output": {
@@ -19,7 +19,7 @@
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
-                "userPoolId": "authBloodDonationnftcont"
+                "userPoolId": "authBloodDonationnftcontractV1"
               }
             }
           ],
