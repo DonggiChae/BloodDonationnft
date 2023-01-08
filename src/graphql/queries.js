@@ -14,9 +14,6 @@ export const getRequestPage = /* GraphQL */ `
       user
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -39,47 +36,9 @@ export const listRequestPages = /* GraphQL */ `
         user
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncRequestPages = /* GraphQL */ `
-  query SyncRequestPages(
-    $filter: ModelRequestPageFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncRequestPages(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        type
-        title
-        description
-        at
-        state
-        walletAddr
-        user
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -111,13 +70,9 @@ export const sortByAt = /* GraphQL */ `
         user
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
     }
   }
 `;

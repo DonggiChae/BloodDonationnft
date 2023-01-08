@@ -24,7 +24,7 @@ import RequestCreate from "./components/organisms/RequestCreate";
 import CheckPage from "./components/pages/CheckPage";
 import BloodDonationUse from "./components/pages/BloodDonationUse";
 import RequestDetail from "./components/organisms/RequestDetail";
-import BDDetail from "./components/pages/BDDetail";
+import BDDetailPage from "./components/pages/BDDetailPage";
 
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
@@ -148,7 +148,7 @@ function App() {
                   <Route path=":contentId" element={<RequestDetail />} />
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
-                <Route path="/bddetail" element={<BDDetail />} />
+                <Route path="/bddetail" element={<BDDetailPage />} />
               </Routes>
             </AppWrapper>
           </ThemeProvider>
