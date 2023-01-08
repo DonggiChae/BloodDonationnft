@@ -19,5 +19,8 @@
         "BloodDonationnftcontract": {}
       }
     }
+  },
+  "dev": {
+    "awscloudformation": {}
   }
 }
