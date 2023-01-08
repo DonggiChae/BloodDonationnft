@@ -36,7 +36,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     string usedPhotoURI = "ipfs://QmSh32dKugoo3e9XXvqKZS6nDYb2EMEBZLLv5TebgZ6XdE";
     bool public used = false;
 
-
+    //현재 사용하는 URI 확인
     function _notUsedPhotoURI() public view returns (string memory) {
         return notUsedPhotoURI;
     }
@@ -45,6 +45,8 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         return usedPhotoURI;
     }
 
+
+    //헌혈증 이미지 변경시 URI 변경
     function setNotUsedURI(string memory _newNotUsedURI) public onlyRole(DEFAULT_ADMIN_ROLE){
         notUsedPhotoURI = _newNotUsedURI;
     }
@@ -53,13 +55,15 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         usedPhotoURI = _newUsedURI;
     }
 
-    function use(uint256 tokenId) public onlyRole(HOSPITAL) {
-        require(msg.sender == _BDList[tokenId].ownerHistory[_BDList[tokenId].ownerHistory.length-1], "You have to owned a token!");
-        require(_BDList[tokenId].used == false, "Already used.");
-        _BDList[tokenId].used = !_BDList[tokenId].used;
-        _BDList[tokenId].photo = usedPhotoURI;
+    //헌혈증 사용
+    function use(uint256 _tokenId) public onlyRole(HOSPITAL) {
+        require(msg.sender == _BDList[_tokenId].ownerHistory[_BDList[_tokenId].ownerHistory.length-1], "You have to owned a token!");
+        require(_BDList[_tokenId].used == false, "Already used.");
+        _BDList[_tokenId].used = !_BDList[_tokenId].used;
+        _BDList[_tokenId].photo = usedPhotoURI;
     }
 
+    //여러개의 헌혈증 사용
     function useBatch(uint256[] memory tokenIds) public onlyRole(HOSPITAL) {
         require(tokenIds.length > 0, "Nothing entered.");
         for (uint256 i = 0; i < tokenIds.length; i++) {
@@ -67,26 +71,32 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         }
     }
 
-    //add a Admin account 
+    //헌형증 사용여부 확인
+    function checkUse(uint256 _tokenId) public view returns(bool) {
+        return _BDList[_tokenId].used;
+    }
+
+    //관리자 추가
     function addAdmin(address account) public  onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(DEFAULT_ADMIN_ROLE, account);
     }
 
-    //renounce a Admin Role
+    //관리자 권한 포기
     function renounceAdmin()public onlyRole(DEFAULT_ADMIN_ROLE){
         renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    // Give roles so that only authorized people can use BloodDonations.
+    // 병원 권한 주기
     function grantHospitalRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(HOSPITAL, account);
     }
 
+    // 적십자 권한 주기
     function grantRedCrossRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(REDCROSS, account);
     }
 
-    // check Roles
+    // 권한 확인
     function checkHospitalRole(address account) public view {
         _checkRole(HOSPITAL, account);
     }
@@ -100,9 +110,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     }
 
 
-/**
-   * @notice _mint() is from ERC721.sol
-   */
+    // 헌혈증 발행
     function mintBD(string memory title, string memory location, string memory description , address to) public onlyRole(REDCROSS){
         uint256 tokenId = totalSupply() + 1;
 
@@ -127,7 +135,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         emit BDUploaded(tokenId, notUsedPhotoURI, title, location, description, block.timestamp);
     }
 
-    
+    // 헌혈증 보내기
     function transferOwnership(uint256 tokenId, address to) public  {
         safeTransferFrom(msg.sender, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
@@ -142,13 +150,14 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         }
     }
 
-
+    // 전체 발행 헌혈증 개수 확인
     function getTotalBDCount () public view returns (uint) {
         return totalSupply();
     }
 
+    // 헌형증 데이터 받기
     function getBD (uint tokenId) public view
-    returns(uint256, address[] memory, string memory, string memory, string memory, string memory, uint256) {
+    returns(uint256, address[] memory, string memory, string memory, string memory, string memory, uint256, bool) {
         require(_BDList[tokenId].tokenId != 0, "Blood does not exist");
         return (
             _BDList[tokenId].tokenId,
@@ -157,6 +166,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
             _BDList[tokenId].title,
             _BDList[tokenId].location,
             _BDList[tokenId].description,
-            _BDList[tokenId].timestamp);
+            _BDList[tokenId].timestamp,
+            _BDList[tokenId].used);
     }
 }
