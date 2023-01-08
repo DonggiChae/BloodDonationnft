@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
 import {
   Authenticator,
   ThemeProvider,
@@ -8,11 +6,55 @@ import {
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { useEffect } from "react";
+import styled from "styled-components";
+import Button from "../atoms/Button";
+
+const Wrapper = styled.div`
+  margin-top: 20px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid ${({ theme }) => theme.colors.secondRed};
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  width: 500px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 30px;
+`;
+const Content = styled.div`
+  margin: 20px;
+`;
 
 export default function SignIn() {
   const { user } = useAuthenticator((context) => [context.user]);
-  const navigate = useNavigate();
+  console.log(user.attributes.preferred_username);
+
+  const formFields = {
+    signUp: {
+      email: {
+        order: 1,
+      },
+      family_name: {
+        order: 2,
+      },
+      preferred_username: {
+        order: 4,
+      },
+      birthdate: {
+        order: 3,
+      },
+      password: {
+        order: 5,
+      },
+      confirm_password: {
+        order: 6,
+      },
+    },
+  };
+  const signUpAttributes = ["birthdate", "family_name", "preferred_username"];
+
   const { tokens } = defaultTheme;
   const theme = {
     name: "pretty-princess",
@@ -55,25 +97,22 @@ export default function SignIn() {
     },
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user]);
-
   return (
     <ThemeProvider theme={theme}>
       <Authenticator
         loginMechanisms={["email"]}
+        formFields={formFields}
         // socialProviders={["google"]}
-        signUpAttributes={[]}
+        signUpAttributes={signUpAttributes}
       >
         {({ signOut, user }) => {
           return (
-            <main>
-              <h1>Hello {user.username}</h1>
-              <button onClick={signOut}>Sign out</button>
-            </main>
+            <Wrapper>
+              <Content>
+                {user.attributes.preferred_username}님 로그인 되었습니다.
+              </Content>
+              <Button onClick={signOut} title="Sign out" />
+            </Wrapper>
           );
         }}
       </Authenticator>
