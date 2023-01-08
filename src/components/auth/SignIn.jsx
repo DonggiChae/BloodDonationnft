@@ -29,7 +29,6 @@ const Content = styled.div`
 
 export default function SignIn() {
   const { user } = useAuthenticator((context) => [context.user]);
-  console.log(user.attributes.preferred_username);
 
   const formFields = {
     signUp: {
@@ -109,7 +108,7 @@ export default function SignIn() {
           return (
             <Wrapper>
               <Content>
-                {user.attributes.preferred_username}님 로그인 되었습니다.
+                {user?.attributes.preferred_username}님 로그인 되었습니다.
               </Content>
               <Button onClick={signOut} title="Sign out" />
             </Wrapper>
