@@ -97,7 +97,6 @@ kaikas 지갑 로그인은 하지 않아도 요청할 수 있습니다.
 ![image](https://user-images.githubusercontent.com/69336797/210241392-fb08e38f-f5ac-41a3-8fba-4bb4d9509e9d.png)
 전국에 헌혈의 집 위치를 볼 수 있습니다.
 
-
 ### 설정
 
 <img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241581-5ddc5e42-dfe1-4fd4-a966-9536066f7e97.png">
@@ -116,8 +115,6 @@ kaikas 지갑 로그인은 하지 않아도 요청할 수 있습니다.
  
  ![image](https://user-images.githubusercontent.com/69336797/210254936-6af26211-9f87-4c59-86e1-6859bb2d9f35.png)
 병원의 권한을 가진 주소로 헌혈증을 사용할 수 있습니다. 
- 
+
 
 ## 지갑 로그인과 헌혈증 웹 로그인
-
-
