@@ -28,4 +28,13 @@ const getNFT = (user, setFeedState) => {
     );
 };
 
+export const getNFTDetail = async (id) => {
+  try {
+    const res = await BloodDonationContract.methods.getBD(id).call();
+    return res;
+  } catch (error) {
+    toast.error(error.toString(), { position: toast.POSITION.TOP_CENTER });
+  }
+};
+
 export default getNFT;

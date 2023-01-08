@@ -157,7 +157,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
     // 헌형증 데이터 받기
     function getBD (uint tokenId) public view
-    returns(uint256, address[] memory, string memory, string memory, string memory, string memory, uint256, bool) {
+    returns(uint256, address[] memory, string memory, string memory, string memory, string memory, uint256) {
         require(_BDList[tokenId].tokenId != 0, "Blood does not exist");
         return (
             _BDList[tokenId].tokenId,
@@ -166,7 +166,7 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
             _BDList[tokenId].title,
             _BDList[tokenId].location,
             _BDList[tokenId].description,
-            _BDList[tokenId].timestamp,
-            _BDList[tokenId].used);
+            _BDList[tokenId].timestamp
+            );
     }
 }

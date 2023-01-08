@@ -1,11 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import "./LocationPage.css";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  .info-wrapper {
+    display: flex;
+    width: 250px;
+    font-weight: 500;
+  }
+
+  .info-li {
+    margin: 15px;
+    line-height: 150%;
+  }
 `;
 
 const MapWrapper = styled.div`

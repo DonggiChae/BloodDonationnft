@@ -3,9 +3,7 @@
     "blooddonationnftcont": {
       "dependsOn": [
         {
-          "attributes": [
-            "UserPoolId"
-          ],
+          "attributes": ["UserPoolId"],
           "category": "auth",
           "resourceName": "blooddonationnftcontabc8914b"
         }
@@ -22,7 +20,7 @@
           ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2023-02-07T06:57:36.814Z",
+              "apiKeyExpirationDate": "2023-02-07T02:18:04.418Z",
               "apiKeyExpirationDays": 30,
               "description": ""
             },
@@ -40,23 +38,15 @@
       "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
+        "mfaTypes": ["SMS"],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": ["EMAIL"],
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+        "usernameAttributes": ["EMAIL"],
+        "verificationMechanisms": ["EMAIL"]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"

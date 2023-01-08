@@ -1,27 +1,20 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "BloodDonationnftcontract",
+    "apiName": "blooddonationnftcont",
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 30,
-      "apiKeyExpirationDate": "2023-02-07T02:18:04.418Z",
-      "keyDescription": "api key description"
+      "apiKeyExpirationDate": "2023-02-07T07:20:29.338Z",
+      "keyDescription": ""
     },
     "additionalAuthTypes": [
       {
-        "mode": "AWS_IAM"
-      },
-      {
         "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authBloodDonationnftcontract"
+        "cognitoUserPoolId": "authblooddonationnftcontabc8914b"
       }
     ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    }
+    "conflictResolution": {}
   }
 }
