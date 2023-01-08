@@ -20,10 +20,11 @@ import AdminPage from "./components/pages/AdminPage";
 import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
 import RequestPage from "./components/pages/RequestPage";
-import CreateRequest from "./components/organisms/CreateRequest";
+import RequestCreate from "./components/organisms/RequestCreate";
 import CheckPage from "./components/pages/CheckPage";
 import BloodDonationUse from "./components/pages/BloodDonationUse";
 import RequestDetail from "./components/organisms/RequestDetail";
+import BDDetail from "./components/pages/BDDetail";
 
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
@@ -143,10 +144,11 @@ function App() {
                   element={<BloodDonationUse />}
                 />
                 <Route path="/requestdonation" element={<RequestPage />}>
-                  <Route path="createRequest" element={<CreateRequest />} />
+                  <Route path="requestCreate" element={<RequestCreate />} />
                   <Route path=":contentId" element={<RequestDetail />} />
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
+                <Route path="/bddetail" element={<BDDetail />} />
               </Routes>
             </AppWrapper>
           </ThemeProvider>

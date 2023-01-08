@@ -27,6 +27,7 @@ function SettingPage() {
         <SettingListButton name="헌혈증 발행" link="/mintnft" />
         <SettingListButton name="권한 확인" link="/checkrole" />
         <SettingListButton name="헌혈증 사용하기" link="/blooddonationuse" />
+        <SettingListButton name="헌혈증 상세정보" link="/bddetail" />
       </SettingListContainer>
     </SettingContainer>
   );

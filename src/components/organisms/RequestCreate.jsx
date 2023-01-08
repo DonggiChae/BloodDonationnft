@@ -10,6 +10,8 @@ import { createRequestPage } from "../../graphql/mutations";
 
 import Button from "../atoms/Button";
 
+import { isValidAddress } from "../../utils/crypto";
+
 const Table = styled.div`
   height: 100%;
   .inputWrapper {
@@ -97,7 +99,7 @@ const TableBottom = styled.div`
   grid-template-columns: 6fr 1fr;
 `;
 
-export default function CreateRequest() {
+export default function RequestCreate() {
   const {
     register,
     handleSubmit,
@@ -107,35 +109,41 @@ export default function CreateRequest() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    var d = new Date();
-    API.graphql({
-      query: createRequestPage,
-      variables: {
-        input: {
-          title: data.title,
-          description: data.description,
-          at: new Date(
-            d.getTime() - d.getTimezoneOffset() * 60000
-          ).toISOString(),
-          state: "요청중",
-          walletAddr: data.walletAddr,
-          user: user.username,
-          type: "require",
+    if (isValidAddress(data.walletAddr)) {
+      let d = new Date();
+      API.graphql({
+        query: createRequestPage,
+        variables: {
+          input: {
+            title: data.title,
+            description: data.description,
+            at: new Date(
+              d.getTime() - d.getTimezoneOffset() * 60000
+            ).toISOString(),
+            state: "요청중",
+            walletAddr: data.walletAddr,
+            user: user.username,
+            type: "require",
+          },
         },
-      },
-      authMode: "AMAZON_COGNITO_USER_POOLS",
-    })
-      .then(() => {
-        toast.success("성공적으로 등록되었습니다.", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        navigate("/requestdonation");
+        authMode: "AMAZON_COGNITO_USER_POOLS",
       })
-      .catch((error) => {
-        toast.error(error.errors[0].message, {
-          position: toast.POSITION.TOP_CENTER,
+        .then(() => {
+          toast.success("성공적으로 등록되었습니다.", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          navigate("/requestdonation");
+        })
+        .catch((error) => {
+          toast.error(error.errors[0].message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
         });
+    } else {
+      toast.error("유효하지 않은 지갑주소입니다.", {
+        position: toast.POSITION.TOP_CENTER,
       });
+    }
   };
   return (
     <Table>

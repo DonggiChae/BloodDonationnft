@@ -10,6 +10,8 @@ import { updateRequestPage, deleteRequestPage } from "../../graphql/mutations";
 
 import Button from "../atoms/Button";
 
+import { isValidAddress } from "../../utils/crypto";
+
 const Table = styled.div`
   height: 100%;
   .inputWrapper {
@@ -159,33 +161,39 @@ export default function RequestUpdate({ setUpdateState, requestState }) {
       });
 
   const onSubmit = (data) => {
-    // var d = new Date();
-    API.graphql({
-      query: updateRequestPage,
-      variables: {
-        input: {
-          id: contentId,
-          title: data.title,
-          description: data.description,
-          // at: new Date(
-          //   d.getTime() - d.getTimezoneOffset() * 60000
-          // ).toISOString(),
-          state: data.state,
-          walletAddr: data.walletAddr,
-          user: user.username,
-          _version: data._version,
+    if (isValidAddress(data.walletAddr)) {
+      // var d = new Date();
+      API.graphql({
+        query: updateRequestPage,
+        variables: {
+          input: {
+            id: contentId,
+            title: data.title,
+            description: data.description,
+            // at: new Date(
+            //   d.getTime() - d.getTimezoneOffset() * 60000
+            // ).toISOString(),
+            state: data.state,
+            walletAddr: data.walletAddr,
+            user: user.username,
+            _version: data._version,
+          },
         },
-      },
-      authMode: "AMAZON_COGNITO_USER_POOLS",
-    })
-      .then(() => {
-        navigate("/requestdonation");
+        authMode: "AMAZON_COGNITO_USER_POOLS",
       })
-      .catch((error) => {
-        toast.error(error.errors[0].message, {
-          position: toast.POSITION.TOP_CENTER,
+        .then(() => {
+          navigate("/requestdonation");
+        })
+        .catch((error) => {
+          toast.error(error.errors[0].message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
         });
+    } else {
+      toast.error("유효하지 않은 지갑주소입니다.", {
+        position: toast.POSITION.TOP_CENTER,
       });
+    }
   };
 
   useEffect(() => {
