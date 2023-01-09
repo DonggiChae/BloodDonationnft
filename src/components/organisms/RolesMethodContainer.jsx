@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import { isValidAddress } from "../../utils/crypto";
 
 const Container = styled.div`
   border: 3px solid ${({ theme }) => theme.colors.secondRed};
@@ -33,7 +34,13 @@ export default function RolesMethodContainer({ title, method, placeholder }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.dismiss();
-    method(state.account).then(() => e.target.reset());
+    if (isValidAddress(state.account)) {
+      method(state.account).then(() => e.target.reset());
+    } else {
+      toast.error("주소가 정확하지 않습니다.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
   };
   return (
     <Container>

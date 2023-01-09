@@ -23,11 +23,12 @@ function SettingPage() {
   return (
     <SettingContainer>
       <SettingListContainer>
-        <SettingListButton name="관리자 페이지" link="/admin" />
+        <SettingListButton name="헌혈증 조회하기" link="/bddetail" />
         <SettingListButton name="헌혈증 발행" link="/mintnft" />
-        <SettingListButton name="권한 확인" link="/checkrole" />
         <SettingListButton name="헌혈증 사용하기" link="/blooddonationuse" />
-        <SettingListButton name="헌혈증 상세정보" link="/bddetail" />
+        <SettingListButton name="관리자 페이지" link="/admin" />
+        <SettingListButton name="권한 확인" link="/checkrole" />
+        <SettingListButton name="권한 취소하기" link="/revokepage" />
       </SettingListContainer>
     </SettingContainer>
   );

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import RolesMethodContainer from "../organisms/RolesMethodContainer";
 import {
-  addAdmin,
-  grantHospitalRole,
-  grantRedCrossRole,
+  renounceAdmin,
+  revokeHospitalRole,
+  revokeRedCrossRole,
 } from "../../ContractMethods/RolesMethods";
 
 const Container = styled.div`
@@ -14,21 +14,20 @@ const Container = styled.div`
   margin-top: 150px;
 `;
 
-export default function AdminPage() {
+export default function RevokePage() {
   return (
     <Container>
       <RolesMethodContainer
-        title={"적십자 추가하기"}
-        method={grantRedCrossRole}
+        title={"적십자권한 취소하기"}
+        method={revokeRedCrossRole}
         placeholedr={"설정할 지갑주소"}
       />
       <RolesMethodContainer
-        title={"병원 추가하기"}
-        method={grantHospitalRole}
+        title={"병원권한 취소하기"}
+        method={revokeHospitalRole}
         placeholedr={"설정할 지갑주소"}
       />
-
-      <RolesMethodContainer title={"관리자 추가하기"} method={addAdmin} />
+      <RolesMethodContainer title={"관리자 포기하기"} method={renounceAdmin} />
     </Container>
   );
 }

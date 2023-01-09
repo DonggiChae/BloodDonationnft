@@ -125,3 +125,37 @@ export const checkAdminRole = async (account) => {
       })
     );
 };
+
+export const revokeRedCrossRole = async (account) => {
+  await BloodDonationContract.methods
+    .revokeRedCrossRole(account)
+    .send({
+      from: window.klaytn.selectedAddress,
+      gas: 350000,
+    })
+    .then(() =>
+      toast.success(`${account}로부터 헌혈의 집 권한을 취소하였습니다. `, {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    )
+    .catch((error) =>
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
+    );
+};
+
+export const revokeHospitalRole = async (account) => {
+  await BloodDonationContract.methods
+    .revokeHospitalRole(account)
+    .send({
+      from: window.klaytn.selectedAddress,
+      gas: 350000,
+    })
+    .then(() =>
+      toast.success(`${account}로부터 병원 권한을 취소하였습니다. `, {
+        position: toast.POSITION.TOP_CENTER,
+      })
+    )
+    .catch((error) =>
+      toast.error("권한이 없습니다.", { position: toast.POSITION.TOP_CENTER })
+    );
+};

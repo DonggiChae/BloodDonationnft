@@ -25,6 +25,7 @@ import CheckPage from "./components/pages/CheckPage";
 import BloodDonationUse from "./components/pages/BloodDonationUse";
 import RequestDetail from "./components/organisms/RequestDetail";
 import BDDetailPage from "./components/pages/BDDetailPage";
+import RevokePage from "./components/pages/RevokePage";
 
 import { Amplify } from "aws-amplify";
 import { Authenticator } from "@aws-amplify/ui-react";
@@ -149,6 +150,7 @@ function App() {
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />
                 <Route path="/bddetail" element={<BDDetailPage />} />
+                <Route path="/revokepage" element={<RevokePage />} />
               </Routes>
             </AppWrapper>
           </ThemeProvider>
