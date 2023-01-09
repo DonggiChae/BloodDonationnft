@@ -5,7 +5,6 @@ import {
   defaultTheme,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import { useAuthenticator } from "@aws-amplify/ui-react";
 import styled from "styled-components";
 import Button from "../atoms/Button";
 
@@ -28,8 +27,6 @@ const Content = styled.div`
 `;
 
 export default function SignIn() {
-  const { user } = useAuthenticator((context) => [context.user]);
-
   const formFields = {
     signUp: {
       email: {
@@ -101,7 +98,6 @@ export default function SignIn() {
       <Authenticator
         loginMechanisms={["email"]}
         formFields={formFields}
-        // socialProviders={["google"]}
         signUpAttributes={signUpAttributes}
       >
         {({ signOut, user }) => {

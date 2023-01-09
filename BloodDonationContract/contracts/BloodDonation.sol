@@ -25,9 +25,9 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         uint256 tokenId;                       // Unique token id
         address[] ownerHistory;                // History of all previous owners
         string photo;                          // BD Photo URI
-        string title;                          // Title of photo
+        string title;                          // Title
         string location;                       // Location where did BloodDonation
-        string description;                    // Short description about the photo
+        string description;                    // Short description
         uint256 timestamp;                     // Uploaded time issued
         bool used;                             // Check if used
     }
@@ -81,11 +81,6 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
         grantRole(DEFAULT_ADMIN_ROLE, account);
     }
 
-    //관리자 권한 포기
-    function renounceAdmin()public onlyRole(DEFAULT_ADMIN_ROLE){
-        renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    }
-
     // 병원 권한 주기
     function grantHospitalRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(HOSPITAL, account);
@@ -94,6 +89,20 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     // 적십자 권한 주기
     function grantRedCrossRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE){
         grantRole(REDCROSS, account);
+    }
+
+    //관리자 권한 포기
+    function renounceAdmin()public onlyRole(DEFAULT_ADMIN_ROLE){
+        renounceRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    }
+
+    //권한 취소
+    function revokeRedCrossRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        _revokeRole(REDCROSS, account);
+    }
+
+    function revokeHospitalRole(address account) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        _revokeRole(HOSPITAL, account);
     }
 
     // 권한 확인
