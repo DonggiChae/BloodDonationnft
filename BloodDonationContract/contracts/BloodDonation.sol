@@ -9,9 +9,26 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     bytes32 public constant HOSPITAL = keccak256("HOSPITAL");
     bytes32 public constant REDCROSS = keccak256("REDCROSS");
 
-    constructor() ERC721("BloodDonation", "BDNFT") { 
+     // Token name
+    string private _name;
+
+    // Token symbol
+    string private _symbol;
+
+    constructor(string memory _NFTname, string memory _NFTsymbol) ERC721(_NFTname, _NFTsymbol) { 
+        _name = _NFTname;
+        _symbol = _NFTsymbol;
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
+
+    function name() public view virtual override returns (string memory) {
+        return _name;
+    }
+
+    function symbol() public view virtual override returns (string memory) {
+        return _symbol;
+    }
+
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721Enumerable,AccessControl) returns (bool) {
         return super.supportsInterface(interfaceId);
@@ -20,6 +37,9 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
     event BDUploaded (uint256 indexed tokenId, string photo, string title, string location, string description, uint256 timestamp);
 
     mapping (uint256 => BDData) public _BDList;
+
+    mapping (address => uint256[]) private _ownedTokenList;
+
 
     struct BDData {
         uint256 tokenId;                       // Unique token id
@@ -140,14 +160,32 @@ contract BloodDonation is ERC721Enumerable,AccessControl{
 
         _BDList[tokenId] = newBDData;
         _BDList[tokenId].ownerHistory.push(to);
+        _ownedTokenList[to].push(tokenId);
 
         emit BDUploaded(tokenId, notUsedPhotoURI, title, location, description, block.timestamp);
+    }
+
+    function _removeTokenFromList(address from,uint256 tokenId) private {
+        uint256 lastTokenIndex = _ownedTokenList[from].length - 1;
+        for(uint256 i = 0 ; i < _ownedTokenList[from].length; i++) {
+            if (tokenId == _ownedTokenList[from][i]) {
+                _ownedTokenList[from][i] = _ownedTokenList[from][lastTokenIndex];
+                _ownedTokenList[from][lastTokenIndex] = tokenId;
+                break;
+            }
+        }
+        _ownedTokenList[from].pop();
+    }
+
+    function ownedTokenList(address owner) public view returns(uint256[] memory) {
+        return _ownedTokenList[owner];
     }
 
     // 헌혈증 보내기
     function transferOwnership(uint256 tokenId, address to) public  {
         safeTransferFrom(msg.sender, to, tokenId);
         _BDList[tokenId].ownerHistory.push(to);
+        _removeTokenFromList(msg.sender, tokenId);
     }
 
 

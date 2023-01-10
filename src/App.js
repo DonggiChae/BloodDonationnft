@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import GlobalFonts from "./fonts/fonts";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
-import { toast } from "react-toastify";
 
 import MainPage from "./components/pages/MainPage";
 import SettingPage from "./components/pages/SettingPage";
@@ -17,7 +15,6 @@ import SendingNFTPage from "./components/pages/SendingNFTPage";
 import LocationPage from "./components/pages/LocationPage";
 import Header from "./components/organisms/Header";
 import AdminPage from "./components/pages/AdminPage";
-import * as authReducer from "./redux/reducers/auth";
 import MintNFTPage from "./components/pages/MintNFTPage";
 import RequestPage from "./components/pages/RequestPage";
 import RequestCreate from "./components/organisms/RequestCreate";
@@ -34,8 +31,6 @@ import awsExports from "./aws-exports";
 
 Amplify.configure(awsExports);
 
-const klaytn = window.klaytn;
-
 const queryClient = new QueryClient();
 
 const AppWrapper = styled.div`
@@ -48,80 +43,6 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-  const dispatch = useDispatch();
-  const userKaikas = useSelector((state) => state.auth.user);
-
-  useEffect(() => {
-    //kaikas 지갑 없을시 이 effect무효!
-    if (!klaytn) {
-      return;
-    }
-
-    const account = localStorage.getItem("_user");
-    const currentKaikasAccount = klaytn?.selectedAddress;
-
-    if (!account || !currentKaikasAccount) {
-      dispatch(authReducer.setUser(""));
-      localStorage.removeItem("_user");
-      return;
-    }
-
-    if (account === currentKaikasAccount) {
-      dispatch(authReducer.setUser(account));
-      localStorage.setItem("_user", account);
-    }
-  }, [dispatch, userKaikas]);
-
-  useEffect(() => {
-    if (!klaytn) {
-      return;
-    }
-
-    const handleChangeAccounts = () => {
-      if (!userKaikas) {
-        return;
-      }
-
-      const changedAccount = klaytn?.selectedAddress;
-
-      if (userKaikas !== changedAccount) {
-        toast.success(`${changedAccount.slice(0, 5)}..계정이 바뀌셨습니다.`);
-        dispatch(authReducer.setUser(changedAccount));
-        localStorage.setItem("_user", changedAccount);
-      }
-    };
-
-    klaytn?.on("accountsChanged", handleChangeAccounts);
-    return () => {
-      klaytn.off("accountsChanged", handleChangeAccounts);
-    };
-  }, [userKaikas, dispatch]);
-
-  useEffect(() => {
-    if (!klaytn) {
-      return;
-    }
-
-    const networkObj = {
-      1001: "바오밥 테스트넷",
-      8217: "메인넷",
-    };
-
-    const handleNetworkChanged = () => {
-      dispatch(authReducer.setUser(""));
-      localStorage.removeItem("_user");
-      toast.warn(
-        `네트워크가 ${
-          networkObj[klaytn.networkVersion]
-        }으로 바뀌었습니다. 다시 로그인 해주세요.`
-      );
-    };
-
-    klaytn?.on("networkChanged", handleNetworkChanged);
-    return () => {
-      klaytn?.removeListener("networkChanged", handleNetworkChanged);
-    };
-  }, [dispatch]);
   return (
     <>
       <Authenticator.Provider>

@@ -26,7 +26,7 @@ const NameWrapper = styled.div`
 `;
 
 function Nav() {
-  const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const { user } = useAuthenticator((context) => [context.user]);
   return (
     <Container>
       <NavIconWrapper>
@@ -56,7 +56,9 @@ function Nav() {
       </NavIconWrapper>
       <NavIconWrapper>
         {user ? (
-          <NameWrapper onClick={signOut}>로그아웃</NameWrapper>
+          <StyledLink to="/auth">
+            <NameWrapper>로그아웃</NameWrapper>
+          </StyledLink>
         ) : (
           <StyledLink to="/auth">
             <NameWrapper>로그인</NameWrapper>

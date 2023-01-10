@@ -5,7 +5,7 @@ const path = require("path");
 
 async function main() {
   const Lock = await ethers.getContractFactory("BloodDonation");
-  const lock = await Lock.deploy();
+  const lock = await Lock.deploy("BloodDonation", "BDNFT");
 
   await lock.deployed();
 
@@ -16,13 +16,7 @@ async function main() {
 
 function saveFrontendFiles(lock: any) {
   const fs = require("fs");
-  const contractsDir = path.join(
-    __dirname,
-    "..",
-    "..",
-    "src",
-    "contracts"
-  );
+  const contractsDir = path.join(__dirname, "..", "..", "src", "contracts");
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);
