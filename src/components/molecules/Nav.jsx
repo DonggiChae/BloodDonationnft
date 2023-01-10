@@ -41,7 +41,12 @@ function Nav() {
       </NavIconWrapper>
       <NavIconWrapper>
         <StyledLink to="/requestdonation">
-          <NameWrapper>헌혈증 요청하기</NameWrapper>
+          <NameWrapper>헌혈증 요청</NameWrapper>
+        </StyledLink>
+      </NavIconWrapper>
+      <NavIconWrapper>
+        <StyledLink to="/bddetail" >
+          <NameWrapper>헌혈증 조회</NameWrapper>
         </StyledLink>
       </NavIconWrapper>
       <NavIconWrapper>
