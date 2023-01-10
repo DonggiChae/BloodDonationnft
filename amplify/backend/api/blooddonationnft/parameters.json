@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "blooddonationnft",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authblooddonationnfte0c05577",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
