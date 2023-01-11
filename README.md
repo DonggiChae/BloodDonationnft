@@ -33,9 +33,7 @@
 
 ## 헌혈증 NFT
 
-![image](https://user-images.githubusercontent.com/69336797/210229670-f8e70076-e1d4-42cd-8bc6-3a8d779e4791.png)
-
-![image](https://user-images.githubusercontent.com/69336797/210229675-7dccf618-ba5f-457c-8395-e2f607921133.png)
+![image](https://user-images.githubusercontent.com/69336797/211750244-0124b7db-12f7-4b6b-90db-14c10cb0ab0b.png)
 
 헌혈증 NFT 디자인은 사용전과 사용후의 디자인이 있습니다.
 
