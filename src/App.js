@@ -66,7 +66,7 @@ function App() {
                   element={<BloodDonationUse />}
                 />
                 <Route path="/requestdonation" element={<RequestPage />}>
-                  <Route path="requestCreate" element={<RequestCreate />} />
+                  <Route path="createRequest" element={<RequestCreate />} />
                   <Route path=":contentId" element={<RequestDetail />} />
                 </Route>
                 <Route path="/checkrole" element={<CheckPage />} />

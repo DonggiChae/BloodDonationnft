@@ -37,6 +37,10 @@ const Contents = styled.div`
   font-weight: 600;
 `;
 
+const HistoryList = styled.li`
+  margin-top: 12px;
+`
+
 const ButtonWrapper = styled.div`
   padding-left: 300px;
 `;
@@ -63,9 +67,9 @@ function DetailModal({ contents, handleModal }) {
         </Contents>
       </ContentsWrapper>
       <ContentsWrapper>
-        NFT:
+        History:
         {contents[1].map((addr) => {
-          return <li>{addr}</li>;
+          return <HistoryList>{addr}</HistoryList>;
         })}
       </ContentsWrapper>
       <ButtonWrapper>

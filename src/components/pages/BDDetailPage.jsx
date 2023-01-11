@@ -9,7 +9,7 @@ import DetailModal from "../organisms/DetailModal";
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: flex; 
   justify-content: center;
   align-items: center;
 `;

@@ -86,14 +86,14 @@ export default function RequestDetail() {
         <Wrapper>
           <TextWrapper>
             <Title>제목:</Title>
-            <Text name="title">{requestState.title}</Text>
+            <Text name="title">{requestState?.title}</Text>
           </TextWrapper>
           <TextWrapper>
             <Title>지갑주소:</Title>
-            <Text name="walletAddr">{requestState.walletAddr}</Text>
+            <Text name="walletAddr">{requestState?.walletAddr}</Text>
           </TextWrapper>
           <StyledTextarea name="description">
-            {requestState.description}{" "}
+            {requestState?.description}{" "}
           </StyledTextarea>
           <TableBottom>
             <Button
@@ -101,7 +101,7 @@ export default function RequestDetail() {
               onClick={() => navigate("/requestdonation")}
             />
             <EmptyBox></EmptyBox>
-            {user && user.username === requestState.user && (
+            {user && user.username === requestState?.user && (
               <Button title={"수정하기"} onClick={() => setUpdateState(true)} />
             )}
           </TableBottom>
