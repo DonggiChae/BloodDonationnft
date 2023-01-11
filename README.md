@@ -131,24 +131,48 @@ kaikas 지갑 로그인은 하지 않아도 요청할 수 있습니다.
 ![image](https://user-images.githubusercontent.com/69336797/210241392-fb08e38f-f5ac-41a3-8fba-4bb4d9509e9d.png)
 전국에 헌혈의 집 위치를 볼 수 있습니다.
 
+### 헌혈증 조회
+
+![image](https://user-images.githubusercontent.com/69336797/211748522-b7618b4a-32e8-4dbc-81e5-daebd20a018f.png)
+
+누구나 헌혈증의 ID를 알고 있다면 헌혈증의 사용여부와 소유자들 기록을 확인할수 있습니다.
+
 ### 설정
 
-<img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241581-5ddc5e42-dfe1-4fd4-a966-9536066f7e97.png">
+![image](https://user-images.githubusercontent.com/69336797/211748380-a36babea-1387-41b8-9c57-1204582b5b3d.png)
 
-유저들이 사용하는 않는 기능들이 있습니다.
+특정 권한이 있는 지갑이 사용할 수 있는 기능입니다.
 
 <img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210241723-4256d09f-8949-4a6d-84a0-55ced19b7fa0.png">
+
 관리자 페이지에서  관리자의 권한을 가진 주소로 다른 주소에 역할을 부여할 수 있습니다.
 
 ![image](https://user-images.githubusercontent.com/69336797/210241840-6a0767ff-4a1f-4acd-960d-8fa0689b4cfe.png)
+
 헌혈자의 지갑 주소를 입력하고 헌혈 종류, 헌혈한 지점을 선택하면 헌혈증을 발행할 수 있습니다.
 
 <img width="1510" alt="image" src="https://user-images.githubusercontent.com/69336797/210242018-963ef681-caaf-4fd4-87ad-fde986f7f7fc.png">
+
  지갑 주소의 역할을 확인할 수 있습니다.
  
  
- ![image](https://user-images.githubusercontent.com/69336797/210254936-6af26211-9f87-4c59-86e1-6859bb2d9f35.png)
+![image](https://user-images.githubusercontent.com/69336797/211748868-1aa4d6a1-6eba-4020-abce-182f4426943c.png)
+
+ 
 병원의 권한을 가진 주소로 헌혈증을 사용할 수 있습니다. 
+헌혈증의 사용여부는 헌혈증에 표시가 됩니다.
 
 
 ## 지갑 로그인과 헌혈증 웹 로그인
+
+지갑 로그인은 Kaikas를 사용하여 구연하였습니다. 
+헌혈증 웹 로그인은 AWS를 사용하여 구현하였습니다.
+헌혈증 웹을 로그인해야만 헌혈증 요청게시판을 작성할 수 있습니다. 
+헌혈증을 요청한 사람에 대한 정보가 있어야 믿고 헌혈증을 양도하고 기부할 수 있다고 생각되어 따로 로그인하도록 하였습니다.
+
+![image](https://user-images.githubusercontent.com/69336797/211749877-7e9fdaf2-8e45-4f2b-863f-2036d09c2a7d.png)
+
+![image](https://user-images.githubusercontent.com/69336797/211749781-a70f8732-25a3-462e-817f-99f5b1ee10a7.png)
+
+
+
