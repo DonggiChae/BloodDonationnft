@@ -6,7 +6,7 @@ const mintBD = async (title, location, description, to) => {
     .mintBD(title, location, description, to)
     .send({
       from: window.klaytn.selectedAddress,
-      gas: 450000,
+      gas: 500000,
     })
     .then(() =>
       toast.success(`성공적으로 헌혈증을 발행하였습니다.`, {
