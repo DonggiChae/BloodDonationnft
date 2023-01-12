@@ -38,7 +38,7 @@ const EmptyBox = styled.div``;
 const StyledTextarea = styled.div`
   width: 100%;
   height: 280px;
-  margin-left: 8px;
+  padding-left: 8px;
   line-height: 1.5;
   padding: 0.7rem 1rem;
   font-size: 1.1em;
